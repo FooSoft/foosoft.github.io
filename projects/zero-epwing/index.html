@@ -1,0 +1,54 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - Zero-EPWING</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/>FooSoft Productions</a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a class="nav-item nav-link" href=/>Home</a>
+<a class="nav-item nav-link" href=/posts/>Posts</a>
+<a class="nav-item nav-link" href=/portfolio/>Portfolio</a>
+<a class="nav-item nav-link active" href=/projects/>Projects</a>
+<a class="nav-item nav-link" href=/tags/>Tags</a></div></div></nav><div><a href=https://github.com/FooSoft/zero-epwing class=github-corner><svg width="80" height="80" viewBox="0 0 250 250">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+        </svg></a></div><div class=container><h1>Zero-EPWING</h1><div><a class="badge badge-secondary" href=/tags/c/index.html>c</a>
+<a class="badge badge-secondary" href=/tags/epwing/index.html>epwing</a>
+<a class="badge badge-secondary" href=/tags/gpl-license/index.html>gpl license</a>
+<a class="badge badge-secondary" href=/tags/jansson/index.html>jansson</a>
+<a class="badge badge-secondary" href=/tags/japanese/index.html>japanese</a>
+<a class="badge badge-secondary" href=/tags/libeb/index.html>libeb</a>
+<a class="badge badge-secondary" href=/tags/zero-epwing/index.html>zero-epwing</a></div><hr><p>Zero-EPWING is a tool built to export easy to process JSON formatted UTF-8 data from dictionaries in
+<a href=https://ja.wikipedia.org/wiki/EPWING>EPWING</a> format. This is a terrible format for many reasons, some of which are
+outlined below:<ul><li>It is based on a closed and undocumented standard.<li>Not well supported as it isn&#39;t used anywhere else in the world.<li>The only library for parsing this format, <code>libeb</code>, is abandoned.<li>Data is stored in an inconsistent manner, with lots of duplication.<li>Text data is represented using the annoying EUC-JP encoding.<li>Characters which cannot be encoded are represented by image bitmaps.</ul><p>Most applications that parse EPWING data traditionally use <code>libeb</code> to perform dictionary searches in place; dealing with
+quirks in the format and <code>libeb</code> output is just part of the process. Zero-EPWING takes a different approach – extract
+all the data and output it an sane intermediate format, like JSON. As everyone knows how to parse JSON, it is trivial to
+take this intermediate data and store it in a reasonable, industry standard representation.<p><img src=/projects/zero-epwing/img/zero-wing.png alt><h2 id=installation>Installation</h2><p>Pre-built binaries are available for Linux, Mac OS X, and Windows:<ul><li><a href=/projects/zero-epwing/dl/zero-epwing_linux.tar.gz>zero-epwing_linux.tar.gz</a><li><a href=/projects/zero-epwing/dl/zero-epwing_darwin.tar.gz>zero-epwing_darwin.tar.gz</a><li><a href=/projects/zero-epwing/dl/zero-epwing_windows.zip>zero-epwing_windows.zip</a></ul><h2 id=building>Building</h2><p>Prepare your development environment by making sure the following tools are set up:<ul><li><a href=https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html>Autotools</a><li><a href=https://cmake.org/>CMake</a><li><a href=https://gcc.gnu.org/>GCC</a><li><a href=https://www.gnu.org/software/make/>Make</a><li><a href=http://www.mingw.org/>MinGW</a> (Windows only)</ul><p>Once your system is configured, follow the steps below to create builds:<ol><li>Clone the repository by executing<pre><code>git clone --recurse-submodules https://github.com/FooSoft/zero-epwing
+</code></pre><li>Prepare the project. From the project root directory, execute<pre><code>cmake . -Bbuild &amp;&amp; cmake --build build --
+</code></pre><li>Find the executable in the <code>build</code> directory.</ol><h2 id=usage>Usage</h2><p>Zero-EPWING takes a single parameter, the directory of the EPWING dictionary to dump. It also supports the following
+optional flags:<ul><li><code>--entries</code> (<code>-e</code>): output dictionary entry data (most common option).<li><code>--fonts</code> (<code>-f</code>): output output font bitmap data (useful for OCR).<li><code>--markup</code> (<code>-m</code>): markup the output with as much metadata as possible.<li><code>--positions</code> (<code>-s</code>): output <em>page</em> and <em>offset</em> data for each entry.<li><code>--pretty</code> (<code>-p</code>): output pretty-printed JSON (useful for debugging).</ul><p>Upon loading and processing the requested EPWING data, Zero-EPWING will output a UTF-8 encoded JSON file to <code>stdout</code>.
+Diagnostic information about errors will be printed to <code>stderr</code>. Serious errors will result in this application
+returning a non-zero exit code. A sample of the JSON dictionary entry data output is pretty-printed below for reference.<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;charCode&#34;</span>: <span style=color:#d14>&#34;jisx0208&#34;</span>,
+    <span style=color:#000080>&#34;discCode&#34;</span>: <span style=color:#d14>&#34;epwing&#34;</span>,
+    <span style=color:#000080>&#34;subbooks&#34;</span>: [
+        {
+            <span style=color:#000080>&#34;title&#34;</span>: <span style=color:#d14>&#34;大辞泉&#34;</span>,
+            <span style=color:#000080>&#34;copyright&#34;</span>: <span style=color:#d14>&#34;CD-ROM版大辞泉　1997年4月10日 第1版発行\n\n監　修　松村　明\n発行者　鈴木俊彦\n発行所...&#34;</span>,
+            <span style=color:#000080>&#34;entries&#34;</span>: [
+                {
+                    <span style=color:#000080>&#34;heading&#34;</span>: <span style=color:#d14>&#34;亜&#34;</span>,
+                    <span style=color:#000080>&#34;text&#34;</span>: <span style=color:#d14>&#34;亜\n［音］ア\n［訓］つ‐ぐ\n［部首］二\n［総画数］７\n［コード］区点...&#34;</span>
+                },
+                {
+                    <span style=color:#000080>&#34;heading&#34;</span>: <span style=color:#d14>&#34;あ&#34;</span>,
+                    <span style=color:#000080>&#34;text&#34;</span>: <span style=color:#d14>&#34;あ\n{{w_50275}}\n{{w_50035}}五十音図ア行の第一音。五母音の一。後舌の開母音...&#34;</span>
+                }
+            ]
+        }
+    ]
+}
+</code></pre><p>You may have noticed the unusual-looking double curly bracket markers such as <code>{{w_50035}}</code>. Remember what I mentioned
+about certain characters being represented by image files? There are two graphical fonts sets in each dictionary: narrow
+and wide. Both of these font sets are available in four sizes: 24, 30, 36, and 48 pixels. Whenever a character cannot be
+encoded as text, a glyph is used in its place. These font indices cannot be converted directly to characters, differ
+from one dictionary to another, and must be manually mapped to Unicode character tables. Zero-EWPING has no facility to
+map these font glyphs to Unicode by itself, and instead places inline markers in the form of <code>{{w_xxxx}}</code> and
+<code>{{n_xxxx}}</code> in the output, specifying the referenced indices of the wide or narrow fonts respectively.<p>The bitmaps for these font glyphs can be dumped by executing this application with the <code>--fonts</code> command line argument.<div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
+<span class="breadcrumb-item active">Zero-EPWING</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>

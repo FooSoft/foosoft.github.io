@@ -1,0 +1,370 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - Homemaker</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/>FooSoft Productions</a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a class="nav-item nav-link" href=/>Home</a>
+<a class="nav-item nav-link" href=/posts/>Posts</a>
+<a class="nav-item nav-link" href=/portfolio/>Portfolio</a>
+<a class="nav-item nav-link active" href=/projects/>Projects</a>
+<a class="nav-item nav-link" href=/tags/>Tags</a></div></div></nav><div><a href=https://github.com/FooSoft/homemaker class=github-corner><svg width="80" height="80" viewBox="0 0 250 250">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+        </svg></a></div><div class=container><h1>Homemaker</h1><div><a class="badge badge-secondary" href=/tags/dot-files/index.html>dot-files</a>
+<a class="badge badge-secondary" href=/tags/golang/index.html>golang</a>
+<a class="badge badge-secondary" href=/tags/homemaker/index.html>homemaker</a>
+<a class="badge badge-secondary" href=/tags/json/index.html>json</a>
+<a class="badge badge-secondary" href=/tags/mit-license/index.html>mit license</a>
+<a class="badge badge-secondary" href=/tags/toml/index.html>toml</a>
+<a class="badge badge-secondary" href=/tags/yaml/index.html>yaml</a></div><hr><p>Homemaker is a lightweight tool for straightforward and efficient management of *nix configuration files found in the
+user&#39;s home directory, commonly known as dot-files. It can also be readily used for general purpose system
+bootstrapping, including installing packages, cloning repositories, etc. This tool is written in Go, requires no
+installation, has no dependencies and makes use of simple configuration file structure inspired by
+<a href=https://en.wikipedia.org/wiki/Make_%28software%29>make</a> to generate symlinks and execute system commands to aid in
+configuring a new system for use.<p><img src=/projects/homemaker/img/demo.gif alt><h2 id=table-of-contents>Table of Contents</h2><ul><li><a href=/projects/homemaker/index.html#motivation>Motivation</a><li><a href=/projects/homemaker/index.html#installation>Installation</a><li><a href=/projects/homemaker/index.html#configuration>Configuration</a><ul><li><a href=/projects/homemaker/index.html#environment-variables>Environment Variables</a><li><a href=/projects/homemaker/index.html#command-macros>Command Macros</a><li><a href=/projects/homemaker/index.html#task-and-macro-variants>Task and Macro Variants</a><li><a href=/projects/homemaker/index.html#conditional-execution>Conditional Execution</a></ul><li><a href=/projects/homemaker/index.html#usage>Usage</a><li><a href=/projects/homemaker/index.html#sample>Sample</a></ul><h2 id=motivation>Motivation</h2><p>Ever since switching to using Linux as my daily driver operating system, I have been searching for a way to effectively
+manage settings between different computers (and system reinstalls on the same machine) while avoiding the accumulation
+of cruft that plagues our home directories.<p>Specifically, I required a solution that had the following characteristics:<ul><li><p><strong>Do not require software installation</strong><p>The user may not have root privileges on all the computers that she accesses, making it difficult to make use
+software that has additional dependencies. Even if the user has root on the machine in question, it is sub-optimal
+to require her to install software packages just to bootstrap the system.<li><p><strong>Support configuration variants</strong><p>The user should be able to use cherry-pick which settings they wish to use. Different system installs have different
+configuration requirements; it must be possible to share common settings while keeping the unique bits unique to
+each machine. Furthermore, it should be possible to store all configuration settings in one location.<li><p><strong>Make no assumptions about synchronization</strong><p>While Git often works well for managing dot-files, it is not ideal for every situation. I&#39;ve seen some applications
+add and remove seemingly randomly-named files within their configuration directories, while others store their
+settings in large, opaque binary blobs. Managing configuration settings for such poorly-behaved applications may be
+easier through, <a href=https://www.dropbox.com/>Dropbox</a>, <a href=https://en.wikipedia.org/wiki/Rsync>rsync</a>, or some other
+utility outside of version control.<li><p><strong>Be easy to read and modify the source</strong><p>As a programmer, I always consider the underlying technology of a tool when deciding whether or not to use it. The
+user should feel empowered to change and test the application without having to deal with the archaic incantations
+otherwise known as shell scripts. Scripting languages can work well but are closely tied to the environment in which
+they are executed.</ul><p>It soon became apparent to me that utility which met all of my requirements for simply did not exist. After making do
+with a hastily hacked-together Python script for a couple of months, I decided that this problem deserved a clean,
+formal solution. I settled on building this new utility in Go because in addition to the language syntax being clear and
+easy to understand, executables built by the Go compiler are statically linked, making them highly portable. Just drop
+the binary on your system and you are ready! The result of my work is Homemaker; I hope that you find it suitable for
+your needs.<h2 id=installation>Installation</h2><p>If you already have the Go environment and toolchain set up, you can get the latest version by running:<pre><code>$ go get github.com/FooSoft/homemaker
+</code></pre><p>Otherwise, you can use the pre-built binaries for the platforms below:<ul><li><a href=/projects/homemaker/dl/homemaker_darwin_386.tar.gz>homemaker_darwin_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_darwin_amd64.tar.gz>homemaker_darwin_amd64.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_386.tar.gz>homemaker_linux_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_amd64.tar.gz>homemaker_linux_amd64.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_arm.tar.gz>homemaker_linux_arm.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_windows_386.tar.gz>homemaker_windows_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_windows_amd64.tar.gz>homemaker_windows_amd64.tar.gz</a></ul><h2 id=configuration>Configuration</h2><p>Configuration files for Homemaker can be authored in your choice of <a href=https://github.com/toml-lang/toml>TOML</a>,
+<a href=http://json.org/>JSON</a>, or <a href=http://yaml.org/>YAML</a> markup languages. Being the easiest to read out of the three,
+TOML will be used for the example configuration files. Worry not if you are unfamiliar with this format; everything you
+need to know about it will be shown below.<p>Let&#39;s start by looking at a basic example configuration file, <code>example.toml</code>. Notice that Homemaker determines which
+markdown language processor to use based on the extension of your c:nfiguration file. Use <code>.toml/.tml</code> for TOML,
+<code>.yaml/.yml</code> for YAML, and <code>.json</code> for JSON. Be aware that specifying an incorrect file extension will prevent your
+configuration file from being parsed correctly.<pre><code class=language-toml style=background-color:#fff>[tasks.default]
+    links = [
+        [<span style=color:#d14>&#34;.config/fish&#34;</span>],
+        [<span style=color:#d14>&#34;.config/keepassx&#34;</span>],
+        [<span style=color:#d14>&#34;.config/terminal&#34;</span>],
+        [<span style=color:#d14>&#34;.config/vlc&#34;</span>],
+        [<span style=color:#d14>&#34;.gitconfig&#34;</span>],
+        [<span style=color:#d14>&#34;.xinputrc&#34;</span>],
+    ]
+</code></pre><p>We could have just as easily written this configuration in JSON (or YAML for that matter), but it&#39;s subjectively uglier:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;tasks&#34;</span>: {
+        <span style=color:#000080>&#34;default&#34;</span>: {
+            <span style=color:#000080>&#34;links&#34;</span>: [
+                [<span style=color:#d14>&#34;.config/fish&#34;</span>],
+                [<span style=color:#d14>&#34;.config/keepassx&#34;</span>],
+                [<span style=color:#d14>&#34;.config/terminal&#34;</span>],
+                [<span style=color:#d14>&#34;.config/vlc&#34;</span>],
+                [<span style=color:#d14>&#34;.gitconfig&#34;</span>],
+                [<span style=color:#d14>&#34;.xinputrc&#34;</span>]
+            ]
+        }
+    }
+}
+</code></pre><p>To create symlinks based on the contents of the TOML file from before, we invoke the <code>homemaker</code> utility as follows:<pre><code>$ homemaker example.toml /mnt/data/config
+</code></pre><p>To get a better idea of what <code>/mnt/data/config</code> is, let&#39;s look at the in-program documentation:<pre><code>Usage: homemaker [options] conf src
+https://foosoft.net/projects/homemaker/
+
+Parameters:
+  -clobber
+        delete files and directories at target
+  -dest string
+        target directory for tasks (default &#34;/home/alex&#34;)
+  -force
+        create parent directories to target (default true)
+  -nocmds
+        don&#39;t execute commands
+  -nolinks
+        don&#39;t create links
+  -task string
+        name of task to execute (default &#34;default&#34;)
+  -unlink
+        remove existing links instead of creating them
+  -variant string
+        execution variant for tasks and macros
+  -verbose
+        verbose output
+</code></pre><p>For the purpose of our illustration, <code>src</code> is defined on the command line to be <code>/mnt/data/config</code>; namely the source
+directory where your dot-files live (this will be your Git repository, Dropbox folder, rsync root, etc.). The symlinks
+that Homemaker creates will point to the configuration files in this directory. You may have noticed that you can also
+provide a destination directory via the <code>-dest</code> command line argument; this is where the symlinks should be created and
+it defaults to your home directory.<p>Another useful parameter is <code>task</code>; it will be initialized to the value <code>default</code> unless you override it on the command
+line. In practice, this means that Homemaker will try to find a task called <code>default</code> and execute it. You can create as
+many unique tasks as necessary to correspond to your configuration requirements, and then choose which one will execute
+by specifying it on the command line in the format <code>-task=taskname</code>. Good candidates for tasks are computer names, as
+shown in the configuration file below:<pre><code class=language-toml style=background-color:#fff>[tasks.flatline]
+    links = [
+        [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_flatline&#34;</span>],
+        [<span style=color:#d14>&#34;.s3cfg&#34;</span>],
+        [<span style=color:#d14>&#34;.sabnzbd&#34;</span>],
+        [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_flatline&#34;</span>],
+    ]
+
+[tasks.wintermute]
+    links = [
+        [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_wintermute&#34;</span>],
+        [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_wintermute&#34;</span>],
+    ]
+</code></pre><p>Here we see two tasks, named after the computers that will be using them, <code>flatline</code> and <code>wintermute</code>. Certain
+configuration data like key pairs and other per-machine settings should only be linked on the computer that is using
+them. That is to say if <code>flatline</code> and <code>wintermute</code> both try to manage the <code>.ssh</code> directory, a conflict will occur at
+both the source and destination directories. We can easily resolve the source directory conflict by giving the <code>.ssh</code>
+directories unique names, such as <code>.ssh_flatline</code> and <code>.ssh_wintermute</code>. The conflict at the destination directory can
+be fixed as shown above; we will create per-machine tasks that will symlink only the needed directory.<p>You may have noticed that each entry in the <code>links</code> collection is an array, which up until now has contained only one
+item. A second item can be added if the source file or directory name is different from that in the destination. If the
+paths provided are relative they will be assumed to be relative to the destination and source directories respectively.<p>Now that we have machine specific tasks defined in our configuration file, it would be nice to still be able to share
+configuration settings that are common to the two computers. We can do this by adding a <code>dep</code> array to our tasks as
+shown below:<pre><code class=language-toml style=background-color:#fff>[tasks.common]
+    links = [
+        [<span style=color:#d14>&#34;.config/fish&#34;</span>],
+        [<span style=color:#d14>&#34;.config/keepassx&#34;</span>],
+        [<span style=color:#d14>&#34;.config/terminal&#34;</span>],
+        [<span style=color:#d14>&#34;.config/vlc&#34;</span>],
+        [<span style=color:#d14>&#34;.gitconfig&#34;</span>],
+        [<span style=color:#d14>&#34;.xinputrc&#34;</span>],
+    ]
+
+[tasks.flatline]
+    deps = [<span style=color:#d14>&#34;common&#34;</span>]
+    links = [
+        [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_flatline&#34;</span>],
+        [<span style=color:#d14>&#34;.s3cfg&#34;</span>],
+        [<span style=color:#d14>&#34;.sabnzbd&#34;</span>],
+        [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_flatline&#34;</span>],
+    ]
+
+[tasks.wintermute]
+    deps = [<span style=color:#d14>&#34;common&#34;</span>]
+    links = [
+        [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_wintermute&#34;</span>],
+        [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_wintermute&#34;</span>],
+    ]
+</code></pre><p>Homemaker will process the dependency tasks before processing the task itself.<p>Sometimes, just linking a config file is not enough, because the content of the configuration file needs to be adapted
+to the target and we do not want to maintain several different versions of the same file. For such use cases, Homemaker
+supports templates. The configuration syntax for templates is the same as for links.<pre><code class=language-toml style=background-color:#fff>[tasks.template]
+    templates = [
+        [<span style=color:#d14>&#34;.gitconfig&#34;</span>]
+    ]
+</code></pre><p>In the template file, the <a href=https://godoc.org/text/template>go templating syntax</a> is used for the customization of the
+configuration file. With the <code>.Env</code> prefix, all environment variables are available. Template example:<pre><code>[user]
+name = &#34;John Doe&#34;
+{{if eq .Env.USER &#34;john&#34;}}
+    email = &#34;john@doe.me&#34;
+{{else}}
+    email = &#34;john.doe@work.com&#34;
+{{end}}
+</code></pre><p>In addition to creating links and processing templates, Homemaker is capable of executing commands on a per-task basis.
+Commands should be defined in an array called <code>cmds</code>, split into an item per each command line argument. All of the commands
+are executed with <code>dest</code> as the working directory (as mentioned previously, this defaults to your home directory). If any
+command returns a nonzero exit code, Homemaker will display an error message and prompt the user to determine if it should
+<em>abort</em>, <em>retry</em>, or <em>cancel</em>. Additionally, if you must have explicit control of whether commands execute before or
+after the linking phase, you can use the <code>cmdspre</code> and <code>cmdspost</code> arrays which have similar behavior.<p>The example task below will clone and install configuration files for Vim into the <code>~/.config</code> directory, and create
+links to it from the home directory. You may notice that this task references an environment variable (set by Homemaker
+itself) in the <code>links</code> block; you can read more about how to use environment variables in the following section.<pre><code class=language-toml style=background-color:#fff>[tasks.vim]
+    cmds = [
+        [<span style=color:#d14>&#34;rm&#34;</span>, <span style=color:#d14>&#34;-rf&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>],
+        [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;clone&#34;</span>, <span style=color:#d14>&#34;https://github.com/FooSoft/dotvim&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>],
+    ]
+    links = [
+        [<span style=color:#d14>&#34;.vimrc&#34;</span>, <span style=color:#d14>&#34;${HM_DEST}/.config/vim/.vimrc&#34;</span>],
+        [<span style=color:#d14>&#34;.vim&#34;</span>, <span style=color:#d14>&#34;${HM_DEST}/.config/vim/.vim&#34;</span>],
+    ]
+</code></pre><h3 id=environment-variables>Environment Variables</h3><p>Homemaker supports the expansion of environment variables for both command and link blocks as well as for dependencies.
+This is a good way of avoiding having to hard code absolute paths into your configuration file. To reference an
+environment variable simply use <code>${ENVVAR}</code> or <code>$ENVVAR</code>, where <code>ENVVAR</code> is the variable name (notice the similarity
+to normal shell variable expansion). In addition to being able to reference all of the environment variables defined
+on your system, Homemaker defines a couple of extra ones for ease of use:<ul><li><p><code>HM_CONFIG</code><p>Path to the homemaker configuration file.<li><p><code>HM_TASK</code><p>Task name invoked from the command line.<li><p><code>HM_SRC</code><p>Source directory for link creation.<li><p><code>HM_DEST</code><p>Destination directory for link creation.<li><p><code>HM_VARIANT</code><p>Variant used for task and macro execution.</ul><p>Environment variables can also be set within tasks block by assigning them to the <code>envs</code> variable. The example below
+demonstrates the setting and clearing of environment variables:<pre><code class=language-toml style=background-color:#fff>[tasks.default]
+    envs = [
+        [<span style=color:#d14>&#34;MYENV1&#34;</span>, <span style=color:#d14>&#34;foo&#34;</span>],        <span style=color:#998;font-style:italic># set MYENV1 to foo</span>
+        [<span style=color:#d14>&#34;MYENV2&#34;</span>, <span style=color:#d14>&#34;foo&#34;</span>, <span style=color:#d14>&#34;bar&#34;</span>], <span style=color:#998;font-style:italic># set MYENV2 to foo,bar</span>
+        [<span style=color:#d14>&#34;MYENV3&#34;</span>],               <span style=color:#998;font-style:italic># clear MYENV3</span>
+    ]
+</code></pre><p>It should be pointed out that it is possible to reference other environment variables using the syntax shown in the
+first part of this section. This makes it possible to expand variables like <code>PATH</code> without overwriting their existing
+value.<h3 id=command-macros>Command Macros</h3><p>It is often convenient to execute certain commands repeatedly within task blocks to install packages, clone git
+repositories, etc. Homemaker provides macro blocks for this purpose; you can specify a command <em>prefix</em> and <em>suffix</em>
+that is used to wrap the parameters you provide. For example, you can declare a macro for <code>apt-get install</code> and with the
+declaration shown below (much like tasks, macro declarations are global).<pre><code class=language-toml style=background-color:#fff>[macros.install]
+    prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;apt-get&#34;</span>, <span style=color:#d14>&#34;install&#34;</span>, <span style=color:#d14>&#34;-y&#34;</span>]
+</code></pre><p>Macros can be referenced from commands by prefixing the macro name with the <code>@</code> symbol (it must be the first character
+of the first item of a command). For example, the task below installs several python packages using the macro above:<pre><code class=language-toml style=background-color:#fff>[tasks.python]
+    cmds = [
+        [<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;python-dev&#34;</span>, <span style=color:#d14>&#34;python-pip&#34;</span>, <span style=color:#d14>&#34;python3-pip&#34;</span>]
+    ]
+</code></pre><p>Macros can have dependencies just like tasks. The <code>git clone</code> macro below makes sure that git is installed before
+attempting to clone a repository with it.<pre><code class=language-toml style=background-color:#fff>[macros.clone]
+    deps = [<span style=color:#d14>&#34;git&#34;</span>]
+    prefix = [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;clone&#34;</span>]
+
+[tasks.git]
+    cmds = [
+        [<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;git&#34;</span>]
+    ]
+</code></pre><p>Macros help reduce the clutter that comes from the repeated commands which must be executed to bootstrap a new system.
+When executed with the <code>verbose</code> option, Homemaker will echo the expanded macro commands before executing them.<h3 id=task-and-macro-variants>Task and Macro Variants</h3><p>If you wish to use this tool in a truly cross-platform and cross-distribution manner without authoring multiple
+configuration files, you will have to provide information to Homemaker about the environment it is running in. Different
+operating systems and distributions use different package managers and package names; we solve this problem with task
+and macro <em>variants</em>.<p>For example, if you want to write a generic macro for installing packages that works on both Ubuntu and Arch Linux, you
+can define the following variants (Ubuntu uses the <em>apt</em> package manager and Arch Linux uses <em>pacman</em>).<pre><code class=language-toml style=background-color:#fff>[macros.install__ubuntu]
+    prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;apt-get&#34;</span>, <span style=color:#d14>&#34;install&#34;</span>]
+
+[macros.install__arch]
+    prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;pacman&#34;</span>, <span style=color:#d14>&#34;-S&#34;</span>]
+</code></pre><p>The double underscore characters signify that the following identifier is a <em>variant decorator</em>. In most cases, you only
+have to think about variants when you are writing task and macro definitions, not when using them. For example, to see
+how to use the <code>install</code> macro that we just created, examine the configuration below:<pre><code class=language-toml style=background-color:#fff>[tasks.tmux]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;tmux&#34;</span>]]
+</code></pre><p>Notice that the package manager is conveniently abstracted by the <code>install</code> macro. Be aware that for this example to
+work properly, you must specify a variant on the command line as shown below. Failing to specify a variant will cause
+Homemaker try to look for an undecorated <code>install</code> macro (which doesn&#39;t exist), leading to failure.<pre><code>$ homemaker --variant=ubuntu example.toml /mnt/data/config
+</code></pre><p>Tasks can be be decorated much like commands:<pre><code class=language-toml style=background-color:#fff>[tasks.vim__server]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;vim-nox&#34;</span>]]
+
+[tasks.vim]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;gvim&#34;</span>]]
+</code></pre><p>In the above example, we avoid installing <code>gvim</code> on the server variant, where the X windowing system is not installed or
+needed. Homemaker only executes the best task or macro candidate; if the provided variant does not match any tasks or
+macros, the base undecorated version will be used instead if it is available.<p>The command below will execute the <code>vim__server</code> task:<pre><code>$ homemaker --variant=server example.toml /mnt/data/config
+</code></pre><p>Both of the commands below will execute the <code>vim</code> task:<pre><code>$ homemaker --variant=foobar example.toml /mnt/data/config
+$ homemaker example.toml /mnt/data/config
+</code></pre><p>If for some reason you wish to explicitly reference the base task from the decorated task, you can add a dependency that
+contains a <em>variant override</em> as shown in the somewhat contrived examples below:<pre><code class=language-toml style=background-color:#fff>[tasks.foo]
+[tasks.foo__specific]
+    deps = [<span style=color:#d14>&#34;foo__&#34;</span>]         <span style=color:#998;font-style:italic># executes foo and foo_specific</span>
+
+[tasks.bar__specific]
+[tasks.bar]
+    deps = [<span style=color:#d14>&#34;bar__specific&#34;</span>] <span style=color:#998;font-style:italic># executes bar_specific and bar</span>
+</code></pre><p>Although variants are somewhat of an advanced topic as far as Homemaker features are concerned, they can be used to
+provide some basic conditional functionality to your configuration file without significantly increasing complexity for
+the user.<h3 id=conditional-execution>Conditional Execution</h3><p>Homemaker provides a facility for determining whether or not a given task should execute at runtime; this is
+accomplished with the <code>accepts</code> and <code>rejects</code> task variables. Both follow the same syntax as the <code>cmds</code> variable and
+support macro and environment variable expansion.<ul><li><p><strong>accepts</strong><p>Execute commands non-interactively; any non-zero return code will cause the task to be skipped.<li><p><strong>rejects</strong><p>Execute commands non-interactively; any return code of zero code will cause the task to be skipped.</ul><p>The intent of this feature is to allow tasks to “early out” when the work they carry out has already been completed. In
+the example below, we use the <code>which</code> command to see if <a href=https://fishshell.com/>fish shell</a> is already installed before
+trying to install it. This is possible because <code>which</code> returns a non-zero value when it encounters strings which do not
+correspond to applications installed on the current system.<pre><code class=language-toml style=background-color:#fff>[tasks.fish]
+    rejects = [[<span style=color:#d14>&#34;which&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>]]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>], [<span style=color:#d14>&#34;chsh&#34;</span>, <span style=color:#d14>&#34;-s&#34;</span>, <span style=color:#d14>&#34;/usr/bin/fish&#34;</span>]]
+    links = [[<span style=color:#d14>&#34;.config/fish/config.fish&#34;</span>]]
+</code></pre><p>The <code>accepts</code> variable is the logical opposite of <code>rejects</code> and can be used to conditionally execute tasks only when all
+of the specified commands exit out with a return code of zero.<h2 id=usage>Usage</h2><p>Executing Homemaker with the <code>-help</code> command line argument will trigger online help to be displayed. The list below
+provides a more detailed description of what the parameters do.<ul><li><p><strong>clobber</strong><p>By default, Homemaker will only remove identically-named symlinks at the destination directory. Using this parameter
+will cause Homemaker to be more aggressive and delete clashing files and entire directories as well. This can be
+useful for getting rid of the default configuration settings some applications write when you run them for the first
+time, but should obviously be used with caution.<li><p><strong>dest</strong><p>This parameter specifies destination where Homemaker is to create symlinks. This will default to the home directory
+for the current user, and as long as you are just using this application to manage dot-files, will probably never
+need to be changed.<li><p><strong>force</strong><p>Sometimes dot-files for an application are nested within parent directories that must exist in order to allow the
+symlink to be successfully created (for example the <code>.config</code> directory in <code>.config/vlc</code>). As this is the expected
+behavior, this parameter defaults to <code>true</code>; however you can explicitly disable it if required. You can specify the
+access permissions of directories created by force by providing a third array item in the link descriptor. For
+example, if you wanted the <code>.ssh</code> directory to be created with mode <code>700</code>, you could write the following:
+<code>[&#34;.ssh/id_rsa.pub&#34;, &#34;.ssh_flatline/id_rsa.pub&#34;, &#34;0700&#34;]</code>. Notice that you can specify permissions in octal notation
+by adding a leading zero value (the <code>0x</code> prefix signifies hexadecimal).<li><p><strong>nocmds</strong><p>Do not execute commands for the <code>cmds</code> blocks inside of tasks.<li><p><strong>nolinks</strong><p>Do not create links for the <code>links</code> blocks inside of tasks.<li><p><strong>task</strong><p>This parameter is used to specify which task Homemaker will process when executed. It defaults to the <code>default</code>
+task, which should be used when creating a configuration file that does not have system-specific tasks specified.<li><p><strong>unlink</strong><p>Sometimes it&#39;s useful to “uninstall” links previously created by Homemaker. When running with the <code>unlink</code> flag, the
+tool will delete the links created by the tasks provided. This flag automatically sets the <code>nocmds</code> flag as well,
+because it makes no sense to execute commands when performing an uninstall operation.<li><p><strong>variant</strong><p>When using homemaker across different operating systems or distributions it can be useful to be able to perform
+conditional command and task execution, allowing for variation in things like package names and package management
+tools. This parameter is used for specifying the name of the variant that should be used.<li><p><strong>verbose</strong><p>When something isn&#39;t going the way you expect, you can use this parameter to make Homemaker to log everything it is
+doing to console.</ul><h2 id=sample>Sample</h2><p>Below is a sample configuration file which should help to illustrate how Homemaker can be used in practice.<pre><code class=language-toml style=background-color:#fff><span style=color:#998;font-style:italic>#</span>
+<span style=color:#998;font-style:italic># macros</span>
+<span style=color:#998;font-style:italic>#</span>
+
+[macros.clone]
+    deps = [<span style=color:#d14>&#34;git&#34;</span>]
+    prefix = [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;clone&#34;</span>]
+
+[macros.install]
+    prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;dnf&#34;</span>, <span style=color:#d14>&#34;install&#34;</span>, <span style=color:#d14>&#34;-y&#34;</span>]
+
+<span style=color:#998;font-style:italic>#</span>
+<span style=color:#998;font-style:italic># development</span>
+<span style=color:#998;font-style:italic>#</span>
+
+[tasks.dev]
+    deps = [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;vim&#34;</span>, <span style=color:#d14>&#34;node&#34;</span>, <span style=color:#d14>&#34;python&#34;</span>, <span style=color:#d14>&#34;golang&#34;</span>]
+    cmds = [[
+        <span style=color:#d14>&#34;@install&#34;</span>,
+        <span style=color:#d14>&#34;make&#34;</span>,
+        <span style=color:#d14>&#34;automake&#34;</span>,
+        <span style=color:#d14>&#34;gcc&#34;</span>,
+        <span style=color:#d14>&#34;gcc-c++&#34;</span>,
+        <span style=color:#d14>&#34;cmake&#34;</span>,
+        <span style=color:#d14>&#34;the_silver_searcher&#34;</span>,
+        <span style=color:#d14>&#34;meld&#34;</span>,
+        <span style=color:#d14>&#34;ncurses-compat-libs&#34;</span>,
+    ]]
+
+[tasks.git]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;git&#34;</span>]]
+    links = [[<span style=color:#d14>&#34;.gitconfig&#34;</span>]]
+
+[tasks.golang]
+    envs = [[<span style=color:#d14>&#34;GOPATH&#34;</span>, <span style=color:#d14>&#34;${HM_DEST}/projects/go&#34;</span>]]
+    cmds = [[<span style=color:#d14>&#34;mkdir&#34;</span>, <span style=color:#d14>&#34;-p&#34;</span>, <span style=color:#d14>&#34;$GOPATH&#34;</span>], [<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;golang&#34;</span>]]
+
+[tasks.node]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;nodejs&#34;</span>, <span style=color:#d14>&#34;npm&#34;</span>]]
+
+[tasks.python]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;python-devel&#34;</span>, <span style=color:#d14>&#34;python-pip&#34;</span>]]
+
+[tasks.vim]
+    deps = [<span style=color:#d14>&#34;vimrc&#34;</span>]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;vim-X11&#34;</span>, <span style=color:#d14>&#34;vim-enhanced&#34;</span>]]
+
+[tasks.vimrc]
+    rejects = [[<span style=color:#d14>&#34;test&#34;</span>, <span style=color:#d14>&#34;-d&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>]]
+    cmds = [[<span style=color:#d14>&#34;@clone&#34;</span>, <span style=color:#d14>&#34;https://github.com/FooSoft/dotvim.git&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>]]
+    links = [
+        [<span style=color:#d14>&#34;.vim&#34;</span>, <span style=color:#d14>&#34;$HM_DEST/.config/vim/.vim&#34;</span>],
+        [<span style=color:#d14>&#34;.vimrc&#34;</span>, <span style=color:#d14>&#34;$HM_DEST/.config/vim/.vimrc&#34;</span>],
+        [<span style=color:#d14>&#34;.eslintrc.json&#34;</span>],
+    ]
+
+<span style=color:#998;font-style:italic>#</span>
+<span style=color:#998;font-style:italic># general</span>
+<span style=color:#998;font-style:italic>#</span>
+
+[tasks.fusion]
+    cmds = [[<span style=color:#d14>&#34;/home/alex/projects/dotfiles/bin/fusion.sh&#34;</span>]]
+
+[tasks.virtualbox]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;VirtualBox&#34;</span>]]
+
+[tasks.nvidia]
+    deps = [<span style=color:#d14>&#34;fusion&#34;</span>]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;akmod-nvidia&#34;</span>]]
+
+[tasks.vlc]
+    deps = [<span style=color:#d14>&#34;fusion&#34;</span>]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;vlc&#34;</span>]]
+
+[tasks.dropbox]
+    deps = [<span style=color:#d14>&#34;fusion&#34;</span>]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;dropbox&#34;</span>]]
+
+[tasks.fish]
+    rejects = [[<span style=color:#d14>&#34;which&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>]]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>], [<span style=color:#d14>&#34;chsh&#34;</span>, <span style=color:#d14>&#34;-s&#34;</span>, <span style=color:#d14>&#34;/usr/bin/fish&#34;</span>]]
+    links = [[<span style=color:#d14>&#34;.config/fish/config.fish&#34;</span>]]
+
+[tasks.common_term]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;openssh-server&#34;</span>, <span style=color:#d14>&#34;fzf&#34;</span>, <span style=color:#d14>&#34;htop&#34;</span>, <span style=color:#d14>&#34;p7zip&#34;</span>, <span style=color:#d14>&#34;unrar&#34;</span>, <span style=color:#d14>&#34;tmux&#34;</span>, <span style=color:#d14>&#34;whois&#34;</span>, <span style=color:#d14>&#34;rsync&#34;</span>]]
+    links = [[<span style=color:#d14>&#34;bin&#34;</span>]]
+
+[tasks.ibus]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;ibus&#34;</span>, <span style=color:#d14>&#34;ibus-anthy&#34;</span>, <span style=color:#d14>&#34;ibus-qt&#34;</span>]]
+
+[tasks.default]
+    deps = [<span style=color:#d14>&#34;fusion&#34;</span>, <span style=color:#d14>&#34;common_term&#34;</span>, <span style=color:#d14>&#34;ibus&#34;</span>, <span style=color:#d14>&#34;vlc&#34;</span>, <span style=color:#d14>&#34;dropbox&#34;</span>, <span style=color:#d14>&#34;dev&#34;</span>]
+    cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;gimp&#34;</span>, <span style=color:#d14>&#34;keepassxc&#34;</span>, <span style=color:#d14>&#34;speedcrunch&#34;</span>]]
+    links = [[<span style=color:#d14>&#34;.profile&#34;</span>]]
+</code></pre><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
+<span class="breadcrumb-item active">Homemaker</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>

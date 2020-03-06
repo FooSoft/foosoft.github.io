@@ -546,12 +546,12 @@ If an existing card or side is not included in the request, it will be left unch
 }
 </code></pre></ul><h4 id=notes>Notes</h4><ul><li><p><strong>addNote</strong><p>Creates a note using the given deck and model, with the provided field values and tags. Returns the identifier of
 the created note created on success, and <code>null</code> on failure.<p>AnkiConnect can download audio files and embed them in newly created notes. The corresponding <code>audio</code> note member is
-optional and can be omitted. If you choose to include it, the <code>url</code> and <code>filename</code> fields must be also defined. The
-<code>skipHash</code> field can be optionally provided to skip the inclusion of downloaded files with an MD5 hash that matches
-the provided value. This is useful for avoiding the saving of error pages and stub files. The <code>fields</code> member is a
-list of fields that should play audio when the card is displayed in Anki. The <code>allowDuplicate</code> member inside
-<code>options</code> group can be set to true to enable adding duplicate cards. Normally duplicate cards can not be added and
-trigger exception.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+optional and can be omitted. If you choose to include it, it should contain a single object or an array of objects
+with mandatory <code>url</code> and <code>filename</code> fields. The <code>skipHash</code> field can be optionally provided to skip the inclusion of
+downloaded files with an MD5 hash that matches the provided value. This is useful for avoiding the saving of error
+pages and stub files. The <code>fields</code> member is a list of fields that should play audio when the card is displayed in
+Anki. The <code>allowDuplicate</code> member inside <code>options</code> group can be set to true to enable adding duplicate cards.
+Normally duplicate cards can not be added and trigger exception.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;addNote&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -568,14 +568,14 @@ trigger exception.<p><em>Sample request</em>:<pre><code class=language-json styl
             <span style=color:#000080>&#34;tags&#34;</span>: [
                 <span style=color:#d14>&#34;yomichan&#34;</span>
             ],
-            <span style=color:#000080>&#34;audio&#34;</span>: {
+            <span style=color:#000080>&#34;audio&#34;</span>: [{
                 <span style=color:#000080>&#34;url&#34;</span>: <span style=color:#d14>&#34;https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=猫&amp;kana=ねこ&#34;</span>,
                 <span style=color:#000080>&#34;filename&#34;</span>: <span style=color:#d14>&#34;yomichan_ねこ_猫.mp3&#34;</span>,
                 <span style=color:#000080>&#34;skipHash&#34;</span>: <span style=color:#d14>&#34;7e2c2f954ef6051373ba916f000168dc&#34;</span>,
                 <span style=color:#000080>&#34;fields&#34;</span>: [
                     <span style=color:#d14>&#34;Front&#34;</span>
                 ]
-            }
+            }]
         }
     }
 }
@@ -600,14 +600,14 @@ documentation for <code>addNote</code> for an explanation of objects in the <cod
                 <span style=color:#000080>&#34;tags&#34;</span>: [
                     <span style=color:#d14>&#34;yomichan&#34;</span>
                 ],
-                <span style=color:#000080>&#34;audio&#34;</span>: {
+                <span style=color:#000080>&#34;audio&#34;</span>: [{
                     <span style=color:#000080>&#34;url&#34;</span>: <span style=color:#d14>&#34;https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=猫&amp;kana=ねこ&#34;</span>,
                     <span style=color:#000080>&#34;filename&#34;</span>: <span style=color:#d14>&#34;yomichan_ねこ_猫.mp3&#34;</span>,
                     <span style=color:#000080>&#34;skipHash&#34;</span>: <span style=color:#d14>&#34;7e2c2f954ef6051373ba916f000168dc&#34;</span>,
                     <span style=color:#000080>&#34;fields&#34;</span>: [
                         <span style=color:#d14>&#34;Front&#34;</span>
                     ]
-                }
+                }]
             }
         ]
     }
@@ -640,7 +640,8 @@ booleans indicating whether or not the parameters at the corresponding index cou
     <span style=color:#000080>&#34;result&#34;</span>: [<span style=color:#000;font-weight:bold>true</span>],
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre><li><p><strong>updateNoteFields</strong><p>Modify the fields of an exist note.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+</code></pre><li><p><strong>updateNoteFields</strong><p>Modify the fields of an exist note. You can also include audio files which will be added to the note with an
+optional <code>audio</code> property. Please see the documentation for <code>addNote</code> for an explanation of objects in the <code>audio</code> array.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;updateNoteFields&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -649,7 +650,15 @@ booleans indicating whether or not the parameters at the corresponding index cou
             <span style=color:#000080>&#34;fields&#34;</span>: {
                 <span style=color:#000080>&#34;Front&#34;</span>: <span style=color:#d14>&#34;new front content&#34;</span>,
                 <span style=color:#000080>&#34;Back&#34;</span>: <span style=color:#d14>&#34;new back content&#34;</span>
-            }
+            },
+            <span style=color:#000080>&#34;audio&#34;</span>: [{
+                <span style=color:#000080>&#34;url&#34;</span>: <span style=color:#d14>&#34;https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=猫&amp;kana=ねこ&#34;</span>,
+                <span style=color:#000080>&#34;filename&#34;</span>: <span style=color:#d14>&#34;yomichan_ねこ_猫.mp3&#34;</span>,
+                <span style=color:#000080>&#34;skipHash&#34;</span>: <span style=color:#d14>&#34;7e2c2f954ef6051373ba916f000168dc&#34;</span>,
+                <span style=color:#000080>&#34;fields&#34;</span>: [
+                    <span style=color:#d14>&#34;Front&#34;</span>
+                ]
+            }]
         }
     }
 }
@@ -926,7 +935,7 @@ were found.<p><em>Sample request</em>:<pre><code class=language-json style=backg
 }
 </code></pre><li><p><strong>guiAddCards</strong><p>Invokes the <em>Add Cards</em> dialog, presets the note using the given deck and model, with the provided field values and tags.
 Invoking it multiple times closes the old window and <em>reopen the window</em> with the new provided values.<p>The <code>closeAfterAdding</code> member inside <code>options</code> group can be set to true to create a dialog that closes upon adding the note.
-Invoking the action mutliple times with this option will create <em>multiple windows</em>.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+Invoking the action mutliple times with this option will create <em>multiple windows</em>.<p>The result is the ID of the note which would be added, if the user chose to confirm the <em>Add Cards</em> dialogue.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;guiAddCards&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -947,7 +956,7 @@ Invoking the action mutliple times with this option will create <em>multiple win
     }
 }
 </code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
-    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#099>1496198395707</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
 </code></pre><li><p><strong>guiCurrentCard</strong><p>Returns information about the current card or <code>null</code> if not in review mode.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{

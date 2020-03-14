@@ -397,7 +397,8 @@ name. The question side is given first in each array.<p><em>Sample request</em>:
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
 </code></pre><li><p><strong>createModel</strong><p>Creates a new model to be used in Anki. User must provide the <code>modelName</code>, <code>inOrderFields</code> and <code>cardTemplates</code> to be
-used in the model.<p><em>Sample request</em><pre><code class=language-json style=background-color:#fff>{
+used in the model. Optionally the <code>Name</code> field can be provided for each entry of <code>cardTemplates</code>. By default the
+card names will be <code>Card 1</code>, <code>Card 2</code>, and so on.<p><em>Sample request</em><pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;createModel&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -406,6 +407,7 @@ used in the model.<p><em>Sample request</em><pre><code class=language-json style
         <span style=color:#000080>&#34;css&#34;</span>: <span style=color:#d14>&#34;Optional CSS with default to builtin css&#34;</span>,
         <span style=color:#000080>&#34;cardTemplates&#34;</span>: [
             {
+                <span style=color:#000080>&#34;Name&#34;</span>: <span style=color:#d14>&#34;My Card 1&#34;</span>,
                 <span style=color:#000080>&#34;Front&#34;</span>: <span style=color:#d14>&#34;Front html {{Field1}}&#34;</span>,
                 <span style=color:#000080>&#34;Back&#34;</span>: <span style=color:#d14>&#34;Back html  {{Field2}}&#34;</span>
             }
@@ -452,7 +454,7 @@ used in the model.<p><em>Sample request</em><pre><code class=language-json style
         ],
         <span style=color:#000080>&#34;tmpls&#34;</span>:[
             {
-                <span style=color:#000080>&#34;name&#34;</span>:<span style=color:#d14>&#34;Card 1&#34;</span>,
+                <span style=color:#000080>&#34;name&#34;</span>:<span style=color:#d14>&#34;My Card 1&#34;</span>,
                 <span style=color:#000080>&#34;ord&#34;</span>:<span style=color:#099>0</span>,
                 <span style=color:#000080>&#34;qfmt&#34;</span>:<span style=color:#d14>&#34;&#34;</span>,
                 <span style=color:#000080>&#34;afmt&#34;</span>:<span style=color:#d14>&#34;This is the back of the card {{Field2}}&#34;</span>,
@@ -884,9 +886,10 @@ type, the note that the card belongs to, and deck name, as well as ease and inte
     ],
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre></ul><h4 id=media>Media</h4><ul><li><p><strong>storeMediaFile</strong><p>Stores a file with the specified base64-encoded contents inside the media folder. To prevent Anki from removing
-files not used by any cards (e.g. for configuration files), prefix the filename with an underscore. These files are
-still synchronized to AnkiWeb.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+</code></pre></ul><h4 id=media>Media</h4><ul><li><p><strong>storeMediaFile</strong><p>Stores a file with the specified base64-encoded contents inside the media folder. alternatively you can specify a
+url from where the file shell be downloaded. If both field <code>data</code> and <code>url</code> are provided, the <code>data</code> field will be
+used. To prevent Anki from removing files not used by any cards (e.g. for configuration files), prefix the filename
+with an underscore. These files are still synchronized to AnkiWeb.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;storeMediaFile&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -899,6 +902,18 @@ still synchronized to AnkiWeb.<p><em>Sample request</em>:<pre><code class=langua
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
 </code></pre><p><em>Content of <code>_hello.txt</code></em>:<pre><code>Hello world!
+</code></pre><p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;storeMediaFile&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
+    <span style=color:#000080>&#34;params&#34;</span>: {
+        <span style=color:#000080>&#34;filename&#34;</span>: <span style=color:#d14>&#34;_hello.txt&#34;</span>,
+        <span style=color:#000080>&#34;url&#34;</span>: <span style=color:#d14>&#34;https://url.to.file&#34;</span>
+    }
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
 </code></pre><li><p><strong>retrieveMediaFile</strong><p>Retrieves the base64-encoded contents of the specified file, returning <code>false</code> if the file does not exist.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;retrieveMediaFile&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,

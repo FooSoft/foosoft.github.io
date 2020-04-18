@@ -48,17 +48,17 @@ this step by mounting the volume as the <code>root</code> user, but this is not 
 provide an identifier for a specific version to mount, you may specify it with the <code>-version</code> parameter. Passing a
 non-zero value (zero indicates most recent version) will make the mount read-only. Explicit read-only mounting is
 also possible by setting the <code>-readonly</code> switch.<li>When you are finished using the volume, unmount it via the <code>fusermount -u mountpoint_dir</code> command.</ol><h2 id=walkthrough>Walkthrough</h2><p>When you execute VFS for the first time, you will probably neither have a version database nor a mount point. Since an
-empty directory is a valid empty version database and mount points should by always be empty, let&#39;s create two new
+empty directory is a valid empty version database and mount points should by always be empty, let’s create two new
 directories (<code>db</code> for the database and <code>mp</code> for the mount point).<pre><code>$ mkdir db mp
 $ ls
 db/  mp/
-</code></pre><p>Now let&#39;s mount the empty database directory <code>db</code> onto our mount point <code>mp</code> (note that you have to be in the <code>fuse</code>
+</code></pre><p>Now let’s mount the empty database directory <code>db</code> onto our mount point <code>mp</code> (note that you have to be in the <code>fuse</code>
 group or <code>root</code> in order for this to work):<pre><code>$ vfs db mp
-</code></pre><p>Using a new terminal window, let&#39;s create some files and directories:<pre><code>$ echo hello &gt; mp/greeting.txt
+</code></pre><p>Using a new terminal window, let’s create some files and directories:<pre><code>$ echo hello &gt; mp/greeting.txt
 $ mkdir mp/pizza
 $ touch mp/pizza/pepperoni mp/pizza/cheese
-</code></pre><p>Now that we are finished working with this version, let&#39;s unmount it:<pre><code>$ fusermount -u mp
-</code></pre><p>Let&#39;s take a look at the version structure that VFS has created in the database directory:<pre><code>$ ls -R db
+</code></pre><p>Now that we are finished working with this version, let’s unmount it:<pre><code>$ fusermount -u mp
+</code></pre><p>Let’s take a look at the version structure that VFS has created in the database directory:<pre><code>$ ls -R db
 db:
 ver_00000000559a17e4/
 
@@ -70,8 +70,8 @@ greeting.txt  pizza/
 
 db/ver_00000000559a17e4/root/pizza:
 cheese  pepperoni
-</code></pre><p>Some points of interest about this structure:<ul><li>Database directory contains the new version; the value <code>00000000559a17e4</code> is the creation time stamp in hexadecimal.<li>The <code>meta.json</code> file contains information about deletions; it is empty for now.<li>The <code>root</code> directory contains the files that were created or modified in this version.</ul><p>Let&#39;s continue our walkthrough by mounting the now non-empty database once more:<pre><code>$ vfs db mp
-</code></pre><p>Now let&#39;s make a couple of changes to the files and directory structure:<pre><code>$ echo howdy &gt; mp/greeting.txt
+</code></pre><p>Some points of interest about this structure:<ul><li>Database directory contains the new version; the value <code>00000000559a17e4</code> is the creation time stamp in hexadecimal.<li>The <code>meta.json</code> file contains information about deletions; it is empty for now.<li>The <code>root</code> directory contains the files that were created or modified in this version.</ul><p>Let’s continue our walkthrough by mounting the now non-empty database once more:<pre><code>$ vfs db mp
+</code></pre><p>Now let’s make a couple of changes to the files and directory structure:<pre><code>$ echo howdy &gt; mp/greeting.txt
 $ rm mp/pizza/pepperoni
 $ touch mp/pizza/bacon
 </code></pre><p>…and verify that everything is as it should be; looks good so far!<pre><code>$ cat mp/greeting.txt
@@ -82,12 +82,12 @@ greeting.txt  pizza/
 
 mp/pizza:
 bacon  cheese
-</code></pre><p>Now let&#39;s unmount and examine at the contents of the database directory:<pre><code>$ fusermount -u mp
+</code></pre><p>Now let’s unmount and examine at the contents of the database directory:<pre><code>$ fusermount -u mp
 $ ls -l db
 total 8
 drwxr-xr-x 3 alex alex 4096 Jul  6 14:58 ver_00000000559a17e4/
 drwxr-xr-x 3 alex alex 4096 Jul  6 15:08 ver_00000000559a19b4/
-</code></pre><p>Cool, we have a new version! Let&#39;s take a closer look at its structure:<pre><code>$ ls -R db/ver_00000000559a19b4/
+</code></pre><p>Cool, we have a new version! Let’s take a closer look at its structure:<pre><code>$ ls -R db/ver_00000000559a19b4/
 db/ver_00000000559a19b4/:
 meta.json  root/
 
@@ -97,13 +97,13 @@ greeting.txt  pizza/
 db/ver_00000000559a19b4/root/pizza:
 bacon
 </code></pre><p>We can see that <code>greeting.txt</code> and <code>bacon</code> show up; this reflects the fact that these files were modified and created,
-respectively. Notice that <code>cheese</code> is not listed; we didn&#39;t make any changes to this file so the data from the previous
+respectively. Notice that <code>cheese</code> is not listed; we didn’t make any changes to this file so the data from the previous
 version is used. If we look at the contents of <code>meta.json</code>, we will see that the <code>pepperoni</code> file was deleted:<pre><code>$ cat db/ver_00000000559a19b4/meta.json
 {&#34;deleted&#34;:[&#34;/pizza/pepperoni&#34;]}
-</code></pre><p>Now let&#39;s examine the database from VFS tool directly:<pre><code>$ vfs db
+</code></pre><p>Now let’s examine the database from VFS tool directly:<pre><code>$ vfs db
 version: 1      time: 2015-07-06 14:53:40 +0900 JST
 version: 2      time: 2015-07-06 15:01:24 +0900 JST
-</code></pre><p>Finally, let&#39;s mount the version that we created in the beginning of this walkthrough by specifying its index with the
+</code></pre><p>Finally, let’s mount the version that we created in the beginning of this walkthrough by specifying its index with the
 <code>version</code> parameter…<pre><code>$ vfs -version=1 db mp
 </code></pre><p>…and in a different terminal verify its contents; they are identical to the first version!<pre><code>$ cat mp/greeting.txt
 hello

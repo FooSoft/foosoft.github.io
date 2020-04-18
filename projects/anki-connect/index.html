@@ -15,7 +15,7 @@
 <a class="badge badge-secondary" href=/tags/python/index.html>python</a>
 <a class="badge badge-secondary" href=/tags/yomichan/index.html>yomichan</a></div><hr><p>The AnkiConnect plugin enables external applications such as <a href=/projects/yomichan/>Yomichan</a> to communicate with
 <a href=https://apps.ankiweb.net/>Anki</a> over a network interface. This software makes it possible to execute queries against
-the user&#39;s card deck, automatically create new vocabulary and Kanji flash cards, and more. AnkiConnect is compatible
+the user’s card deck, automatically create new vocabulary and Kanji flash cards, and more. AnkiConnect is compatible
 with the latest stable (2.1.x) releases of Anki; older versions (2.0.x and below) are no longer supported.<h2 id=table-of-contents>Table of Contents</h2><ul><li><a href=/projects/anki-connect/index.html#installation>Installation</a><ul><li><a href=/projects/anki-connect/index.html#notes-for-windows-users>Notes for Windows Users</a><li><a href=/projects/anki-connect/index.html#notes-for-mac-os-x-users>Notes for Mac OS X Users</a></ul><li><a href=/projects/anki-connect/index.html#application-interface-for-developers>Application Interface for Developers</a><ul><li><a href=/projects/anki-connect/index.html#sample-invocation>Sample Invocation</a><li><a href=/projects/anki-connect/index.html#supported-actions>Supported Actions</a><ul><li><a href=/projects/anki-connect/index.html#miscellaneous>Miscellaneous</a><li><a href=/projects/anki-connect/index.html#decks>Decks</a><li><a href=/projects/anki-connect/index.html#models>Models</a><li><a href=/projects/anki-connect/index.html#notes>Notes</a><li><a href=/projects/anki-connect/index.html#cards>Cards</a><li><a href=/projects/anki-connect/index.html#media>Media</a><li><a href=/projects/anki-connect/index.html#graphical>Graphical</a></ul></ul></ul><h2 id=installation>Installation</h2><p>The installation process is similar to that of other Anki plugins and can be accomplished in three steps:<ol><li>Open the <code>Install Add-on</code> dialog by selecting <code>Tools</code> | <code>Add-ons</code> | <code>Browse &amp; Install</code> in Anki.<li>Input <a href=https://ankiweb.net/shared/info/2055492159>2055492159</a> into the text box labeled <code>Code</code> and press the <code>OK</code> button to proceed.<li>Restart Anki when prompted to do so in order to complete the installation of AnkiConnect.</ol><p>Anki must be kept running in the background in order for other applications to be able to use AnkiConnect. You can
 verify that AnkiConnect is running at any time by accessing <a href=http://localhost:8765>localhost:8765</a> in your browser. If
 the server is running, you should see the message <code>AnkiConnect v.6</code> displayed in your browser window.<h3 id=notes-for-windows-users>Notes for Windows Users</h3><p>Windows users may see a firewall nag dialog box appear on Anki startup. This occurs because AnkiConnect hosts a local
@@ -192,7 +192,7 @@ cards which belong to it.<p><em>Sample request</em>:<pre><code class=language-js
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#099>1519323742721</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre><li><p><strong>changeDeck</strong><p>Moves cards with the given IDs to a different deck, creating the deck if it doesn&#39;t exist yet.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+</code></pre><li><p><strong>changeDeck</strong><p>Moves cards with the given IDs to a different deck, creating the deck if it doesn’t exist yet.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;changeDeck&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -744,7 +744,7 @@ the note.<p><em>Sample request</em>:<pre><code class=language-json style=backgro
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre></ul><h4 id=cards>Cards</h4><ul><li><p><strong>suspend</strong><p>Suspend cards by card ID; returns <code>true</code> if successful (at least one card wasn&#39;t already suspended) or <code>false</code>
+</code></pre></ul><h4 id=cards>Cards</h4><ul><li><p><strong>suspend</strong><p>Suspend cards by card ID; returns <code>true</code> if successful (at least one card wasn’t already suspended) or <code>false</code>
 otherwise.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;suspend&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
@@ -819,7 +819,7 @@ for each given card ID when <code>complete</code> is <code>true</code>. Negative
     ],
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre><li><p><strong>findCards</strong><p>Returns an array of card IDs for a given query. Functionally identical to <code>guiBrowse</code> but doesn&#39;t use the GUI for
+</code></pre><li><p><strong>findCards</strong><p>Returns an array of card IDs for a given query. Functionally identical to <code>guiBrowse</code> but doesn’t use the GUI for
 better performance.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;findCards&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
@@ -1065,7 +1065,7 @@ card must be displayed before before any answer can be accepted by Anki.<p><em>S
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
 </code></pre><li><p><strong>guiExitAnki</strong><p>Schedules a request to gracefully close Anki. This operation is asynchronous, so it will return immediately and
-won&#39;t wait until the Anki process actually terminates.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+won’t wait until the Anki process actually terminates.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;guiExitAnki&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
 }

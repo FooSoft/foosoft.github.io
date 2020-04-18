@@ -15,7 +15,7 @@
 <a class="badge badge-secondary" href=/tags/mit-license/index.html>mit license</a>
 <a class="badge badge-secondary" href=/tags/toml/index.html>toml</a>
 <a class="badge badge-secondary" href=/tags/yaml/index.html>yaml</a></div><hr><p>Homemaker is a lightweight tool for straightforward and efficient management of *nix configuration files found in the
-user&#39;s home directory, commonly known as dot-files. It can also be readily used for general purpose system
+user’s home directory, commonly known as dot-files. It can also be readily used for general purpose system
 bootstrapping, including installing packages, cloning repositories, etc. This tool is written in Go, requires no
 installation, has no dependencies and makes use of simple configuration file structure inspired by
 <a href=https://en.wikipedia.org/wiki/Make_%28software%29>make</a> to generate symlinks and execute system commands to aid in
@@ -25,7 +25,7 @@ of cruft that plagues our home directories.<p>Specifically, I required a solutio
 software that has additional dependencies. Even if the user has root on the machine in question, it is sub-optimal
 to require her to install software packages just to bootstrap the system.<li><p><strong>Support configuration variants</strong><p>The user should be able to use cherry-pick which settings they wish to use. Different system installs have different
 configuration requirements; it must be possible to share common settings while keeping the unique bits unique to
-each machine. Furthermore, it should be possible to store all configuration settings in one location.<li><p><strong>Make no assumptions about synchronization</strong><p>While Git often works well for managing dot-files, it is not ideal for every situation. I&#39;ve seen some applications
+each machine. Furthermore, it should be possible to store all configuration settings in one location.<li><p><strong>Make no assumptions about synchronization</strong><p>While Git often works well for managing dot-files, it is not ideal for every situation. I’ve seen some applications
 add and remove seemingly randomly-named files within their configuration directories, while others store their
 settings in large, opaque binary blobs. Managing configuration settings for such poorly-behaved applications may be
 easier through, <a href=https://www.dropbox.com/>Dropbox</a>, <a href=https://en.wikipedia.org/wiki/Rsync>rsync</a>, or some other
@@ -41,7 +41,7 @@ your needs.<h2 id=installation>Installation</h2><p>If you already have the Go en
 </code></pre><p>Otherwise, you can use the pre-built binaries for the platforms below:<ul><li><a href=/projects/homemaker/dl/homemaker_darwin_386.tar.gz>homemaker_darwin_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_darwin_amd64.tar.gz>homemaker_darwin_amd64.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_386.tar.gz>homemaker_linux_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_amd64.tar.gz>homemaker_linux_amd64.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_linux_arm.tar.gz>homemaker_linux_arm.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_windows_386.tar.gz>homemaker_windows_386.tar.gz</a><li><a href=/projects/homemaker/dl/homemaker_windows_amd64.tar.gz>homemaker_windows_amd64.tar.gz</a></ul><h2 id=configuration>Configuration</h2><p>Configuration files for Homemaker can be authored in your choice of <a href=https://github.com/toml-lang/toml>TOML</a>,
 <a href=http://json.org/>JSON</a>, or <a href=http://yaml.org/>YAML</a> markup languages. Being the easiest to read out of the three,
 TOML will be used for the example configuration files. Worry not if you are unfamiliar with this format; everything you
-need to know about it will be shown below.<p>Let&#39;s start by looking at a basic example configuration file, <code>example.toml</code>. Notice that Homemaker determines which
+need to know about it will be shown below.<p>Let’s start by looking at a basic example configuration file, <code>example.toml</code>. Notice that Homemaker determines which
 markdown language processor to use based on the extension of your c:nfiguration file. Use <code>.toml/.tml</code> for TOML,
 <code>.yaml/.yml</code> for YAML, and <code>.json</code> for JSON. Be aware that specifying an incorrect file extension will prevent your
 configuration file from being parsed correctly.<pre><code class=language-toml style=background-color:#fff>[tasks.default]
@@ -53,7 +53,7 @@ configuration file from being parsed correctly.<pre><code class=language-toml st
         [<span style=color:#d14>&#34;.gitconfig&#34;</span>],
         [<span style=color:#d14>&#34;.xinputrc&#34;</span>],
     ]
-</code></pre><p>We could have just as easily written this configuration in JSON (or YAML for that matter), but it&#39;s subjectively uglier:<pre><code class=language-json style=background-color:#fff>{
+</code></pre><p>We could have just as easily written this configuration in JSON (or YAML for that matter), but it’s subjectively uglier:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;tasks&#34;</span>: {
         <span style=color:#000080>&#34;default&#34;</span>: {
             <span style=color:#000080>&#34;links&#34;</span>: [
@@ -68,7 +68,7 @@ configuration file from being parsed correctly.<pre><code class=language-toml st
     }
 }
 </code></pre><p>To create symlinks based on the contents of the TOML file from before, we invoke the <code>homemaker</code> utility as follows:<pre><code>$ homemaker example.toml /mnt/data/config
-</code></pre><p>To get a better idea of what <code>/mnt/data/config</code> is, let&#39;s look at the in-program documentation:<pre><code>Usage: homemaker [options] conf src
+</code></pre><p>To get a better idea of what <code>/mnt/data/config</code> is, let’s look at the in-program documentation:<pre><code>Usage: homemaker [options] conf src
 https://foosoft.net/projects/homemaker/
 
 Parameters:
@@ -223,7 +223,7 @@ how to use the <code>install</code> macro that we just created, examine the conf
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;tmux&#34;</span>]]
 </code></pre><p>Notice that the package manager is conveniently abstracted by the <code>install</code> macro. Be aware that for this example to
 work properly, you must specify a variant on the command line as shown below. Failing to specify a variant will cause
-Homemaker try to look for an undecorated <code>install</code> macro (which doesn&#39;t exist), leading to failure.<pre><code>$ homemaker --variant=ubuntu example.toml /mnt/data/config
+Homemaker try to look for an undecorated <code>install</code> macro (which doesn’t exist), leading to failure.<pre><code>$ homemaker --variant=ubuntu example.toml /mnt/data/config
 </code></pre><p>Tasks can be be decorated much like commands:<pre><code class=language-toml style=background-color:#fff>[tasks.vim__server]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;vim-nox&#34;</span>]]
 
@@ -267,11 +267,11 @@ access permissions of directories created by force by providing a third array it
 example, if you wanted the <code>.ssh</code> directory to be created with mode <code>700</code>, you could write the following:
 <code>[&#34;.ssh/id_rsa.pub&#34;, &#34;.ssh_flatline/id_rsa.pub&#34;, &#34;0700&#34;]</code>. Notice that you can specify permissions in octal notation
 by adding a leading zero value (the <code>0x</code> prefix signifies hexadecimal).<li><p><strong>nocmds</strong><p>Do not execute commands for the <code>cmds</code> blocks inside of tasks.<li><p><strong>nolinks</strong><p>Do not create links for the <code>links</code> blocks inside of tasks.<li><p><strong>task</strong><p>This parameter is used to specify which task Homemaker will process when executed. It defaults to the <code>default</code>
-task, which should be used when creating a configuration file that does not have system-specific tasks specified.<li><p><strong>unlink</strong><p>Sometimes it&#39;s useful to “uninstall” links previously created by Homemaker. When running with the <code>unlink</code> flag, the
+task, which should be used when creating a configuration file that does not have system-specific tasks specified.<li><p><strong>unlink</strong><p>Sometimes it’s useful to “uninstall” links previously created by Homemaker. When running with the <code>unlink</code> flag, the
 tool will delete the links created by the tasks provided. This flag automatically sets the <code>nocmds</code> flag as well,
 because it makes no sense to execute commands when performing an uninstall operation.<li><p><strong>variant</strong><p>When using homemaker across different operating systems or distributions it can be useful to be able to perform
 conditional command and task execution, allowing for variation in things like package names and package management
-tools. This parameter is used for specifying the name of the variant that should be used.<li><p><strong>verbose</strong><p>When something isn&#39;t going the way you expect, you can use this parameter to make Homemaker to log everything it is
+tools. This parameter is used for specifying the name of the variant that should be used.<li><p><strong>verbose</strong><p>When something isn’t going the way you expect, you can use this parameter to make Homemaker to log everything it is
 doing to console.</ul><h2 id=sample>Sample</h2><p>Below is a sample configuration file which should help to illustrate how Homemaker can be used in practice.<pre><code class=language-toml style=background-color:#fff><span style=color:#998;font-style:italic>#</span>
 <span style=color:#998;font-style:italic># macros</span>
 <span style=color:#998;font-style:italic>#</span>

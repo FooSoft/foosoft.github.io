@@ -13,24 +13,24 @@
 <a class="badge badge-secondary" href=/tags/markdown/index.html>markdown</a>
 <a class="badge badge-secondary" href=/tags/md2vim/index.html>md2vim</a>
 <a class="badge badge-secondary" href=/tags/mit-license/index.html>mit license</a>
-<a class="badge badge-secondary" href=/tags/vim/index.html>vim</a></div><hr><p>Writing technical documentation for Vim extensions is not exciting; manually converting what you&#39;ve just written in
+<a class="badge badge-secondary" href=/tags/vim/index.html>vim</a></div><hr><p>Writing technical documentation for Vim extensions is not exciting; manually converting what you’ve just written in
 <a href=https://daringfireball.net/projects/markdown/>Markdown</a> to
 <a href=http://vimdoc.sourceforge.net/htmldoc/usr_toc.html>vimdoc</a> format is even less fun. I grew tired of having to do this
 repeatedly for my <a href=/projects/vim-argwrap/>Vim-ArgWrap</a> extension and finally formally solved this problem with a
-purpose-built tool. Maintainability, ease of use, and beautiful vimdoc output were primary considerations in Md2Vim&#39;s
+purpose-built tool. Maintainability, ease of use, and beautiful vimdoc output were primary considerations in Md2Vim’s
 design.<p><a href=/projects/md2vim/img/markdown.png class="img-thumbnail img-thumbnail-inline" data-title="Markdown source file" data-toggle=lightbox data-gallery=gallery><img src=/projects/md2vim/img/markdown-thumb.png alt="Markdown source file"></a>
 <a href=/projects/md2vim/img/vimdoc.png class="img-thumbnail img-thumbnail-inline" data-title="VimDoc target file" data-toggle=lightbox data-gallery=gallery><img src=/projects/md2vim/img/vimdoc-thumb.png alt="VimDoc target file"></a><h2 id=installation>Installation</h2><p>If you already have the Go environment and toolchain set up, you can get the latest version by running:<pre><code>$ go get github.com/FooSoft/md2vim
 </code></pre><p>Otherwise, you can use the pre-built binaries for the platforms below:<ul><li><a href=/projects/md2vim/dl/md2vim_darwin_386.tar.gz>md2vim_darwin_386.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_darwin_amd64.tar.gz>md2vim_darwin_amd64.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_linux_386.tar.gz>md2vim_linux_386.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_linux_amd64.tar.gz>md2vim_linux_amd64.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_linux_arm.tar.gz>md2vim_linux_arm.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_windows_386.tar.gz>md2vim_windows_386.tar.gz</a><li><a href=/projects/md2vim/dl/md2vim_windows_amd64.tar.gz>md2vim_windows_amd64.tar.gz</a></ul><h2 id=usage>Usage</h2><p>Executing Md2Vim with the <code>-help</code> command line argument will trigger online help to be displayed. The list below
 provides a more detailed description of what the parameters do.<ul><li><p><strong>cols</strong><p>The number of columns used for laying out vimdoc files to make them look as good as possible with your content.
 Notice that file contents will not be wrapped to this value; this is purely for such things as horizontal rule
-widths and help tag positioning. This defaults to 80, but that&#39;s a bit too narrow for some people.<li><p><strong>desc</strong><p>Vim help files are supposed to start with the following two fields on the first line:<pre><code>filename.txt Description of this help file&#39;s contents
+widths and help tag positioning. This defaults to 80, but that’s a bit too narrow for some people.<li><p><strong>desc</strong><p>Vim help files are supposed to start with the following two fields on the first line:<pre><code>filename.txt Description of this help file&#39;s contents
 </code></pre><p>The first field is the filename of the generated vimdoc help file; the second is the description can you provide
 with this parameter.<li><p><strong>norules</strong><p>By default, we generate horizontal rules above level 1-2 headings, as shown below:<pre><code>================================================================================
 Level 1 Heading
 --------------------------------------------------------------------------------
 Level 2 Heading
-</code></pre><p>If you don&#39;t like the way it looks you can turn it off.<li><p><strong>notoc</strong><p>If you don&#39;t wish to generate a table of contents you should set this flag to opt out. The table of contents lists
+</code></pre><p>If you don’t like the way it looks you can turn it off.<li><p><strong>notoc</strong><p>If you don’t wish to generate a table of contents you should set this flag to opt out. The table of contents lists
 all of the headings in the document and is always inserted before the beginning of document body.<li><p><strong>pascal</strong><p>By default, all help tags get converted to lower case and space delimited words are joined with underscores.<pre><code>rigellians-how_to_cook_for_fourty_humans
 </code></pre><p>If you prefer the <em>PascalCase</em> way of doing things, set this flag and your output will look like this:<pre><code>Rigellians-HowToCookForFourtyHumans
-</code></pre><li><p><strong>tabs</strong><p>If you don&#39;t like four space tabs for some reason you can change it to something else with this parameter.</ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
+</code></pre><li><p><strong>tabs</strong><p>If you don’t like four space tabs for some reason you can change it to something else with this parameter.</ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
 <span class="breadcrumb-item active">Md2Vim</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>

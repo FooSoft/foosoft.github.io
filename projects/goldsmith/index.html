@@ -20,7 +20,7 @@ through it. Although the <a href=https://godoc.org/github.com/FooSoft/goldsmith>
 understand, it is often best to learn by example:<ol><li><p>Start by copying files from a source directory to a destination directory (the simplest possible use case):<pre><code class=language-go style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir). <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)    <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now let&#39;s convert any Markdown files to HTML fragments (while still copying the rest), using the
+</span></code></pre><li><p>Now let’s convert any Markdown files to HTML fragments (while still copying the rest), using the
 <a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).         <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// convert *.md files to *.html files
@@ -42,8 +42,8 @@ add elements like a header, footer, or a menu; for this we can use the
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now, let&#39;s <a href=https://en.wikipedia.org/wiki/Minification_(programming)>minify</a> our files to reduce data transfer and
-load times for our site&#39;s visitors using the
+</span></code></pre><li><p>Now, let’s <a href=https://en.wikipedia.org/wiki/Minification_(programming)>minify</a> our files to reduce data transfer and
+load times for our site’s visitors using the
 <a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
@@ -51,7 +51,7 @@ load times for our site&#39;s visitors using the
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Debugging problems in minified code can be tricky, so let&#39;s use the
+</span></code></pre><li><p>Debugging problems in minified code can be tricky, so let’s use the
 <a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a> filter to make minification
 occur only when we are ready for distribution.<pre><code class=language-go style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).                   <span style=color:#998;font-style:italic>// read files from srcDir
@@ -62,7 +62,7 @@ occur only when we are ready for distribution.<pre><code class=language-go style
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).             <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>FilterPop</span>().                     <span style=color:#998;font-style:italic>// pop off the last filter pushed onto the stack
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)                      <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now that we have all of our plugins chained up, let&#39;s look at a complete example which uses
+</span></code></pre><li><p>Now that we have all of our plugins chained up, let’s look at a complete example which uses
 <a href=https://godoc.org/github.com/FooSoft/goldsmith-components/devserver>DevServer</a> to bootstrap a complete development
 sever which automatically rebuilds the site whenever source files are updated.<pre><code class=language-go style=background-color:#fff><span style=color:#000;font-weight:bold>package</span> main
 
@@ -108,7 +108,7 @@ sever which automatically rebuilds the site whenever source files are updated.<p
 }
 </code></pre></ol><h2 id=samples>Samples</h2><p>Below are some examples of Goldsmith usage which can used to base your site on:<ul><li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/basic>Basic Sample</a>: a great starting point, this is the
 sample site from the tutorial.<li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/bootstrap>Bootstrap Sample</a>: a slightly more advanced
-sample using <a href=https://getbootstrap.com/>Bootstrap</a>.<li><a href=https://foosoft.net/projects/goldsmith>FooSoft.net</a>: I&#39;ve been “dogfooding” Goldsmith by using it to build
+sample using <a href=https://getbootstrap.com/>Bootstrap</a>.<li><a href=https://foosoft.net/projects/goldsmith>FooSoft.net</a>: I’ve been “dogfooding” Goldsmith by using it to build
 my homepage for years.</ul><h2 id=components>Components</h2><p>A growing set of plugins, filters, and other tools are provided to make it easier to get started with Goldsmith.<h3 id=plugins>Plugins</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/absolute>Absolute</a>: Convert relative HTML file
 references to absolute paths.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/breadcrumbs>Breadcrumbs</a>: Generate metadata
 required to build breadcrumb navigation.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/collection>Collection</a>: Group related pages

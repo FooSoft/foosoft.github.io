@@ -1,407 +1,44 @@
-<!DOCTYPE html><html lang="en"><head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/lib/tether/css/tether.min.css"/>
-        <link rel="stylesheet" href="/lib/tether/css/tether-theme-basic.min.css"/>
-        <link rel="stylesheet" href="/lib/lightbox/ekko-lightbox.css"/>
-        <link rel="stylesheet" href="/main.css"/>
-        
-        <title>FooSoft Productions - Mangle</title>
-        
-    </head>
-    <body>
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">FooSoft Productions</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-            
-            <a class="nav-item nav-link " href="/">Overview</a>
-            <a class="nav-item nav-link " href="/posts/">Posts</a>
-            <a class="nav-item nav-link " href="/portfolio/">Portfolio</a>
-            <a class="nav-item nav-link active" href="/projects/">Projects</a>
-            <a class="nav-item nav-link " href="/tags/">Tags</a>
-        </div>
-    </div>
-</nav>
-
-
-
-<div>
-    <a href="https://github.com/FooSoft/mangle" class="github-corner">
-        <svg width="80" height="80" viewBox="0 0 250 250">
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - Mangle</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/>FooSoft Productions</a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class="navbar-nav ml-auto"><a class="nav-item nav-link" href=/>Overview</a>
+<a class="nav-item nav-link" href=/posts/>Posts</a>
+<a class="nav-item nav-link" href=/portfolio/>Portfolio</a>
+<a class="nav-item nav-link active" href=/projects/>Projects</a>
+<a class="nav-item nav-link" href=/tags/>Tags</a></div></div></nav><div><a href=https://github.com/FooSoft/mangle class=github-corner><svg width="80" height="80" viewBox="0 0 250 250">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-        </svg>
-    </a>
-</div>
-
-
-<div class="container">
-    <h1>
-        Mangle
-        
-    </h1>
-    
-
-<div>
-    
-    <a class="badge badge-secondary" href="/tags/gpl-license/index.html">gpl license</a>
-    
-    <a class="badge badge-secondary" href="/tags/kindle/index.html">kindle</a>
-    
-    <a class="badge badge-secondary" href="/tags/manga/index.html">manga</a>
-    
-    <a class="badge badge-secondary" href="/tags/mangle/index.html">mangle</a>
-    
-    <a class="badge badge-secondary" href="/tags/pil/index.html">pil</a>
-    
-    <a class="badge badge-secondary" href="/tags/pyqt/index.html">pyqt</a>
-    
-    <a class="badge badge-secondary" href="/tags/python/index.html">python</a>
-    
-</div>
-
-
-    <hr/>
-    <p>Mangle is a cross-platform image converter and optimizer built for reading Manga on the Amazon Kindle and other E-ink
-devices written in Python. With this application you can easily:</p>
-<ul>
-<li>Sort and organize images from different directories; bulk rename feature exists for output to the Kindle.</li>
-<li>Optionally re-save images in a format Kindle will be sure to understand with no visible quality loss.</li>
-<li>Downsample and rotate images for optimal viewing on Kindle, convert to grayscale to save space and improve contrast.</li>
-<li>Automatically generate book meta-data so that your Manga is always properly detected and viewable in-order.</li>
-</ul>
-<h3 id="screenshots">Screenshots</h3>
-<p><a href="/projects/mangle/img/main.png" class="img-thumbnail img-thumbnail-inline" data-title="Main window" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/main-thumb.png" alt="Main window"/></a>
-<a href="/projects/mangle/img/options.png" class="img-thumbnail img-thumbnail-inline" data-title="Options dialog" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/options-thumb.png" alt="Options dialog"/></a></p>
-<h3 id="on-the-kindle">On the Kindle…</h3>
-<p><a href="/projects/mangle/img/kindle1.png" class="img-thumbnail img-thumbnail-inline" data-title="" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/kindle1-thumb.png" alt=""/></a>
-<a href="/projects/mangle/img/kindle2.png" class="img-thumbnail img-thumbnail-inline" data-title="" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/kindle2-thumb.png" alt=""/></a>
-<a href="/projects/mangle/img/kindle3.png" class="img-thumbnail img-thumbnail-inline" data-title="" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/kindle3-thumb.png" alt=""/></a>
-<a href="/projects/mangle/img/kindle4.png" class="img-thumbnail img-thumbnail-inline" data-title="" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/mangle/img/kindle4-thumb.png" alt=""/></a></p>
-<h2 id="motivation">Motivation</h2>
-<p>Many years ago I received an Amazon Kindle as a gift. I immediately began playing around with it and reading about
+        </svg></a></div><div class=container><h1>Mangle</h1><div><a class="badge badge-secondary" href=/tags/gpl-license/index.html>gpl license</a>
+<a class="badge badge-secondary" href=/tags/kindle/index.html>kindle</a>
+<a class="badge badge-secondary" href=/tags/manga/index.html>manga</a>
+<a class="badge badge-secondary" href=/tags/mangle/index.html>mangle</a>
+<a class="badge badge-secondary" href=/tags/pil/index.html>pil</a>
+<a class="badge badge-secondary" href=/tags/pyqt/index.html>pyqt</a>
+<a class="badge badge-secondary" href=/tags/python/index.html>python</a></div><hr><p>Mangle is a cross-platform image converter and optimizer built for reading Manga on the Amazon Kindle and other E-ink
+devices written in Python. With this application you can easily:<ul><li>Sort and organize images from different directories; bulk rename feature exists for output to the Kindle.<li>Optionally re-save images in a format Kindle will be sure to understand with no visible quality loss.<li>Downsample and rotate images for optimal viewing on Kindle, convert to grayscale to save space and improve contrast.<li>Automatically generate book meta-data so that your Manga is always properly detected and viewable in-order.</ul><h3 id=screenshots>Screenshots</h3><p><a href=/projects/mangle/img/main.png class="img-thumbnail img-thumbnail-inline" data-title="Main window" data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/main-thumb.png alt="Main window"></a>
+<a href=/projects/mangle/img/options.png class="img-thumbnail img-thumbnail-inline" data-title="Options dialog" data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/options-thumb.png alt="Options dialog"></a><h3 id=on-the-kindle>On the Kindle…</h3><p><a href=/projects/mangle/img/kindle1.png class="img-thumbnail img-thumbnail-inline" data-title data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/kindle1-thumb.png alt></a>
+<a href=/projects/mangle/img/kindle2.png class="img-thumbnail img-thumbnail-inline" data-title data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/kindle2-thumb.png alt></a>
+<a href=/projects/mangle/img/kindle3.png class="img-thumbnail img-thumbnail-inline" data-title data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/kindle3-thumb.png alt></a>
+<a href=/projects/mangle/img/kindle4.png class="img-thumbnail img-thumbnail-inline" data-title data-toggle=lightbox data-gallery=gallery><img src=/projects/mangle/img/kindle4-thumb.png alt></a><h2 id=motivation>Motivation</h2><p>Many years ago I received an Amazon Kindle as a gift. I immediately began playing around with it and reading about
 certain undocumented features that the Kindle has to offer. After a couple of hours I discovered it to be the perfect
 device for reading Manga is almost always grayscale, and the aspect ratio fits the Kindle’s 600x800 pixel screen almost
 perfectly. Better yet, the Kindle’s undocumented image viewer actually keeps track of the last image you viewed and thus
 you are always able to return to the page you left off on when you power on your Kindle. The device supports several
-popular image formats (jpeg, png, gif, etc), and is able to dither and downscale images to fit the screen.</p>
-<p>However… The Kindle’s image viewer does have certain shortcomings:</p>
-<ul>
-<li>The Kindle is very picky about file format; any additional embedded data (thumbnails, comments, possibly even EXIF
+popular image formats (jpeg, png, gif, etc), and is able to dither and downscale images to fit the screen.<p>However… The Kindle’s image viewer does have certain shortcomings:<ul><li>The Kindle is very picky about file format; any additional embedded data (thumbnails, comments, possibly even EXIF
 data) can confuse it. As a result, images may not display properly or even not at all (which actually prevents you
-from reading the given book, as one bad panel will prevent you from viewing subsequent images).</li>
-<li>The first image that you view in a Manga (until the Kindle first writes the “bookmark” file) seems to be arbitrary
-even when files are named sequentially.  About half the time it will correctly pick the first file in the batch, at
-other times it will pick out some other image seemingly at random.</li>
-<li>Normally for Kindle to find your Manga scans you have to press <kbd>Alt</kbd> + <kbd>Z</kbd> on the home screen. I
+from reading the given book, as one bad panel will prevent you from viewing subsequent images).<li>The first image that you view in a Manga (until the Kindle first writes the “bookmark” file) seems to be arbitrary
+even when files are named sequentially. About half the time it will correctly pick the first file in the batch, at
+other times it will pick out some other image seemingly at random.<li>Normally for Kindle to find your Manga scans you have to press <kbd>Alt</kbd> + <kbd>Z</kbd> on the home screen. I
 haven’t always had luck with it correctly identifying image directories. At other times, after finding an image
-directory the Kindle will appear to hang while trying to access it (forcing you to return to the home screen).</li>
-<li>The Kindle image viewer has no functionality to rotate images. So if there is a horizontally large image (such as
+directory the Kindle will appear to hang while trying to access it (forcing you to return to the home screen).<li>The Kindle image viewer has no functionality to rotate images. So if there is a horizontally large image (such as
 what often happens with dual-page scans), it can be difficult to make out the text because the image is simply
-scaled to fit (consequently leaving a lot of wasted space at the bottom of the screen).</li>
-<li>Scanlation images are oftentimes much larger than the 600x800 screen; not only does this make them take more space
+scaled to fit (consequently leaving a lot of wasted space at the bottom of the screen).<li>Scanlation images are oftentimes much larger than the 600x800 screen; not only does this make them take more space
 on your memory card but it also slows down image loading (the Kindle has to read more data off of the slow SD card
 and scale the image). Scanlations often also include color scans of covers and inserts which take up more space than
-a grayscale equivalent (which is would be fine for the Kindle’s limited display).</li>
-<li>Kindle’s image viewer provides no way to sort images (to determine in which order they are shown). This can be very
+a grayscale equivalent (which is would be fine for the Kindle’s limited display).<li>Kindle’s image viewer provides no way to sort images (to determine in which order they are shown). This can be very
 problematic especially considering that scanlation groups have differing naming conventions, and as a result files
-from later chapters may appear before earlier ones when you are reading your Manga (spoilers ftl).</li>
-</ul>
-<p>Mangle was born out of my annoyance with these issues. The program name is a portmanteau of “Manga” and “Kindle”; I
-thought it was pretty clever at the time.</p>
-<h2 id="usage">Usage</h2>
-<ol>
-<li>Add the desired images and image directories to the current book.</li>
-<li>Re-order the images as needed (files pre-sorted alphabetically).</li>
-<li>Configure the book title and image processing options.</li>
-<li>Create a root-level directory on your Kindle called <code>pictures</code> (case sensitive).</li>
-<li>Export your images, selecting the <code>pictures</code> directory you just created.</li>
-<li>Enjoy your Manga (if it doesn’t show up, press <kbd>Alt</kbd> + <kbd>Z</kbd> while on the home menu).</li>
-</ol>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li><a href="https://riverbankcomputing.com/software/pyqt/download">PyQt4</a></li>
-<li><a href="http://www.python.org/download/releases/2.7/">Python 2.7</a></li>
-<li><a href="https://pypi.org/project/Pillow/">Pillow (PIL)</a></li>
-<li><a href="https://pypi.org/project/reportlab/">ReportLab</a></li>
-</ul>
-<h2 id="installation">Installation</h2>
-<p>Pre-build binaries are available for the platforms listed below. I don’t have the means to make MacOS X releases myself,
+from later chapters may appear before earlier ones when you are reading your Manga (spoilers ftl).</ul><p>Mangle was born out of my annoyance with these issues. The program name is a portmanteau of “Manga” and “Kindle”; I
+thought it was pretty clever at the time.<h2 id=usage>Usage</h2><ol><li>Add the desired images and image directories to the current book.<li>Re-order the images as needed (files pre-sorted alphabetically).<li>Configure the book title and image processing options.<li>Create a root-level directory on your Kindle called <code>pictures</code> (case sensitive).<li>Export your images, selecting the <code>pictures</code> directory you just created.<li>Enjoy your Manga (if it doesn’t show up, press <kbd>Alt</kbd> + <kbd>Z</kbd> while on the home menu).</ol><h2 id=dependencies>Dependencies</h2><ul><li><a href=https://riverbankcomputing.com/software/pyqt/download>PyQt4</a><li><a href=http://www.python.org/download/releases/2.7/>Python 2.7</a><li><a href=https://pypi.org/project/Pillow/>Pillow (PIL)</a><li><a href=https://pypi.org/project/reportlab/>ReportLab</a></ul><h2 id=installation>Installation</h2><p>Pre-build binaries are available for the platforms listed below. I don’t have the means to make MacOS X releases myself,
 so I am providing the old (and unsupported) package built by Rob White instead. Linux users should run Mangle directly
-from source.</p>
-<ul>
-<li><a href="/projects/mangle/dl/mangle_win.zip">mangle_win.zip</a></li>
-<li><a href="/projects/mangle/dl/mangle_osx.zip">mangle_osx.zip</a> (quite old)</li>
-</ul>
-
-    
-
-<div>
-    <nav class="breadcrumb">
-        
-        <a href="/projects/index.html" class="breadcrumb-item">Projects</a>
-        
-        
-        <span class="breadcrumb-item active">Mangle</span>
-        
-    </nav>
-</div>
-
-
-</div>
-
-    <script src="/lib/jquery.min.js"></script>
-    <script src="/lib/tether/js/tether.min.js"></script>
-    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/lib/lightbox/ekko-lightbox.min.js"></script>
-    <script src="/main.js"></script>
-    
-
-
-
-<!-- begin livejs code -->
-<script>
- /*
-  Live.js - One script closer to Designing in the Browser
-  Written for Handcraft.com by Martin Kool (@mrtnkl).
-
-  Version 4.
-  Recent change: Made stylesheet and mimetype checks case insensitive.
-
-  http://livejs.com
-  http://livejs.com/license (MIT)  
-  @livejs
-
-  Include live.js#css to monitor css changes only.
-  Include live.js#js to monitor js changes only.
-  Include live.js#html to monitor html changes only.
-  Mix and match to monitor a preferred combination such as live.js#html,css  
-
-  By default, just include live.js to monitor all css, js and html changes.
-  
-  Live.js can also be loaded as a bookmarklet. It is best to only use it for CSS then,
-  as a page reload due to a change in html or css would not re-include the bookmarklet.
-  To monitor CSS and be notified that it has loaded, include it as: live.js#css,notify
-*/
-(function () {
-
-  var headers = { "Etag": 1, "Last-Modified": 1, "Content-Length": 1, "Content-Type": 1 },
-      resources = {},
-      pendingRequests = {},
-      currentLinkElements = {},
-      oldLinkElements = {},
-      interval = 1000,
-      loaded = false,
-      active = { "html": 1, "css": 1, "js": 1 };
-
-  var Live = {
-
-    // performs a cycle per interval
-    heartbeat: function () {      
-      if (document.body) {        
-        // make sure all resources are loaded on first activation
-        if (!loaded) Live.loadresources();
-        Live.checkForChanges();
-      }
-      setTimeout(Live.heartbeat, interval);
-    },
-
-    // loads all local css and js resources upon first activation
-    loadresources: function () {
-
-      // helper method to assert if a given url is local
-      function isLocal(url) {
-        var loc = document.location,
-            reg = new RegExp("^\\.|^\/(?!\/)|^[\\w]((?!://).)*$|" + loc.protocol + "//" + loc.host);
-        return url.match(reg);
-      }
-
-      // gather all resources
-      var scripts = document.getElementsByTagName("script"),
-          links = document.getElementsByTagName("link"),
-          uris = [];
-
-      // track local js urls
-      for (var i = 0; i < scripts.length; i++) {
-        var script = scripts[i], src = script.getAttribute("src");
-        if (src && isLocal(src))
-          uris.push(src);
-        if (src && src.match(/\blive.js#/)) {
-          for (var type in active)
-            active[type] = src.match("[#,|]" + type) != null
-          if (src.match("notify")) 
-            alert("Live.js is loaded.");
-        }
-      }
-      if (!active.js) uris = [];
-      if (active.html) uris.push(document.location.href);
-
-      // track local css urls
-      for (var i = 0; i < links.length && active.css; i++) {
-        var link = links[i], rel = link.getAttribute("rel"), href = link.getAttribute("href", 2);
-        if (href && rel && rel.match(new RegExp("stylesheet", "i")) && isLocal(href)) {
-          uris.push(href);
-          currentLinkElements[href] = link;
-        }
-      }
-
-      // initialize the resources info
-      for (var i = 0; i < uris.length; i++) {
-        var url = uris[i];
-        Live.getHead(url, function (url, info) {
-          resources[url] = info;
-        });
-      }
-
-      // add rule for morphing between old and new css files
-      var head = document.getElementsByTagName("head")[0],
-          style = document.createElement("style"),
-          rule = "transition: all .3s ease-out;"
-      css = [".livejs-loading * { ", rule, " -webkit-", rule, "-moz-", rule, "-o-", rule, "}"].join('');
-      style.setAttribute("type", "text/css");
-      head.appendChild(style);
-      style.styleSheet ? style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css));
-
-      // yep
-      loaded = true;
-    },
-
-    // check all tracking resources for changes
-    checkForChanges: function () {
-      for (var url in resources) {
-        if (pendingRequests[url])
-          continue;
-
-        Live.getHead(url, function (url, newInfo) {
-          var oldInfo = resources[url],
-              hasChanged = false;
-          resources[url] = newInfo;
-          for (var header in oldInfo) {
-            // do verification based on the header type
-            var oldValue = oldInfo[header],
-                newValue = newInfo[header],
-                contentType = newInfo["Content-Type"];
-            switch (header.toLowerCase()) {
-              case "etag":
-                if (!newValue) break;
-                // fall through to default
-              default:
-                hasChanged = oldValue != newValue;
-                break;
-            }
-            // if changed, act
-            if (hasChanged) {
-              Live.refreshResource(url, contentType);
-              break;
-            }
-          }
-        });
-      }
-    },
-
-    // act upon a changed url of certain content type
-    refreshResource: function (url, type) {
-      switch (type.toLowerCase()) {
-        // css files can be reloaded dynamically by replacing the link element                               
-        case "text/css":
-          var link = currentLinkElements[url],
-              html = document.body.parentNode,
-              head = link.parentNode,
-              next = link.nextSibling,
-              newLink = document.createElement("link");
-
-          html.className = html.className.replace(/\s*livejs\-loading/gi, '') + ' livejs-loading';
-          newLink.setAttribute("type", "text/css");
-          newLink.setAttribute("rel", "stylesheet");
-          newLink.setAttribute("href", url + "?now=" + new Date() * 1);
-          next ? head.insertBefore(newLink, next) : head.appendChild(newLink);
-          currentLinkElements[url] = newLink;
-          oldLinkElements[url] = link;
-
-          // schedule removal of the old link
-          Live.removeoldLinkElements();
-          break;
-
-        // check if an html resource is our current url, then reload                               
-        case "text/html":
-          if (url != document.location.href)
-            return;
-
-          // local javascript changes cause a reload as well
-        case "text/javascript":
-        case "application/javascript":
-        case "application/x-javascript":
-          document.location.reload();
-      }
-    },
-
-    // removes the old stylesheet rules only once the new one has finished loading
-    removeoldLinkElements: function () {
-      var pending = 0;
-      for (var url in oldLinkElements) {
-        // if this sheet has any cssRules, delete the old link
-        try {
-          var link = currentLinkElements[url],
-              oldLink = oldLinkElements[url],
-              html = document.body.parentNode,
-              sheet = link.sheet || link.styleSheet,
-              rules = sheet.rules || sheet.cssRules;
-          if (rules.length >= 0) {
-            oldLink.parentNode.removeChild(oldLink);
-            delete oldLinkElements[url];
-            setTimeout(function () {
-              html.className = html.className.replace(/\s*livejs\-loading/gi, '');
-            }, 100);
-          }
-        } catch (e) {
-          pending++;
-        }
-        if (pending) setTimeout(Live.removeoldLinkElements, 50);
-      }
-    },
-
-    // performs a HEAD request and passes the header info to the given callback
-    getHead: function (url, callback) {
-      pendingRequests[url] = true;
-      var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XmlHttp");
-      xhr.open("HEAD", url, true);
-      xhr.onreadystatechange = function () {
-        delete pendingRequests[url];
-        if (xhr.readyState == 4 && xhr.status != 304) {
-          xhr.getAllResponseHeaders();
-          var info = {};
-          for (var h in headers) {
-            var value = xhr.getResponseHeader(h);
-            // adjust the simple Etag variant to match on its significant part
-            if (h.toLowerCase() == "etag" && value) value = value.replace(/^W\//, '');
-            if (h.toLowerCase() == "content-type" && value) value = value.replace(/^(.*?);.*?$/i, "$1");
-            info[h] = value;
-          }
-          callback(url, info);
-        }
-      }
-      xhr.send();
-    }
-  };
-
-  // start listening
-  if (document.location.protocol != "file:") {
-    if (!window.liveJsLoaded)
-      Live.heartbeat();
-
-    window.liveJsLoaded = true;
-  }
-  else if (window.console)
-    console.log("Live.js doesn't support the file protocol. It needs http.");    
-})();
-</script>
-<!-- end livejs code -->
-</body></html>
+from source.<ul><li><a href=/projects/mangle/dl/mangle_win.zip>mangle_win.zip</a><li><a href=/projects/mangle/dl/mangle_osx.zip>mangle_osx.zip</a> (quite old)</ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
+<span class="breadcrumb-item active">Mangle</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>

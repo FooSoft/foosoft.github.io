@@ -1,133 +1,520 @@
-<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - Goldsmith</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/>FooSoft Productions</a>
-<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class="navbar-nav ml-auto"><a class="nav-item nav-link" href=/>Overview</a>
-<a class="nav-item nav-link" href=/posts/>Posts</a>
-<a class="nav-item nav-link" href=/portfolio/>Portfolio</a>
-<a class="nav-item nav-link active" href=/projects/>Projects</a>
-<a class="nav-item nav-link" href=/tags/>Tags</a></div></div></nav><div><a href=https://github.com/FooSoft/goldsmith class=github-corner><svg width="80" height="80" viewBox="0 0 250 250">
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/lib/tether/css/tether.min.css"/>
+        <link rel="stylesheet" href="/lib/tether/css/tether-theme-basic.min.css"/>
+        <link rel="stylesheet" href="/lib/lightbox/ekko-lightbox.css"/>
+        <link rel="stylesheet" href="/main.css"/>
+        
+        <title>FooSoft Productions - Goldsmith</title>
+        
+    </head>
+    <body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">FooSoft Productions</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            
+            <a class="nav-item nav-link " href="/">Overview</a>
+            <a class="nav-item nav-link " href="/posts/">Posts</a>
+            <a class="nav-item nav-link " href="/portfolio/">Portfolio</a>
+            <a class="nav-item nav-link active" href="/projects/">Projects</a>
+            <a class="nav-item nav-link " href="/tags/">Tags</a>
+        </div>
+    </div>
+</nav>
+
+
+
+<div>
+    <a href="https://github.com/FooSoft/goldsmith" class="github-corner">
+        <svg width="80" height="80" viewBox="0 0 250 250">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-        </svg></a></div><div class=container><h1>Goldsmith</h1><div><a class="badge badge-secondary" href=/tags/generator/index.html>generator</a>
-<a class="badge badge-secondary" href=/tags/golang/index.html>golang</a>
-<a class="badge badge-secondary" href=/tags/goldsmith/index.html>goldsmith</a>
-<a class="badge badge-secondary" href=/tags/mit-license/index.html>mit license</a>
-<a class="badge badge-secondary" href=/tags/web/index.html>web</a></div><hr><p>Goldsmith is a fast and easily extensible static website generator written in Go. In contrast to many other generators,
+        </svg>
+    </a>
+</div>
+
+
+<div class="container">
+    <h1>
+        Goldsmith
+        
+    </h1>
+    
+
+<div>
+    
+    <a class="badge badge-secondary" href="/tags/generator/index.html">generator</a>
+    
+    <a class="badge badge-secondary" href="/tags/golang/index.html">golang</a>
+    
+    <a class="badge badge-secondary" href="/tags/goldsmith/index.html">goldsmith</a>
+    
+    <a class="badge badge-secondary" href="/tags/mit-license/index.html">mit license</a>
+    
+    <a class="badge badge-secondary" href="/tags/web/index.html">web</a>
+    
+</div>
+
+
+    <hr/>
+    <p>Goldsmith is a fast and easily extensible static website generator written in Go. In contrast to many other generators,
 Goldsmith does not force any design paradigms or file organization rules on the user, making it possible to generate
-anything from blogs to image galleries using the same tool.<h2 id=tutorial>Tutorial</h2><p>Goldsmith does not use any configuration files, and all behavior customization happens in code. Goldsmith uses the
-<a href=https://en.wikipedia.org/wiki/Builder_pattern>builder pattern</a> to establish a chain, which modifies files as they pass
-through it. Although the <a href=https://godoc.org/github.com/FooSoft/goldsmith>Goldsmith</a> is short and (hopefully) easy to
-understand, it is often best to learn by example:<ol><li><p>Start by copying files from a source directory to a destination directory (the simplest possible use case):<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir). <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)    <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now let’s convert any Markdown files to HTML fragments (while still copying the rest), using the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir).         <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)            <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>If we have any
-<a href=https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/index.md>front matter</a> in our
+anything from blogs to image galleries using the same tool.</p>
+<h2 id="tutorial">Tutorial</h2>
+<p>Goldsmith does not use any configuration files, and all behavior customization happens in code. Goldsmith uses the
+<a href="https://en.wikipedia.org/wiki/Builder_pattern">builder pattern</a> to establish a chain, which modifies files as they pass
+through it. Although the <a href="https://godoc.org/github.com/FooSoft/goldsmith">Goldsmith</a> is short and (hopefully) easy to
+understand, it is often best to learn by example:</p>
+<ol>
+<li>
+<p>Start by copying files from a source directory to a destination directory (the simplest possible use case):</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir). <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)    <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>Now let’s convert any Markdown files to HTML fragments (while still copying the rest), using the
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown">Markdown</a> plugin:</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir).         <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()). <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)            <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>If we have any
+<a href="https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/index.md">front matter</a> in our
 Markdown files, we need to extract it using the,
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Next, we should run our barebones HTML through a
-<a href=https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/layouts/basic.gohtml>template</a> to
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter">FrontMatter</a> plugin:</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir).            <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(frontmatter.<span style="color:#900;font-weight:bold">New</span>()). <span style="color:#998;font-style:italic">// extract frontmatter and store it as metadata
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()).    <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)               <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>Next, we should run our barebones HTML through a
+<a href="https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/layouts/basic.gohtml">template</a> to
 add elements like a header, footer, or a menu; for this we can use the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>Layout</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now, let’s <a href=https://en.wikipedia.org/wiki/Minification_(programming)>minify</a> our files to reduce data transfer and
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter">Layout</a> plugin:</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir).            <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(frontmatter.<span style="color:#900;font-weight:bold">New</span>()). <span style="color:#998;font-style:italic">// extract frontmatter and store it as metadata
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()).    <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(layout.<span style="color:#900;font-weight:bold">New</span>()).      <span style="color:#998;font-style:italic">// apply *.gohtml templates to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)               <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>Now, let’s <a href="https://en.wikipedia.org/wiki/Minification_(programming)">minify</a> our files to reduce data transfer and
 load times for our site’s visitors using the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a> plugin:<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Debugging problems in minified code can be tricky, so let’s use the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a> filter to make minification
-occur only when we are ready for distribution.<pre><code class=language-go style=background-color:#fff>goldsmith.
-    <span style=color:#900;font-weight:bold>Begin</span>(srcDir).                   <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()).        <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).           <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).             <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>FilterPush</span>(condition.<span style=color:#900;font-weight:bold>New</span>(dist)). <span style=color:#998;font-style:italic>// push a dist-only conditional filter onto the stack
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).             <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>FilterPop</span>().                     <span style=color:#998;font-style:italic>// pop off the last filter pushed onto the stack
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)                      <span style=color:#998;font-style:italic>// write files to dstDir
-</span></code></pre><li><p>Now that we have all of our plugins chained up, let’s look at a complete example which uses
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/devserver>DevServer</a> to bootstrap a complete development
-sever which automatically rebuilds the site whenever source files are updated.<pre><code class=language-go style=background-color:#fff><span style=color:#000;font-weight:bold>package</span> main
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify">Minify</a> plugin:</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir).            <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(frontmatter.<span style="color:#900;font-weight:bold">New</span>()). <span style="color:#998;font-style:italic">// extract frontmatter and store it as metadata
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()).    <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(layout.<span style="color:#900;font-weight:bold">New</span>()).      <span style="color:#998;font-style:italic">// apply *.gohtml templates to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(minify.<span style="color:#900;font-weight:bold">New</span>()).      <span style="color:#998;font-style:italic">// minify *.html, *.css, *.js, etc. files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)               <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>Debugging problems in minified code can be tricky, so let’s use the
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition">Condition</a> filter to make minification
+occur only when we are ready for distribution.</p>
+<pre><code class="language-go" style="background-color:#fff">goldsmith.
+    <span style="color:#900;font-weight:bold">Begin</span>(srcDir).                   <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(frontmatter.<span style="color:#900;font-weight:bold">New</span>()).        <span style="color:#998;font-style:italic">// extract frontmatter and store it as metadata
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()).           <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(layout.<span style="color:#900;font-weight:bold">New</span>()).             <span style="color:#998;font-style:italic">// apply *.gohtml templates to *.html files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">FilterPush</span>(condition.<span style="color:#900;font-weight:bold">New</span>(dist)). <span style="color:#998;font-style:italic">// push a dist-only conditional filter onto the stack
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Chain</span>(minify.<span style="color:#900;font-weight:bold">New</span>()).             <span style="color:#998;font-style:italic">// minify *.html, *.css, *.js, etc. files
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">FilterPop</span>().                     <span style="color:#998;font-style:italic">// pop off the last filter pushed onto the stack
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">End</span>(dstDir)                      <span style="color:#998;font-style:italic">// write files to dstDir
+</span></code></pre>
+</li>
+<li>
+<p>Now that we have all of our plugins chained up, let’s look at a complete example which uses
+<a href="https://godoc.org/github.com/FooSoft/goldsmith-components/devserver">DevServer</a> to bootstrap a complete development
+sever which automatically rebuilds the site whenever source files are updated.</p>
+<pre><code class="language-go" style="background-color:#fff"><span style="color:#000;font-weight:bold">package</span> main
 
-<span style=color:#000;font-weight:bold>import</span> (
-    <span style=color:#d14>&#34;flag&#34;</span>
-    <span style=color:#d14>&#34;log&#34;</span>
+<span style="color:#000;font-weight:bold">import</span> (
+    <span style="color:#d14">&#34;flag&#34;</span>
+    <span style="color:#d14">&#34;log&#34;</span>
 
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/devserver&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/filters/condition&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/plugins/frontmatter&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/plugins/layout&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/plugins/markdown&#34;</span>
-    <span style=color:#d14>&#34;github.com/FooSoft/goldsmith-components/plugins/minify&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/devserver&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/filters/condition&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/plugins/frontmatter&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/plugins/layout&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/plugins/markdown&#34;</span>
+    <span style="color:#d14">&#34;github.com/FooSoft/goldsmith-components/plugins/minify&#34;</span>
 )
 
-<span style=color:#000;font-weight:bold>type</span> builder <span style=color:#000;font-weight:bold>struct</span> {
-    dist <span style=color:#458;font-weight:bold>bool</span>
+<span style="color:#000;font-weight:bold">type</span> builder <span style="color:#000;font-weight:bold">struct</span> {
+    dist <span style="color:#458;font-weight:bold">bool</span>
 }
 
-<span style=color:#000;font-weight:bold>func</span> (b <span style=color:#000;font-weight:bold>*</span>builder) <span style=color:#900;font-weight:bold>Build</span>(srcDir, dstDir, cacheDir <span style=color:#458;font-weight:bold>string</span>) {
-    errs <span style=color:#000;font-weight:bold>:=</span> goldsmith.
-        <span style=color:#900;font-weight:bold>Begin</span>(srcDir).                     <span style=color:#998;font-style:italic>// read files from srcDir
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()).          <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).             <span style=color:#998;font-style:italic>// convert *.md files to *.html files
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>Chain</span>(layout.<span style=color:#900;font-weight:bold>New</span>()).               <span style=color:#998;font-style:italic>// apply *.gohtml templates to *.html files
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>FilterPush</span>(condition.<span style=color:#900;font-weight:bold>New</span>(b.dist)). <span style=color:#998;font-style:italic>// push a dist-only conditional filter onto the stack
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).               <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>FilterPop</span>().                       <span style=color:#998;font-style:italic>// pop off the last filter pushed onto the stack
-</span><span style=color:#998;font-style:italic></span>        <span style=color:#900;font-weight:bold>End</span>(dstDir)                        <span style=color:#998;font-style:italic>// write files to dstDir
-</span><span style=color:#998;font-style:italic></span>
-    <span style=color:#000;font-weight:bold>for</span> _, err <span style=color:#000;font-weight:bold>:=</span> <span style=color:#000;font-weight:bold>range</span> errs {
-        log.<span style=color:#900;font-weight:bold>Print</span>(err)
+<span style="color:#000;font-weight:bold">func</span> (b <span style="color:#000;font-weight:bold">*</span>builder) <span style="color:#900;font-weight:bold">Build</span>(srcDir, dstDir, cacheDir <span style="color:#458;font-weight:bold">string</span>) {
+    errs <span style="color:#000;font-weight:bold">:=</span> goldsmith.
+        <span style="color:#900;font-weight:bold">Begin</span>(srcDir).                     <span style="color:#998;font-style:italic">// read files from srcDir
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">Chain</span>(frontmatter.<span style="color:#900;font-weight:bold">New</span>()).          <span style="color:#998;font-style:italic">// extract frontmatter and store it as metadata
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">Chain</span>(markdown.<span style="color:#900;font-weight:bold">New</span>()).             <span style="color:#998;font-style:italic">// convert *.md files to *.html files
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">Chain</span>(layout.<span style="color:#900;font-weight:bold">New</span>()).               <span style="color:#998;font-style:italic">// apply *.gohtml templates to *.html files
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">FilterPush</span>(condition.<span style="color:#900;font-weight:bold">New</span>(b.dist)). <span style="color:#998;font-style:italic">// push a dist-only conditional filter onto the stack
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">Chain</span>(minify.<span style="color:#900;font-weight:bold">New</span>()).               <span style="color:#998;font-style:italic">// minify *.html, *.css, *.js, etc. files
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">FilterPop</span>().                       <span style="color:#998;font-style:italic">// pop off the last filter pushed onto the stack
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#900;font-weight:bold">End</span>(dstDir)                        <span style="color:#998;font-style:italic">// write files to dstDir
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#000;font-weight:bold">for</span> _, err <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> errs {
+        log.<span style="color:#900;font-weight:bold">Print</span>(err)
     }
 }
 
-<span style=color:#000;font-weight:bold>func</span> <span style=color:#900;font-weight:bold>main</span>() {
-    port <span style=color:#000;font-weight:bold>:=</span> flag.<span style=color:#900;font-weight:bold>Int</span>(<span style=color:#d14>&#34;port&#34;</span>, <span style=color:#099>8080</span>, <span style=color:#d14>&#34;server port&#34;</span>)
-    dist <span style=color:#000;font-weight:bold>:=</span> flag.<span style=color:#900;font-weight:bold>Bool</span>(<span style=color:#d14>&#34;dist&#34;</span>, <span style=color:#000;font-weight:bold>false</span>, <span style=color:#d14>&#34;final dist mode&#34;</span>)
-    flag.<span style=color:#900;font-weight:bold>Parse</span>()
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+    port <span style="color:#000;font-weight:bold">:=</span> flag.<span style="color:#900;font-weight:bold">Int</span>(<span style="color:#d14">&#34;port&#34;</span>, <span style="color:#099">8080</span>, <span style="color:#d14">&#34;server port&#34;</span>)
+    dist <span style="color:#000;font-weight:bold">:=</span> flag.<span style="color:#900;font-weight:bold">Bool</span>(<span style="color:#d14">&#34;dist&#34;</span>, <span style="color:#000;font-weight:bold">false</span>, <span style="color:#d14">&#34;final dist mode&#34;</span>)
+    flag.<span style="color:#900;font-weight:bold">Parse</span>()
 
-    devserver.<span style=color:#900;font-weight:bold>DevServe</span>(<span style=color:#000;font-weight:bold>&amp;</span>builder{<span style=color:#000;font-weight:bold>*</span>dist}, <span style=color:#000;font-weight:bold>*</span>port, <span style=color:#d14>&#34;content&#34;</span>, <span style=color:#d14>&#34;build&#34;</span>, <span style=color:#d14>&#34;cache&#34;</span>)
+    devserver.<span style="color:#900;font-weight:bold">DevServe</span>(<span style="color:#000;font-weight:bold">&amp;</span>builder{<span style="color:#000;font-weight:bold">*</span>dist}, <span style="color:#000;font-weight:bold">*</span>port, <span style="color:#d14">&#34;content&#34;</span>, <span style="color:#d14">&#34;build&#34;</span>, <span style="color:#d14">&#34;cache&#34;</span>)
 }
-</code></pre></ol><h2 id=samples>Samples</h2><p>Below are some examples of Goldsmith usage which can used to base your site on:<ul><li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/basic>Basic Sample</a>: a great starting point, this is the
-sample site from the tutorial.<li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/bootstrap>Bootstrap Sample</a>: a slightly more advanced
-sample using <a href=https://getbootstrap.com/>Bootstrap</a>.<li><a href=https://foosoft.net/projects/goldsmith>FooSoft.net</a>: I’ve been “dogfooding” Goldsmith by using it to build
-my homepage for years.</ul><h2 id=components>Components</h2><p>A growing set of plugins, filters, and other tools are provided to make it easier to get started with Goldsmith.<h3 id=plugins>Plugins</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/absolute>Absolute</a>: Convert relative HTML file
-references to absolute paths.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/breadcrumbs>Breadcrumbs</a>: Generate metadata
-required to build breadcrumb navigation.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/collection>Collection</a>: Group related pages
-into named collections.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/document>Document</a>: Enable simple DOM
-modification via an API similar to jQuery.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a>: Extract the
-JSON, YAML, or TOML metadata stored in your files.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/index>Index</a>: Create metadata for directory file
-listings and generate directory index pages.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/layout>Layout</a>: Transform your HTML files with
-Go templates.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/livejs>LiveJs</a>: Inject JavaScript code to
-automatically reload pages when modified.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a>: Render Markdown documents
-as HTML fragments.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a>: Remove superfluous data from a
-variety of web formats.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/pager>Pager</a>: Split arrays of metadata into
-standalone pages.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/summary>Summary</a>: Extract summary and title
-metadata from HTML files.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/syntax>Syntax</a>: Enable syntax highlighting for
-pre-formatted code blocks.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/tags>Tags</a>: Generate tag clouds and indices
-from file metadata.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/thumbnail>Thumbnail</a>: Build thumbnails for a
-variety of common image formats.</ul><h3 id=filters>Filters</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a>: Filter files based on a
-single condition.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/operator>Operator</a>: Join filters using
-logical <code>AND</code>, <code>OR</code>, and <code>NOT</code> operators.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/wildcard>Wildcard</a>: Filter files using path
-wildcards (<code>*</code>, <code>?</code>, etc.)</ul><h3 id=other>Other</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/devserver>DevServer</a>: Simple framework for building,
-updating, and viewing your site.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/harness>Harness</a>: Unit test harness for verifying
-Goldsmith plugins and filters.</ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
-<span class="breadcrumb-item active">Goldsmith</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>
+</code></pre>
+</li>
+</ol>
+<h2 id="samples">Samples</h2>
+<p>Below are some examples of Goldsmith usage which can used to base your site on:</p>
+<ul>
+<li><a href="https://github.com/FooSoft/goldsmith-samples/tree/master/basic">Basic Sample</a>: a great starting point, this is the
+sample site from the tutorial.</li>
+<li><a href="https://github.com/FooSoft/goldsmith-samples/tree/master/bootstrap">Bootstrap Sample</a>: a slightly more advanced
+sample using <a href="https://getbootstrap.com/">Bootstrap</a>.</li>
+<li><a href="https://foosoft.net/projects/goldsmith">FooSoft.net</a>: I’ve been “dogfooding” Goldsmith by using it to build
+my homepage for years.</li>
+</ul>
+<h2 id="components">Components</h2>
+<p>A growing set of plugins, filters, and other tools are provided to make it easier to get started with Goldsmith.</p>
+<h3 id="plugins">Plugins</h3>
+<ul>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/absolute">Absolute</a>: Convert relative HTML file
+references to absolute paths.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/breadcrumbs">Breadcrumbs</a>: Generate metadata
+required to build breadcrumb navigation.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/collection">Collection</a>: Group related pages
+into named collections.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/document">Document</a>: Enable simple DOM
+modification via an API similar to jQuery.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter">FrontMatter</a>: Extract the
+JSON, YAML, or TOML metadata stored in your files.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/index">Index</a>: Create metadata for directory file
+listings and generate directory index pages.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/layout">Layout</a>: Transform your HTML files with
+Go templates.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/livejs">LiveJs</a>: Inject JavaScript code to
+automatically reload pages when modified.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown">Markdown</a>: Render Markdown documents
+as HTML fragments.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify">Minify</a>: Remove superfluous data from a
+variety of web formats.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/pager">Pager</a>: Split arrays of metadata into
+standalone pages.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/summary">Summary</a>: Extract summary and title
+metadata from HTML files.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/syntax">Syntax</a>: Enable syntax highlighting for
+pre-formatted code blocks.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/tags">Tags</a>: Generate tag clouds and indices
+from file metadata.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/thumbnail">Thumbnail</a>: Build thumbnails for a
+variety of common image formats.</li>
+</ul>
+<h3 id="filters">Filters</h3>
+<ul>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition">Condition</a>: Filter files based on a
+single condition.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/filters/operator">Operator</a>: Join filters using
+logical <code>AND</code>, <code>OR</code>, and <code>NOT</code> operators.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/filters/wildcard">Wildcard</a>: Filter files using path
+wildcards (<code>*</code>, <code>?</code>, etc.)</li>
+</ul>
+<h3 id="other">Other</h3>
+<ul>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/devserver">DevServer</a>: Simple framework for building,
+updating, and viewing your site.</li>
+<li><a href="https://godoc.org/github.com/FooSoft/goldsmith-components/harness">Harness</a>: Unit test harness for verifying
+Goldsmith plugins and filters.</li>
+</ul>
+
+    
+
+<div>
+    <nav class="breadcrumb">
+        
+        <a href="/projects/index.html" class="breadcrumb-item">Projects</a>
+        
+        
+        <span class="breadcrumb-item active">Goldsmith</span>
+        
+    </nav>
+</div>
+
+
+</div>
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/tether/js/tether.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/lightbox/ekko-lightbox.min.js"></script>
+    <script src="/main.js"></script>
+    
+
+
+
+<!-- begin livejs code -->
+<script>
+ /*
+  Live.js - One script closer to Designing in the Browser
+  Written for Handcraft.com by Martin Kool (@mrtnkl).
+
+  Version 4.
+  Recent change: Made stylesheet and mimetype checks case insensitive.
+
+  http://livejs.com
+  http://livejs.com/license (MIT)  
+  @livejs
+
+  Include live.js#css to monitor css changes only.
+  Include live.js#js to monitor js changes only.
+  Include live.js#html to monitor html changes only.
+  Mix and match to monitor a preferred combination such as live.js#html,css  
+
+  By default, just include live.js to monitor all css, js and html changes.
+  
+  Live.js can also be loaded as a bookmarklet. It is best to only use it for CSS then,
+  as a page reload due to a change in html or css would not re-include the bookmarklet.
+  To monitor CSS and be notified that it has loaded, include it as: live.js#css,notify
+*/
+(function () {
+
+  var headers = { "Etag": 1, "Last-Modified": 1, "Content-Length": 1, "Content-Type": 1 },
+      resources = {},
+      pendingRequests = {},
+      currentLinkElements = {},
+      oldLinkElements = {},
+      interval = 1000,
+      loaded = false,
+      active = { "html": 1, "css": 1, "js": 1 };
+
+  var Live = {
+
+    // performs a cycle per interval
+    heartbeat: function () {      
+      if (document.body) {        
+        // make sure all resources are loaded on first activation
+        if (!loaded) Live.loadresources();
+        Live.checkForChanges();
+      }
+      setTimeout(Live.heartbeat, interval);
+    },
+
+    // loads all local css and js resources upon first activation
+    loadresources: function () {
+
+      // helper method to assert if a given url is local
+      function isLocal(url) {
+        var loc = document.location,
+            reg = new RegExp("^\\.|^\/(?!\/)|^[\\w]((?!://).)*$|" + loc.protocol + "//" + loc.host);
+        return url.match(reg);
+      }
+
+      // gather all resources
+      var scripts = document.getElementsByTagName("script"),
+          links = document.getElementsByTagName("link"),
+          uris = [];
+
+      // track local js urls
+      for (var i = 0; i < scripts.length; i++) {
+        var script = scripts[i], src = script.getAttribute("src");
+        if (src && isLocal(src))
+          uris.push(src);
+        if (src && src.match(/\blive.js#/)) {
+          for (var type in active)
+            active[type] = src.match("[#,|]" + type) != null
+          if (src.match("notify")) 
+            alert("Live.js is loaded.");
+        }
+      }
+      if (!active.js) uris = [];
+      if (active.html) uris.push(document.location.href);
+
+      // track local css urls
+      for (var i = 0; i < links.length && active.css; i++) {
+        var link = links[i], rel = link.getAttribute("rel"), href = link.getAttribute("href", 2);
+        if (href && rel && rel.match(new RegExp("stylesheet", "i")) && isLocal(href)) {
+          uris.push(href);
+          currentLinkElements[href] = link;
+        }
+      }
+
+      // initialize the resources info
+      for (var i = 0; i < uris.length; i++) {
+        var url = uris[i];
+        Live.getHead(url, function (url, info) {
+          resources[url] = info;
+        });
+      }
+
+      // add rule for morphing between old and new css files
+      var head = document.getElementsByTagName("head")[0],
+          style = document.createElement("style"),
+          rule = "transition: all .3s ease-out;"
+      css = [".livejs-loading * { ", rule, " -webkit-", rule, "-moz-", rule, "-o-", rule, "}"].join('');
+      style.setAttribute("type", "text/css");
+      head.appendChild(style);
+      style.styleSheet ? style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css));
+
+      // yep
+      loaded = true;
+    },
+
+    // check all tracking resources for changes
+    checkForChanges: function () {
+      for (var url in resources) {
+        if (pendingRequests[url])
+          continue;
+
+        Live.getHead(url, function (url, newInfo) {
+          var oldInfo = resources[url],
+              hasChanged = false;
+          resources[url] = newInfo;
+          for (var header in oldInfo) {
+            // do verification based on the header type
+            var oldValue = oldInfo[header],
+                newValue = newInfo[header],
+                contentType = newInfo["Content-Type"];
+            switch (header.toLowerCase()) {
+              case "etag":
+                if (!newValue) break;
+                // fall through to default
+              default:
+                hasChanged = oldValue != newValue;
+                break;
+            }
+            // if changed, act
+            if (hasChanged) {
+              Live.refreshResource(url, contentType);
+              break;
+            }
+          }
+        });
+      }
+    },
+
+    // act upon a changed url of certain content type
+    refreshResource: function (url, type) {
+      switch (type.toLowerCase()) {
+        // css files can be reloaded dynamically by replacing the link element                               
+        case "text/css":
+          var link = currentLinkElements[url],
+              html = document.body.parentNode,
+              head = link.parentNode,
+              next = link.nextSibling,
+              newLink = document.createElement("link");
+
+          html.className = html.className.replace(/\s*livejs\-loading/gi, '') + ' livejs-loading';
+          newLink.setAttribute("type", "text/css");
+          newLink.setAttribute("rel", "stylesheet");
+          newLink.setAttribute("href", url + "?now=" + new Date() * 1);
+          next ? head.insertBefore(newLink, next) : head.appendChild(newLink);
+          currentLinkElements[url] = newLink;
+          oldLinkElements[url] = link;
+
+          // schedule removal of the old link
+          Live.removeoldLinkElements();
+          break;
+
+        // check if an html resource is our current url, then reload                               
+        case "text/html":
+          if (url != document.location.href)
+            return;
+
+          // local javascript changes cause a reload as well
+        case "text/javascript":
+        case "application/javascript":
+        case "application/x-javascript":
+          document.location.reload();
+      }
+    },
+
+    // removes the old stylesheet rules only once the new one has finished loading
+    removeoldLinkElements: function () {
+      var pending = 0;
+      for (var url in oldLinkElements) {
+        // if this sheet has any cssRules, delete the old link
+        try {
+          var link = currentLinkElements[url],
+              oldLink = oldLinkElements[url],
+              html = document.body.parentNode,
+              sheet = link.sheet || link.styleSheet,
+              rules = sheet.rules || sheet.cssRules;
+          if (rules.length >= 0) {
+            oldLink.parentNode.removeChild(oldLink);
+            delete oldLinkElements[url];
+            setTimeout(function () {
+              html.className = html.className.replace(/\s*livejs\-loading/gi, '');
+            }, 100);
+          }
+        } catch (e) {
+          pending++;
+        }
+        if (pending) setTimeout(Live.removeoldLinkElements, 50);
+      }
+    },
+
+    // performs a HEAD request and passes the header info to the given callback
+    getHead: function (url, callback) {
+      pendingRequests[url] = true;
+      var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XmlHttp");
+      xhr.open("HEAD", url, true);
+      xhr.onreadystatechange = function () {
+        delete pendingRequests[url];
+        if (xhr.readyState == 4 && xhr.status != 304) {
+          xhr.getAllResponseHeaders();
+          var info = {};
+          for (var h in headers) {
+            var value = xhr.getResponseHeader(h);
+            // adjust the simple Etag variant to match on its significant part
+            if (h.toLowerCase() == "etag" && value) value = value.replace(/^W\//, '');
+            if (h.toLowerCase() == "content-type" && value) value = value.replace(/^(.*?);.*?$/i, "$1");
+            info[h] = value;
+          }
+          callback(url, info);
+        }
+      }
+      xhr.send();
+    }
+  };
+
+  // start listening
+  if (document.location.protocol != "file:") {
+    if (!window.liveJsLoaded)
+      Live.heartbeat();
+
+    window.liveJsLoaded = true;
+  }
+  else if (window.console)
+    console.log("Live.js doesn't support the file protocol. It needs http.");    
+})();
+</script>
+<!-- end livejs code -->
+</body></html>

@@ -1,34 +1,432 @@
-<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - Yomichan Anki</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/>FooSoft Productions</a>
-<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class="navbar-nav ml-auto"><a class="nav-item nav-link" href=/>Overview</a>
-<a class="nav-item nav-link" href=/posts/>Posts</a>
-<a class="nav-item nav-link" href=/portfolio/>Portfolio</a>
-<a class="nav-item nav-link active" href=/projects/>Projects</a>
-<a class="nav-item nav-link" href=/tags/>Tags</a></div></div></nav><div><a href=https://github.com/FooSoft/yomichan-anki class=github-corner><svg width="80" height="80" viewBox="0 0 250 250">
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/lib/tether/css/tether.min.css"/>
+        <link rel="stylesheet" href="/lib/tether/css/tether-theme-basic.min.css"/>
+        <link rel="stylesheet" href="/lib/lightbox/ekko-lightbox.css"/>
+        <link rel="stylesheet" href="/main.css"/>
+        
+        <title>FooSoft Productions - Yomichan Anki</title>
+        
+    </head>
+    <body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">FooSoft Productions</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            
+            <a class="nav-item nav-link " href="/">Overview</a>
+            <a class="nav-item nav-link " href="/posts/">Posts</a>
+            <a class="nav-item nav-link " href="/portfolio/">Portfolio</a>
+            <a class="nav-item nav-link active" href="/projects/">Projects</a>
+            <a class="nav-item nav-link " href="/tags/">Tags</a>
+        </div>
+    </div>
+</nav>
+
+
+
+<div>
+    <a href="https://github.com/FooSoft/yomichan-anki" class="github-corner">
+        <svg width="80" height="80" viewBox="0 0 250 250">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-        </svg></a></div><div class=container><h1>Yomichan Anki</h1><div><a class="badge badge-secondary" href=/tags/anki/index.html>anki</a>
-<a class="badge badge-secondary" href=/tags/anki-connect/index.html>anki-connect</a>
-<a class="badge badge-secondary" href=/tags/gpl-license/index.html>gpl license</a>
-<a class="badge badge-secondary" href=/tags/japanese/index.html>japanese</a>
-<a class="badge badge-secondary" href=/tags/pyqt/index.html>pyqt</a>
-<a class="badge badge-secondary" href=/tags/python/index.html>python</a>
-<a class="badge badge-secondary" href=/tags/sql/index.html>sql</a>
-<a class="badge badge-secondary" href=/tags/yomichan/index.html>yomichan</a></div><hr><p>Yomichan is an Anki plugin built to help students of Japanese learn the language by reading native media on their
+        </svg>
+    </a>
+</div>
+
+
+<div class="container">
+    <h1>
+        Yomichan Anki
+        
+    </h1>
+    
+
+<div>
+    
+    <a class="badge badge-secondary" href="/tags/anki/index.html">anki</a>
+    
+    <a class="badge badge-secondary" href="/tags/anki-connect/index.html">anki-connect</a>
+    
+    <a class="badge badge-secondary" href="/tags/gpl-license/index.html">gpl license</a>
+    
+    <a class="badge badge-secondary" href="/tags/japanese/index.html">japanese</a>
+    
+    <a class="badge badge-secondary" href="/tags/pyqt/index.html">pyqt</a>
+    
+    <a class="badge badge-secondary" href="/tags/python/index.html">python</a>
+    
+    <a class="badge badge-secondary" href="/tags/sql/index.html">sql</a>
+    
+    <a class="badge badge-secondary" href="/tags/yomichan/index.html">yomichan</a>
+    
+</div>
+
+
+    <hr/>
+    <p>Yomichan is an Anki plugin built to help students of Japanese learn the language by reading native media on their
 computer. This application’s one-click flash card creation feature makes vocabulary mining trivial, allowing you to
-focus on enjoying your reading.<p><em>Note: This project is no longer maintained and has been superseded by the <a href=/projects/yomichan/>Yomichan</a> browser extension</em>.<h2 id=installation>Installation</h2><p>Yomichan can be downloaded from the <a href=https://ankiweb.net/shared/info/934748696>Anki shared addon page</a>. This plugin
-will automatically notify you when updates are available.<h2 id=usage>Usage</h2><ol><li><p>Make sure you are running the latest version of Anki.<li><p>Open your vocab deck and note the fields that are used in your deck.<p><a href=/projects/yomichan-anki/img/layout.png class="img-thumbnail img-thumbnail-inline" data-title="Card layout dialog" data-toggle=lightbox data-gallery=gallery><img src=/projects/yomichan-anki/img/layout-thumb.png alt="Card layout dialog"></a><li><p>Launch Yomichan from the tools menu inside Anki.<li><p>Open the text file you want and you will see its contents in the Yomichan. Your layout and color scheme will look
-different because the screenshot shows my personal settings.<p><a href=/projects/yomichan-anki/img/reader.png class="img-thumbnail img-thumbnail-inline" data-title="Reader dialog" data-toggle=lightbox data-gallery=gallery><img src=/projects/yomichan-anki/img/reader-thumb.png alt="Reader dialog"></a><li><p>To look up words hover your mouse over them while pressing the middle mouse button (usually this is your scroll
-wheel). You can also press and hold shift instead if you like (or your mouse has no center button).<li><p>To set up your Anki deck for Yomichan select Preferences from the Edit menu and you should see a screen that looks
-like this:<p><a href=/projects/yomichan-anki/img/preferences.png class="img-thumbnail img-thumbnail-inline" data-title="Preferences dialog" data-toggle=lightbox data-gallery=gallery><img src=/projects/yomichan-anki/img/preferences-thumb.png alt="Preferences dialog"></a><li><p>Now you should add markers such as <code>{expression}</code>, <code>{reading}</code>, <code>{reading}</code> and <code>{sentence}</code> to specify how new
+focus on enjoying your reading.</p>
+<p><em>Note: This project is no longer maintained and has been superseded by the <a href="/projects/yomichan/">Yomichan</a> browser extension</em>.</p>
+<h2 id="installation">Installation</h2>
+<p>Yomichan can be downloaded from the <a href="https://ankiweb.net/shared/info/934748696">Anki shared addon page</a>. This plugin
+will automatically notify you when updates are available.</p>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>
+<p>Make sure you are running the latest version of Anki.</p>
+</li>
+<li>
+<p>Open your vocab deck and note the fields that are used in your deck.</p>
+<p><a href="/projects/yomichan-anki/img/layout.png" class="img-thumbnail img-thumbnail-inline" data-title="Card layout dialog" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/yomichan-anki/img/layout-thumb.png" alt="Card layout dialog"/></a></p>
+</li>
+<li>
+<p>Launch Yomichan from the tools menu inside Anki.</p>
+</li>
+<li>
+<p>Open the text file you want and you will see its contents in the Yomichan.  Your layout and color scheme will look
+different because the screenshot shows my personal settings.</p>
+<p><a href="/projects/yomichan-anki/img/reader.png" class="img-thumbnail img-thumbnail-inline" data-title="Reader dialog" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/yomichan-anki/img/reader-thumb.png" alt="Reader dialog"/></a></p>
+</li>
+<li>
+<p>To look up words hover your mouse over them while pressing the middle mouse button (usually this is your scroll
+wheel). You can also press and hold shift instead if you like (or your mouse has no center button).</p>
+</li>
+<li>
+<p>To set up your Anki deck for Yomichan select Preferences from the Edit menu and you should see a screen that looks
+like this:</p>
+<p><a href="/projects/yomichan-anki/img/preferences.png" class="img-thumbnail img-thumbnail-inline" data-title="Preferences dialog" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/yomichan-anki/img/preferences-thumb.png" alt="Preferences dialog"/></a></p>
+</li>
+<li>
+<p>Now you should add markers such as <code>{expression}</code>, <code>{reading}</code>, <code>{reading}</code> and <code>{sentence}</code> to specify how new
 cards should be created. Card fields will vary depending on your deck model. If you want to be able to use
-<em>AnkiConnect</em> tick the checkbox labeled <em>Enable AnkiConnect</em> as shown above.<li><p>When you look up definitions you will have the option to create Anki cards for them with one click. You will see the
+<em>AnkiConnect</em> tick the checkbox labeled <em>Enable AnkiConnect</em> as shown above.</p>
+</li>
+<li>
+<p>When you look up definitions you will have the option to create Anki cards for them with one click. You will see the
 icons for performing these actions next to each item. <em>Icons for actions which update your decks won’t show up if
 Anki thinks you can’t add a fact with those items</em>. This likely means that they would either be duplicates of
-existing cards in the deck or that Yomichan hasn’t been properly set up for your deck model.<p><a href=/projects/yomichan-anki/img/icons.png class="img-thumbnail img-thumbnail-inline" data-title=Icons data-toggle=lightbox data-gallery=gallery><img src=/projects/yomichan-anki/img/icons-thumb.png alt=Icons></a><p>Here is what the icons mean (in order from left to right):<ul><li>Add term in Kana form even it can be written in Kanji (e.g. べんきょうか).<li>Add term as it appears in the dictionary including Kanji (e.g. 勉強家).<li>Copy the expression, reading and definition for the term to the clipboard.</ul></ol><h3 id=keyboard-shortcuts>Keyboard Shortcuts</h3><p>Yomichan features several keyboard shortcuts for ease of use:<table class=table><thead class=thead-light><tr><th>Shortcut<th>Command<tbody><tr><td><kbd>Shift</kbd><td>Search under cursor<tr><td><kbd>]</kbd><td>Move search cursor forwards<tr><td><kbd>[</kbd><td>Move search cursor backwards<tr><td><kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>#</kbd><td>Add current Kanji at index 0 - 9 to deck<tr><td><kbd>Ctrl</kbd> + <kbd>#</kbd><td>Add current term at index 0 - 9 to deck<tr><td><kbd>Alt</kbd> + <kbd>#</kbd><td>Add current term at index 0 - 9 to deck as Hiragana</table><h3 id=importing-vocabulary>Importing Vocabulary</h3><p>Yomichan is capable of importing vocabulary lists from plain text files and the vocabulary deck database the Amazon
+existing cards in the deck or that Yomichan hasn’t been properly set up for your deck model.</p>
+<p><a href="/projects/yomichan-anki/img/icons.png" class="img-thumbnail img-thumbnail-inline" data-title="Icons" data-toggle="lightbox" data-gallery="gallery"><img src="/projects/yomichan-anki/img/icons-thumb.png" alt="Icons"/></a></p>
+<p>Here is what the icons mean (in order from left to right):</p>
+<ul>
+<li>Add term in Kana form even it can be written in Kanji (e.g. べんきょうか).</li>
+<li>Add term as it appears in the dictionary including Kanji (e.g. 勉強家).</li>
+<li>Copy the expression, reading and definition for the term to the clipboard.</li>
+</ul>
+</li>
+</ol>
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<p>Yomichan features several keyboard shortcuts for ease of use:</p>
+<table class="table">
+<thead class="thead-light">
+<tr>
+<th>Shortcut</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Shift</kbd></td>
+<td>Search under cursor</td>
+</tr>
+<tr>
+<td><kbd>]</kbd></td>
+<td>Move search cursor forwards</td>
+</tr>
+<tr>
+<td><kbd>[</kbd></td>
+<td>Move search cursor backwards</td>
+</tr>
+<tr>
+<td><kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>#</kbd></td>
+<td>Add current Kanji at index 0 - 9 to deck</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd> + <kbd>#</kbd></td>
+<td>Add current term at index  0 - 9 to deck</td>
+</tr>
+<tr>
+<td><kbd>Alt</kbd> + <kbd>#</kbd></td>
+<td>Add current term at index 0 - 9 to deck as Hiragana</td>
+</tr>
+</tbody>
+</table>
+<h3 id="importing-vocabulary">Importing Vocabulary</h3>
+<p>Yomichan is capable of importing vocabulary lists from plain text files and the vocabulary deck database the Amazon
 Kindle automatically generates when you look up words in the built-in dictionary (this file can be found as
 <code>/system/vocabulary/vocab.db</code>). Note that importing does not create flash cards automatically, but rather outputs the
 contents of the file to the Vocabulary and Kanji panes so that you can add facts the same way as when reading within
-Yomichan.<div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
-<span class="breadcrumb-item active">Yomichan Anki</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script>
+Yomichan.</p>
+
+    
+
+<div>
+    <nav class="breadcrumb">
+        
+        <a href="/projects/index.html" class="breadcrumb-item">Projects</a>
+        
+        
+        <span class="breadcrumb-item active">Yomichan Anki</span>
+        
+    </nav>
+</div>
+
+
+</div>
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/tether/js/tether.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/lightbox/ekko-lightbox.min.js"></script>
+    <script src="/main.js"></script>
+    
+
+
+
+<!-- begin livejs code -->
+<script>
+ /*
+  Live.js - One script closer to Designing in the Browser
+  Written for Handcraft.com by Martin Kool (@mrtnkl).
+
+  Version 4.
+  Recent change: Made stylesheet and mimetype checks case insensitive.
+
+  http://livejs.com
+  http://livejs.com/license (MIT)  
+  @livejs
+
+  Include live.js#css to monitor css changes only.
+  Include live.js#js to monitor js changes only.
+  Include live.js#html to monitor html changes only.
+  Mix and match to monitor a preferred combination such as live.js#html,css  
+
+  By default, just include live.js to monitor all css, js and html changes.
+  
+  Live.js can also be loaded as a bookmarklet. It is best to only use it for CSS then,
+  as a page reload due to a change in html or css would not re-include the bookmarklet.
+  To monitor CSS and be notified that it has loaded, include it as: live.js#css,notify
+*/
+(function () {
+
+  var headers = { "Etag": 1, "Last-Modified": 1, "Content-Length": 1, "Content-Type": 1 },
+      resources = {},
+      pendingRequests = {},
+      currentLinkElements = {},
+      oldLinkElements = {},
+      interval = 1000,
+      loaded = false,
+      active = { "html": 1, "css": 1, "js": 1 };
+
+  var Live = {
+
+    // performs a cycle per interval
+    heartbeat: function () {      
+      if (document.body) {        
+        // make sure all resources are loaded on first activation
+        if (!loaded) Live.loadresources();
+        Live.checkForChanges();
+      }
+      setTimeout(Live.heartbeat, interval);
+    },
+
+    // loads all local css and js resources upon first activation
+    loadresources: function () {
+
+      // helper method to assert if a given url is local
+      function isLocal(url) {
+        var loc = document.location,
+            reg = new RegExp("^\\.|^\/(?!\/)|^[\\w]((?!://).)*$|" + loc.protocol + "//" + loc.host);
+        return url.match(reg);
+      }
+
+      // gather all resources
+      var scripts = document.getElementsByTagName("script"),
+          links = document.getElementsByTagName("link"),
+          uris = [];
+
+      // track local js urls
+      for (var i = 0; i < scripts.length; i++) {
+        var script = scripts[i], src = script.getAttribute("src");
+        if (src && isLocal(src))
+          uris.push(src);
+        if (src && src.match(/\blive.js#/)) {
+          for (var type in active)
+            active[type] = src.match("[#,|]" + type) != null
+          if (src.match("notify")) 
+            alert("Live.js is loaded.");
+        }
+      }
+      if (!active.js) uris = [];
+      if (active.html) uris.push(document.location.href);
+
+      // track local css urls
+      for (var i = 0; i < links.length && active.css; i++) {
+        var link = links[i], rel = link.getAttribute("rel"), href = link.getAttribute("href", 2);
+        if (href && rel && rel.match(new RegExp("stylesheet", "i")) && isLocal(href)) {
+          uris.push(href);
+          currentLinkElements[href] = link;
+        }
+      }
+
+      // initialize the resources info
+      for (var i = 0; i < uris.length; i++) {
+        var url = uris[i];
+        Live.getHead(url, function (url, info) {
+          resources[url] = info;
+        });
+      }
+
+      // add rule for morphing between old and new css files
+      var head = document.getElementsByTagName("head")[0],
+          style = document.createElement("style"),
+          rule = "transition: all .3s ease-out;"
+      css = [".livejs-loading * { ", rule, " -webkit-", rule, "-moz-", rule, "-o-", rule, "}"].join('');
+      style.setAttribute("type", "text/css");
+      head.appendChild(style);
+      style.styleSheet ? style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css));
+
+      // yep
+      loaded = true;
+    },
+
+    // check all tracking resources for changes
+    checkForChanges: function () {
+      for (var url in resources) {
+        if (pendingRequests[url])
+          continue;
+
+        Live.getHead(url, function (url, newInfo) {
+          var oldInfo = resources[url],
+              hasChanged = false;
+          resources[url] = newInfo;
+          for (var header in oldInfo) {
+            // do verification based on the header type
+            var oldValue = oldInfo[header],
+                newValue = newInfo[header],
+                contentType = newInfo["Content-Type"];
+            switch (header.toLowerCase()) {
+              case "etag":
+                if (!newValue) break;
+                // fall through to default
+              default:
+                hasChanged = oldValue != newValue;
+                break;
+            }
+            // if changed, act
+            if (hasChanged) {
+              Live.refreshResource(url, contentType);
+              break;
+            }
+          }
+        });
+      }
+    },
+
+    // act upon a changed url of certain content type
+    refreshResource: function (url, type) {
+      switch (type.toLowerCase()) {
+        // css files can be reloaded dynamically by replacing the link element                               
+        case "text/css":
+          var link = currentLinkElements[url],
+              html = document.body.parentNode,
+              head = link.parentNode,
+              next = link.nextSibling,
+              newLink = document.createElement("link");
+
+          html.className = html.className.replace(/\s*livejs\-loading/gi, '') + ' livejs-loading';
+          newLink.setAttribute("type", "text/css");
+          newLink.setAttribute("rel", "stylesheet");
+          newLink.setAttribute("href", url + "?now=" + new Date() * 1);
+          next ? head.insertBefore(newLink, next) : head.appendChild(newLink);
+          currentLinkElements[url] = newLink;
+          oldLinkElements[url] = link;
+
+          // schedule removal of the old link
+          Live.removeoldLinkElements();
+          break;
+
+        // check if an html resource is our current url, then reload                               
+        case "text/html":
+          if (url != document.location.href)
+            return;
+
+          // local javascript changes cause a reload as well
+        case "text/javascript":
+        case "application/javascript":
+        case "application/x-javascript":
+          document.location.reload();
+      }
+    },
+
+    // removes the old stylesheet rules only once the new one has finished loading
+    removeoldLinkElements: function () {
+      var pending = 0;
+      for (var url in oldLinkElements) {
+        // if this sheet has any cssRules, delete the old link
+        try {
+          var link = currentLinkElements[url],
+              oldLink = oldLinkElements[url],
+              html = document.body.parentNode,
+              sheet = link.sheet || link.styleSheet,
+              rules = sheet.rules || sheet.cssRules;
+          if (rules.length >= 0) {
+            oldLink.parentNode.removeChild(oldLink);
+            delete oldLinkElements[url];
+            setTimeout(function () {
+              html.className = html.className.replace(/\s*livejs\-loading/gi, '');
+            }, 100);
+          }
+        } catch (e) {
+          pending++;
+        }
+        if (pending) setTimeout(Live.removeoldLinkElements, 50);
+      }
+    },
+
+    // performs a HEAD request and passes the header info to the given callback
+    getHead: function (url, callback) {
+      pendingRequests[url] = true;
+      var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XmlHttp");
+      xhr.open("HEAD", url, true);
+      xhr.onreadystatechange = function () {
+        delete pendingRequests[url];
+        if (xhr.readyState == 4 && xhr.status != 304) {
+          xhr.getAllResponseHeaders();
+          var info = {};
+          for (var h in headers) {
+            var value = xhr.getResponseHeader(h);
+            // adjust the simple Etag variant to match on its significant part
+            if (h.toLowerCase() == "etag" && value) value = value.replace(/^W\//, '');
+            if (h.toLowerCase() == "content-type" && value) value = value.replace(/^(.*?);.*?$/i, "$1");
+            info[h] = value;
+          }
+          callback(url, info);
+        }
+      }
+      xhr.send();
+    }
+  };
+
+  // start listening
+  if (document.location.protocol != "file:") {
+    if (!window.liveJsLoaded)
+      Live.heartbeat();
+
+    window.liveJsLoaded = true;
+  }
+  else if (window.console)
+    console.log("Live.js doesn't support the file protocol. It needs http.");    
+})();
+</script>
+<!-- end livejs code -->
+</body></html>

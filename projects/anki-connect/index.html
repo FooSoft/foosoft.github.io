@@ -158,6 +158,20 @@ which are available in the reported AnkiConnect version or earlier, everything s
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#099>0</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
+</code></pre><li><p><strong>exportPackage</strong><p>Exports a given deck in <code>.apkg</code> format. Returns <code>true</code> if successful or <code>false</code> otherwise. The optional property
+<code>includeSched</code> (default is <code>false</code>) can be specified to include the cards’ scheduling data.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;exportPackage&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
+    <span style=color:#000080>&#34;params&#34;</span>: {
+        <span style=color:#000080>&#34;deck&#34;</span>: <span style=color:#d14>&#34;Default&#34;</span>,
+        <span style=color:#000080>&#34;path&#34;</span>: <span style=color:#d14>&#34;/data/Deck.apkg&#34;</span>,
+        <span style=color:#000080>&#34;includeSched&#34;</span>: <span style=color:#000;font-weight:bold>true</span>
+    }
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>true</span>,
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
 </code></pre></ul><h4 id=decks>Decks</h4><ul><li><p><strong>deckNames</strong><p>Gets the complete list of deck names for the current user.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;deckNames&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
@@ -1079,21 +1093,6 @@ won’t wait until the Anki process actually terminates.<p><em>Sample request</e
 }
 </code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
-    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
-}
-</code></pre></ul><h3 id=export>Export</h3><ul><li><p><strong>exportPackage</strong><p>Exports a given deck in .apkg format. Returns <code>true</code> if successful or <code>false</code> otherwise.
-The optional property <code>includeSched</code> (default is <code>false</code>) can be specified to include the
-cards’ scheduling data.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
-    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;exportPackage&#34;</span>,
-    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
-    <span style=color:#000080>&#34;params&#34;</span>: {
-        <span style=color:#000080>&#34;deck&#34;</span>: <span style=color:#d14>&#34;Default&#34;</span>,
-        <span style=color:#000080>&#34;path&#34;</span>: <span style=color:#d14>&#34;/data/Deck.apkg&#34;</span>,
-        <span style=color:#000080>&#34;includeSched&#34;</span>: <span style=color:#000;font-weight:bold>true</span>
-    }
-}
-</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
-    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>true</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
 </code></pre></ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>

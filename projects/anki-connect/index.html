@@ -575,7 +575,9 @@ with mandatory <code>url</code> and <code>filename</code> fields. The <code>skip
 downloaded files with an MD5 hash that matches the provided value. This is useful for avoiding the saving of error
 pages and stub files. The <code>fields</code> member is a list of fields that should play audio when the card is displayed in
 Anki. The <code>allowDuplicate</code> member inside <code>options</code> group can be set to true to enable adding duplicate cards.
-Normally duplicate cards can not be added and trigger exception.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+Normally duplicate cards can not be added and trigger exception. The <code>duplicateScope</code> member inside <code>options</code> can be
+used to specify the scope for which duplicates are checked. A value of <code>&#34;deck&#34;</code> will only check for duplicates in the
+target deck; any other value will check the entire collection.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;addNote&#34;</span>,
     <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -587,7 +589,8 @@ Normally duplicate cards can not be added and trigger exception.<p><em>Sample re
                 <span style=color:#000080>&#34;Back&#34;</span>: <span style=color:#d14>&#34;back content&#34;</span>
             },
             <span style=color:#000080>&#34;options&#34;</span>: {
-                <span style=color:#000080>&#34;allowDuplicate&#34;</span>: <span style=color:#000;font-weight:bold>false</span>
+                <span style=color:#000080>&#34;allowDuplicate&#34;</span>: <span style=color:#000;font-weight:bold>false</span>,
+                <span style=color:#000080>&#34;duplicateScope&#34;</span>: <span style=color:#d14>&#34;deck&#34;</span>
             },
             <span style=color:#000080>&#34;tags&#34;</span>: [
                 <span style=color:#d14>&#34;yomichan&#34;</span>

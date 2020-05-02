@@ -120,6 +120,14 @@ which are available in the reported AnkiConnect version or earlier, everything s
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
+</code></pre><li><p><strong>getProfiles</strong><p>Retrieve the list of profiles.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;getProfiles&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;result&#34;</span>: [<span style=color:#d14>&#34;User 1&#34;</span>],
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
 </code></pre><li><p><strong>loadProfile</strong><p>Selects the profile specified in request.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;loadProfile&#34;</span>,
     <span style=color:#000080>&#34;params&#34;</span>: {
@@ -167,6 +175,18 @@ which are available in the reported AnkiConnect version or earlier, everything s
         <span style=color:#000080>&#34;deck&#34;</span>: <span style=color:#d14>&#34;Default&#34;</span>,
         <span style=color:#000080>&#34;path&#34;</span>: <span style=color:#d14>&#34;/data/Deck.apkg&#34;</span>,
         <span style=color:#000080>&#34;includeSched&#34;</span>: <span style=color:#000;font-weight:bold>true</span>
+    }
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>true</span>,
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
+</code></pre><li><p><strong>importPackage</strong><p>Imports a file in <code>.apkg</code> format into the collection. Returns <code>true</code> if successful or <code>false</code> otherwise.
+Note that the file path is relative to Anki’s collection.media folder, not to the client.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;importPackage&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
+    <span style=color:#000080>&#34;params&#34;</span>: {
+        <span style=color:#000080>&#34;path&#34;</span>: <span style=color:#d14>&#34;/data/Deck.apkg&#34;</span>,
     }
 }
 </code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{

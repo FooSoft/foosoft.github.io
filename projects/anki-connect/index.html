@@ -17,7 +17,7 @@ FooSoft Productions</a>
 <a class="badge badge-secondary" href=/tags/yomichan/index.html>yomichan</a></div><hr><p>The AnkiConnect plugin enables external applications such as <a href=/projects/yomichan/>Yomichan</a> to communicate with
 <a href=https://apps.ankiweb.net/>Anki</a> over a network interface. This software makes it possible to execute queries against
 the user’s card deck, automatically create new vocabulary and Kanji flash cards, and more. AnkiConnect is compatible
-with the latest stable (2.1.x) releases of Anki; older versions (2.0.x and below) are no longer supported.<h2 id=table-of-contents>Table of Contents</h2><ul><li><a href=/projects/anki-connect/index.html#installation>Installation</a><ul><li><a href=/projects/anki-connect/index.html#notes-for-windows-users>Notes for Windows Users</a><li><a href=/projects/anki-connect/index.html#notes-for-mac-os-x-users>Notes for Mac OS X Users</a></ul><li><a href=/projects/anki-connect/index.html#application-interface-for-developers>Application Interface for Developers</a><ul><li><a href=/projects/anki-connect/index.html#sample-invocation>Sample Invocation</a><li><a href=/projects/anki-connect/index.html#supported-actions>Supported Actions</a><ul><li><a href=/projects/anki-connect/index.html#miscellaneous>Miscellaneous</a><li><a href=/projects/anki-connect/index.html#decks>Decks</a><li><a href=/projects/anki-connect/index.html#models>Models</a><li><a href=/projects/anki-connect/index.html#notes>Notes</a><li><a href=/projects/anki-connect/index.html#cards>Cards</a><li><a href=/projects/anki-connect/index.html#media>Media</a><li><a href=/projects/anki-connect/index.html#graphical>Graphical</a></ul></ul></ul><h2 id=installation>Installation</h2><p>The installation process is similar to that of other Anki plugins and can be accomplished in three steps:<ol><li>Open the <code>Install Add-on</code> dialog by selecting <code>Tools</code> | <code>Add-ons</code> | <code>Browse &amp; Install</code> in Anki.<li>Input <a href=https://ankiweb.net/shared/info/2055492159>2055492159</a> into the text box labeled <code>Code</code> and press the <code>OK</code> button to proceed.<li>Restart Anki when prompted to do so in order to complete the installation of AnkiConnect.</ol><p>Anki must be kept running in the background in order for other applications to be able to use AnkiConnect. You can
+with the latest stable (2.1.x) releases of Anki; older versions (2.0.x and below) are no longer supported.<h2 id=table-of-contents>Table of Contents</h2><ul><li><a href=/projects/anki-connect/index.html#installation>Installation</a><ul><li><a href=/projects/anki-connect/index.html#notes-for-windows-users>Notes for Windows Users</a><li><a href=/projects/anki-connect/index.html#notes-for-mac-os-x-users>Notes for Mac OS X Users</a></ul><li><a href=/projects/anki-connect/index.html#application-interface-for-developers>Application Interface for Developers</a><ul><li><a href=/projects/anki-connect/index.html#sample-invocation>Sample Invocation</a><li><a href=/projects/anki-connect/index.html#supported-actions>Supported Actions</a><ul><li><a href=/projects/anki-connect/index.html#miscellaneous>Miscellaneous</a><li><a href=/projects/anki-connect/index.html#statistics>Statistics</a><li><a href=/projects/anki-connect/index.html#decks>Decks</a><li><a href=/projects/anki-connect/index.html#models>Models</a><li><a href=/projects/anki-connect/index.html#notes>Notes</a><li><a href=/projects/anki-connect/index.html#cards>Cards</a><li><a href=/projects/anki-connect/index.html#media>Media</a><li><a href=/projects/anki-connect/index.html#graphical>Graphical</a></ul></ul></ul><h2 id=installation>Installation</h2><p>The installation process is similar to that of other Anki plugins and can be accomplished in three steps:<ol><li>Open the <code>Install Add-on</code> dialog by selecting <code>Tools</code> | <code>Add-ons</code> | <code>Browse &amp; Install</code> in Anki.<li>Input <a href=https://ankiweb.net/shared/info/2055492159>2055492159</a> into the text box labeled <code>Code</code> and press the <code>OK</code> button to proceed.<li>Restart Anki when prompted to do so in order to complete the installation of AnkiConnect.</ol><p>Anki must be kept running in the background in order for other applications to be able to use AnkiConnect. You can
 verify that AnkiConnect is running at any time by accessing <a href=http://localhost:8765>localhost:8765</a> in your browser. If
 the server is running, you should see the message <code>AnkiConnect v.6</code> displayed in your browser window.<h3 id=notes-for-windows-users>Notes for Windows Users</h3><p>Windows users may see a firewall nag dialog box appear on Anki startup. This occurs because AnkiConnect hosts a local
 server in order to enable other applications to connect to it. The host application, Anki, must be unblocked for this
@@ -159,14 +159,6 @@ which are available in the reported AnkiConnect version or earlier, everything s
     ],
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
 }
-</code></pre><li><p><strong>getNumCardsReviewedToday</strong><p>Gets the count of cards that have been reviewed in the current day (with day start time as configured by user in anki)<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
-    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;getNumCardsReviewedToday&#34;</span>,
-    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
-}
-</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
-    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#099>0</span>,
-    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
-}
 </code></pre><li><p><strong>exportPackage</strong><p>Exports a given deck in <code>.apkg</code> format. Returns <code>true</code> if successful or <code>false</code> otherwise. The optional property
 <code>includeSched</code> (default is <code>false</code>) can be specified to include the cards’ scheduling data.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;exportPackage&#34;</span>,
@@ -192,6 +184,22 @@ Note that the file path is relative to Anki’s collection.media folder, not to 
 </code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>true</span>,
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
+</code></pre></ul><h4 id=statistics>Statistics</h4><ul><li><p><strong>getNumCardsReviewedToday</strong><p>Gets the count of cards that have been reviewed in the current day (with day start time as configured by user in anki)<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;getNumCardsReviewedToday&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#099>0</span>,
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>
+}
+</code></pre><li><p><strong>getCollectionStatsHTML</strong><p>Gets the collection statistics report<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;getCollectionStatsHTML&#34;</span>,
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
+}
+</code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
+    <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,
+    <span style=color:#000080>&#34;result&#34;</span>: <span style=color:#d14>&#34;&lt;center&gt; lots of HTML here &lt;/center&gt;&#34;</span>,
 }
 </code></pre></ul><h4 id=decks>Decks</h4><ul><li><p><strong>deckNames</strong><p>Gets the complete list of deck names for the current user.<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;deckNames&#34;</span>,

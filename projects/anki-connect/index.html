@@ -195,7 +195,10 @@ Note that the file path is relative to Anki’s collection.media folder, not to 
 }
 </code></pre><li><p><strong>getCollectionStatsHTML</strong><p>Gets the collection statistics report<p><em>Sample request</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;action&#34;</span>: <span style=color:#d14>&#34;getCollectionStatsHTML&#34;</span>,
-    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>
+    <span style=color:#000080>&#34;version&#34;</span>: <span style=color:#099>6</span>,
+    <span style=color:#000080>&#34;params&#34;</span>: {
+        <span style=color:#000080>&#34;wholeCollection&#34;</span>: <span style=color:#000;font-weight:bold>true</span>
+    }
 }
 </code></pre><p><em>Sample result</em>:<pre><code class=language-json style=background-color:#fff>{
     <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>,

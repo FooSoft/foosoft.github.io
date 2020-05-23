@@ -19,7 +19,7 @@ FooSoft Productions</a>
 <a class="badge badge-secondary" href=/tags/msys2/index.html>msys2</a>
 <a class="badge badge-secondary" href=/tags/stormlib/index.html>stormlib</a></div><hr><p>The Lazarus project aims to preserve <a href=https://en.wikipedia.org/wiki/Diablo_II>Diablo II</a> by reimplementing the game
 engine in the Go programming language. Lazarus is a drop-in replacement for the original game executable; the user is
-responsible for supplying the game assets (namely the MPQ files) from the official game media.<p><img src=/projects/lazarus/img/viewer.png alt class="no-shadow p-3 bg-light rounded"><h2 id=building>Building</h2><p>It is not currently possible to use <code>go get</code> to install all of the packages in the project in one step; some assembly is
+responsible for supplying the game assets (namely the MPQ files) from the official game media.<p><img src=/projects/lazarus/img/viewer.png alt class=rounded><h2 id=building>Building</h2><p>It is not currently possible to use <code>go get</code> to install all of the packages in the project in one step; some assembly is
 required. Follow the instructions below to set up a build environment from a fresh install of your 64-bit operating
 system of choice.<h3 id=linux>Linux</h3><p>Lazarus is primarily being developed on Fedora, but the required package names are also provided for Ubuntu.<ol><li>Install the required packages (for <a href=https://getfedora.org/>Fedora</a> users):<pre><code># dnf install golang gcc-c++ cmake make git SDL2-devel mesa-libGL-devel zlib-devel bzip2-devel
 </code></pre><p>Install the required packages (for <a href=https://www.ubuntu.com/>Ubuntu</a> users):<pre><code># apt-get install golang g++ cmake make git libsdl2-dev libgl1-mesa-dev zlib1g-dev libbz2-dev

@@ -26,16 +26,16 @@ file basis using <code>ftplugin</code> or <code>autocmd</code>. For example, the
     wobble,
     wubble
 )
-</code></pre><p><em>Line prefix enabled for Vimscript (<code>let g:argwrap_line_prefix = &#39;\&#39;</code>)</em><pre><code>Foo(
+</code></pre><p><em>Line prefix enabled for Vimscript (<code>let g:argwrap_line_prefix = '\'</code>)</em><pre><code>Foo(
     \wibble,
     \wobble,
     \wubble
 \)
 </code></pre><li><p><strong>argwrap_padded_braces</strong><p>Specifies which brace types should be padded on the inside with spaces.<p><em>Brace padding disabled (default)</em><pre><code>[1, 2, 3]
 {1, 2, 3}
-</code></pre><p><em>Brace padding enabled for square brackets only (<code>let g:argwrap_padded_braces = &#39;[&#39;</code>)</em><pre><code>[ 1, 2, 3 ]
+</code></pre><p><em>Brace padding enabled for square brackets only (<code>let g:argwrap_padded_braces = '['</code>)</em><pre><code>[ 1, 2, 3 ]
 {1, 2, 3}
-</code></pre><p><em>Padding can be specified for multiple brace types (<code>let g:argwrap_padded_braces = &#39;[{&#39;</code>)</em><li><p><strong>argwrap_tail_comma</strong><p>Specifies if any closing brace should be preceded with a comma when wrapping lines.<p><em>Tail comma disabled (default)</em><pre><code>Foo(
+</code></pre><p><em>Padding can be specified for multiple brace types (<code>let g:argwrap_padded_braces = '[{'</code>)</em><li><p><strong>argwrap_tail_comma</strong><p>Specifies if any closing brace should be preceded with a comma when wrapping lines.<p><em>Tail comma disabled (default)</em><pre><code>Foo(
     wibble,
     wobble,
     wubble
@@ -50,7 +50,7 @@ file basis using <code>ftplugin</code> or <code>autocmd</code>. For example, the
     wobble,
     wubble
 )
-</code></pre><p><em>Tail comma enabled for square brackets only (<code>let g:argwrap_tail_comma_braces = &#39;[&#39;</code>)</em><pre><code>[
+</code></pre><p><em>Tail comma enabled for square brackets only (<code>let g:argwrap_tail_comma_braces = '['</code>)</em><pre><code>[
     1,
     2,
     3,
@@ -60,7 +60,7 @@ file basis using <code>ftplugin</code> or <code>autocmd</code>. For example, the
     wobble,
     wubble
 )
-</code></pre><p><em>Tail indent enabled for parenthesis (<code>let g:argwrap_tail_indent_braces = &#39;(&#39;</code>)</em><pre><code>Foo(
+</code></pre><p><em>Tail indent enabled for parenthesis (<code>let g:argwrap_tail_indent_braces = '('</code>)</em><pre><code>Foo(
     wibble,
     wobble,
     wubble

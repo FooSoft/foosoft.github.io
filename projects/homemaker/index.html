@@ -266,7 +266,7 @@ symlink to be successfully created (for example the <code>.config</code> directo
 behavior, this parameter defaults to <code>true</code>; however you can explicitly disable it if required. You can specify the
 access permissions of directories created by force by providing a third array item in the link descriptor. For
 example, if you wanted the <code>.ssh</code> directory to be created with mode <code>700</code>, you could write the following:
-<code>[&#34;.ssh/id_rsa.pub&#34;, &#34;.ssh_flatline/id_rsa.pub&#34;, &#34;0700&#34;]</code>. Notice that you can specify permissions in octal notation
+<code>[".ssh/id_rsa.pub", ".ssh_flatline/id_rsa.pub", "0700"]</code>. Notice that you can specify permissions in octal notation
 by adding a leading zero value (the <code>0x</code> prefix signifies hexadecimal).<li><p><strong>nocmds</strong><p>Do not execute commands for the <code>cmds</code> blocks inside of tasks.<li><p><strong>nolinks</strong><p>Do not create links for the <code>links</code> blocks inside of tasks.<li><p><strong>task</strong><p>This parameter is used to specify which task Homemaker will process when executed. It defaults to the <code>default</code>
 task, which should be used when creating a configuration file that does not have system-specific tasks specified.<li><p><strong>unlink</strong><p>Sometimes it’s useful to “uninstall” links previously created by Homemaker. When running with the <code>unlink</code> flag, the
 tool will delete the links created by the tasks provided. This flag automatically sets the <code>nocmds</code> flag as well,

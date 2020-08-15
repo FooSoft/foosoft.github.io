@@ -25,7 +25,7 @@ take this intermediate data and store it in a reasonable, industry standard repr
 </code></pre><li>Find the executable in the <code>build</code> directory.</ol><h2 id=usage>Usage</h2><p>Zero-EPWING takes a single parameter, the directory of the EPWING dictionary to dump. It also supports the following
 optional flags:<ul><li><code>--entries</code> (<code>-e</code>): output dictionary entry data (most common option).<li><code>--fonts</code> (<code>-f</code>): output output font bitmap data (useful for OCR).<li><code>--markup</code> (<code>-m</code>): markup the output with as much metadata as possible.<li><code>--positions</code> (<code>-s</code>): output <em>page</em> and <em>offset</em> data for each entry.<li><code>--pretty</code> (<code>-p</code>): output pretty-printed JSON (useful for debugging).</ul><p>Upon loading and processing the requested EPWING data, Zero-EPWING will output a UTF-8 encoded JSON file to <code>stdout</code>.
 Diagnostic information about errors will be printed to <code>stderr</code>. Serious errors will result in this application
-returning a non-zero exit code. A sample of the JSON dictionary entry data output is pretty-printed below for reference.<pre><code class=language-json style=background-color:#fff>{
+returning a non-zero exit code. A sample of the JSON dictionary entry data output is pretty-printed below for reference.<pre style=background-color:#fff>{
     <span style=color:#000080>&#34;charCode&#34;</span>: <span style=color:#d14>&#34;jisx0208&#34;</span>,
     <span style=color:#000080>&#34;discCode&#34;</span>: <span style=color:#d14>&#34;epwing&#34;</span>,
     <span style=color:#000080>&#34;subbooks&#34;</span>: [
@@ -45,7 +45,7 @@ returning a non-zero exit code. A sample of the JSON dictionary entry data outpu
         }
     ]
 }
-</code></pre><p>You may have noticed the unusual-looking double curly bracket markers such as <code>{{w_50035}}</code>. Remember what I mentioned
+</pre><p>You may have noticed the unusual-looking double curly bracket markers such as <code>{{w_50035}}</code>. Remember what I mentioned
 about certain characters being represented by image files? There are two graphical fonts sets in each dictionary: narrow
 and wide. Both of these font sets are available in four sizes: 24, 30, 36, and 48 pixels. Whenever a character cannot be
 encoded as text, a glyph is used in its place. These font indices cannot be converted directly to characters, differ

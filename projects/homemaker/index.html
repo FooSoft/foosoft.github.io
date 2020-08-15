@@ -45,7 +45,7 @@ TOML will be used for the example configuration files. Worry not if you are unfa
 need to know about it will be shown below.<p>Let’s start by looking at a basic example configuration file, <code>example.toml</code>. Notice that Homemaker determines which
 markdown language processor to use based on the extension of your c:nfiguration file. Use <code>.toml/.tml</code> for TOML,
 <code>.yaml/.yml</code> for YAML, and <code>.json</code> for JSON. Be aware that specifying an incorrect file extension will prevent your
-configuration file from being parsed correctly.<pre><code class=language-toml style=background-color:#fff>[tasks.default]
+configuration file from being parsed correctly.<pre style=background-color:#fff>[tasks.default]
     links = [
         [<span style=color:#d14>&#34;.config/fish&#34;</span>],
         [<span style=color:#d14>&#34;.config/keepassx&#34;</span>],
@@ -54,7 +54,7 @@ configuration file from being parsed correctly.<pre><code class=language-toml st
         [<span style=color:#d14>&#34;.gitconfig&#34;</span>],
         [<span style=color:#d14>&#34;.xinputrc&#34;</span>],
     ]
-</code></pre><p>We could have just as easily written this configuration in JSON (or YAML for that matter), but it’s subjectively uglier:<pre><code class=language-json style=background-color:#fff>{
+</pre><p>We could have just as easily written this configuration in JSON (or YAML for that matter), but it’s subjectively uglier:<pre style=background-color:#fff>{
     <span style=color:#000080>&#34;tasks&#34;</span>: {
         <span style=color:#000080>&#34;default&#34;</span>: {
             <span style=color:#000080>&#34;links&#34;</span>: [
@@ -68,7 +68,7 @@ configuration file from being parsed correctly.<pre><code class=language-toml st
         }
     }
 }
-</code></pre><p>To create symlinks based on the contents of the TOML file from before, we invoke the <code>homemaker</code> utility as follows:<pre><code>$ homemaker example.toml /mnt/data/config
+</pre><p>To create symlinks based on the contents of the TOML file from before, we invoke the <code>homemaker</code> utility as follows:<pre><code>$ homemaker example.toml /mnt/data/config
 </code></pre><p>To get a better idea of what <code>/mnt/data/config</code> is, let’s look at the in-program documentation:<pre><code>Usage: homemaker [options] conf src
 https://foosoft.net/projects/homemaker/
 
@@ -99,7 +99,7 @@ it defaults to your home directory.<p>Another useful parameter is <code>task</co
 line. In practice, this means that Homemaker will try to find a task called <code>default</code> and execute it. You can create as
 many unique tasks as necessary to correspond to your configuration requirements, and then choose which one will execute
 by specifying it on the command line in the format <code>-task=taskname</code>. Good candidates for tasks are computer names, as
-shown in the configuration file below:<pre><code class=language-toml style=background-color:#fff>[tasks.flatline]
+shown in the configuration file below:<pre style=background-color:#fff>[tasks.flatline]
     links = [
         [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_flatline&#34;</span>],
         [<span style=color:#d14>&#34;.s3cfg&#34;</span>],
@@ -112,7 +112,7 @@ shown in the configuration file below:<pre><code class=language-toml style=backg
         [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_wintermute&#34;</span>],
         [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_wintermute&#34;</span>],
     ]
-</code></pre><p>Here we see two tasks, named after the computers that will be using them, <code>flatline</code> and <code>wintermute</code>. Certain
+</pre><p>Here we see two tasks, named after the computers that will be using them, <code>flatline</code> and <code>wintermute</code>. Certain
 configuration data like key pairs and other per-machine settings should only be linked on the computer that is using
 them. That is to say if <code>flatline</code> and <code>wintermute</code> both try to manage the <code>.ssh</code> directory, a conflict will occur at
 both the source and destination directories. We can easily resolve the source directory conflict by giving the <code>.ssh</code>
@@ -121,7 +121,7 @@ be fixed as shown above; we will create per-machine tasks that will symlink only
 item. A second item can be added if the source file or directory name is different from that in the destination. If the
 paths provided are relative they will be assumed to be relative to the destination and source directories respectively.<p>Now that we have machine specific tasks defined in our configuration file, it would be nice to still be able to share
 configuration settings that are common to the two computers. We can do this by adding a <code>dep</code> array to our tasks as
-shown below:<pre><code class=language-toml style=background-color:#fff>[tasks.common]
+shown below:<pre style=background-color:#fff>[tasks.common]
     links = [
         [<span style=color:#d14>&#34;.config/fish&#34;</span>],
         [<span style=color:#d14>&#34;.config/keepassx&#34;</span>],
@@ -146,13 +146,13 @@ shown below:<pre><code class=language-toml style=background-color:#fff>[tasks.co
         [<span style=color:#d14>&#34;.config/syncthing&#34;</span>, <span style=color:#d14>&#34;.config/syncthing_wintermute&#34;</span>],
         [<span style=color:#d14>&#34;.ssh&#34;</span>, <span style=color:#d14>&#34;.ssh_wintermute&#34;</span>],
     ]
-</code></pre><p>Homemaker will process the dependency tasks before processing the task itself.<p>Sometimes, just linking a config file is not enough, because the content of the configuration file needs to be adapted
+</pre><p>Homemaker will process the dependency tasks before processing the task itself.<p>Sometimes, just linking a config file is not enough, because the content of the configuration file needs to be adapted
 to the target and we do not want to maintain several different versions of the same file. For such use cases, Homemaker
-supports templates. The configuration syntax for templates is the same as for links.<pre><code class=language-toml style=background-color:#fff>[tasks.template]
+supports templates. The configuration syntax for templates is the same as for links.<pre style=background-color:#fff>[tasks.template]
     templates = [
         [<span style=color:#d14>&#34;.gitconfig&#34;</span>]
     ]
-</code></pre><p>In the template file, the <a href=https://godoc.org/text/template>go templating syntax</a> is used for the customization of the
+</pre><p>In the template file, the <a href=https://godoc.org/text/template>go templating syntax</a> is used for the customization of the
 configuration file. With the <code>.Env</code> prefix, all environment variables are available. Template example:<pre><code>[user]
 name = &#34;John Doe&#34;
 {{if eq .Env.USER &#34;john&#34;}}
@@ -167,7 +167,7 @@ command returns a nonzero exit code, Homemaker will display an error message and
 <em>abort</em>, <em>retry</em>, or <em>cancel</em>. Additionally, if you must have explicit control of whether commands execute before or
 after the linking phase, you can use the <code>cmdspre</code> and <code>cmdspost</code> arrays which have similar behavior.<p>The example task below will clone and install configuration files for Vim into the <code>~/.config</code> directory, and create
 links to it from the home directory. You may notice that this task references an environment variable (set by Homemaker
-itself) in the <code>links</code> block; you can read more about how to use environment variables in the following section.<pre><code class=language-toml style=background-color:#fff>[tasks.vim]
+itself) in the <code>links</code> block; you can read more about how to use environment variables in the following section.<pre style=background-color:#fff>[tasks.vim]
     cmds = [
         [<span style=color:#d14>&#34;rm&#34;</span>, <span style=color:#d14>&#34;-rf&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>],
         [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;clone&#34;</span>, <span style=color:#d14>&#34;https://github.com/FooSoft/dotvim&#34;</span>, <span style=color:#d14>&#34;.config/vim&#34;</span>],
@@ -176,31 +176,31 @@ itself) in the <code>links</code> block; you can read more about how to use envi
         [<span style=color:#d14>&#34;.vimrc&#34;</span>, <span style=color:#d14>&#34;${HM_DEST}/.config/vim/.vimrc&#34;</span>],
         [<span style=color:#d14>&#34;.vim&#34;</span>, <span style=color:#d14>&#34;${HM_DEST}/.config/vim/.vim&#34;</span>],
     ]
-</code></pre><h3 id=environment-variables>Environment Variables</h3><p>Homemaker supports the expansion of environment variables for both command and link blocks as well as for dependencies.
+</pre><h3 id=environment-variables>Environment Variables</h3><p>Homemaker supports the expansion of environment variables for both command and link blocks as well as for dependencies.
 This is a good way of avoiding having to hard code absolute paths into your configuration file. To reference an
 environment variable simply use <code>${ENVVAR}</code> or <code>$ENVVAR</code>, where <code>ENVVAR</code> is the variable name (notice the similarity
 to normal shell variable expansion). In addition to being able to reference all of the environment variables defined
 on your system, Homemaker defines a couple of extra ones for ease of use:<ul><li><p><code>HM_CONFIG</code><p>Path to the homemaker configuration file.<li><p><code>HM_TASK</code><p>Task name invoked from the command line.<li><p><code>HM_SRC</code><p>Source directory for link creation.<li><p><code>HM_DEST</code><p>Destination directory for link creation.<li><p><code>HM_VARIANT</code><p>Variant used for task and macro execution.</ul><p>Environment variables can also be set within tasks block by assigning them to the <code>envs</code> variable. The example below
-demonstrates the setting and clearing of environment variables:<pre><code class=language-toml style=background-color:#fff>[tasks.default]
+demonstrates the setting and clearing of environment variables:<pre style=background-color:#fff>[tasks.default]
     envs = [
         [<span style=color:#d14>&#34;MYENV1&#34;</span>, <span style=color:#d14>&#34;foo&#34;</span>],        <span style=color:#998;font-style:italic># set MYENV1 to foo</span>
         [<span style=color:#d14>&#34;MYENV2&#34;</span>, <span style=color:#d14>&#34;foo&#34;</span>, <span style=color:#d14>&#34;bar&#34;</span>], <span style=color:#998;font-style:italic># set MYENV2 to foo,bar</span>
         [<span style=color:#d14>&#34;MYENV3&#34;</span>],               <span style=color:#998;font-style:italic># clear MYENV3</span>
     ]
-</code></pre><p>It should be pointed out that it is possible to reference other environment variables using the syntax shown in the
+</pre><p>It should be pointed out that it is possible to reference other environment variables using the syntax shown in the
 first part of this section. This makes it possible to expand variables like <code>PATH</code> without overwriting their existing
 value.<h3 id=command-macros>Command Macros</h3><p>It is often convenient to execute certain commands repeatedly within task blocks to install packages, clone git
 repositories, etc. Homemaker provides macro blocks for this purpose; you can specify a command <em>prefix</em> and <em>suffix</em>
 that is used to wrap the parameters you provide. For example, you can declare a macro for <code>apt-get install</code> and with the
-declaration shown below (much like tasks, macro declarations are global).<pre><code class=language-toml style=background-color:#fff>[macros.install]
+declaration shown below (much like tasks, macro declarations are global).<pre style=background-color:#fff>[macros.install]
     prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;apt-get&#34;</span>, <span style=color:#d14>&#34;install&#34;</span>, <span style=color:#d14>&#34;-y&#34;</span>]
-</code></pre><p>Macros can be referenced from commands by prefixing the macro name with the <code>@</code> symbol (it must be the first character
-of the first item of a command). For example, the task below installs several python packages using the macro above:<pre><code class=language-toml style=background-color:#fff>[tasks.python]
+</pre><p>Macros can be referenced from commands by prefixing the macro name with the <code>@</code> symbol (it must be the first character
+of the first item of a command). For example, the task below installs several python packages using the macro above:<pre style=background-color:#fff>[tasks.python]
     cmds = [
         [<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;python-dev&#34;</span>, <span style=color:#d14>&#34;python-pip&#34;</span>, <span style=color:#d14>&#34;python3-pip&#34;</span>]
     ]
-</code></pre><p>Macros can have dependencies just like tasks. The <code>git clone</code> macro below makes sure that git is installed before
-attempting to clone a repository with it.<pre><code class=language-toml style=background-color:#fff>[macros.clone]
+</pre><p>Macros can have dependencies just like tasks. The <code>git clone</code> macro below makes sure that git is installed before
+attempting to clone a repository with it.<pre style=background-color:#fff>[macros.clone]
     deps = [<span style=color:#d14>&#34;git&#34;</span>]
     prefix = [<span style=color:#d14>&#34;git&#34;</span>, <span style=color:#d14>&#34;clone&#34;</span>]
 
@@ -208,53 +208,53 @@ attempting to clone a repository with it.<pre><code class=language-toml style=ba
     cmds = [
         [<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;git&#34;</span>]
     ]
-</code></pre><p>Macros help reduce the clutter that comes from the repeated commands which must be executed to bootstrap a new system.
+</pre><p>Macros help reduce the clutter that comes from the repeated commands which must be executed to bootstrap a new system.
 When executed with the <code>verbose</code> option, Homemaker will echo the expanded macro commands before executing them.<h3 id=task-and-macro-variants>Task and Macro Variants</h3><p>If you wish to use this tool in a truly cross-platform and cross-distribution manner without authoring multiple
 configuration files, you will have to provide information to Homemaker about the environment it is running in. Different
 operating systems and distributions use different package managers and package names; we solve this problem with task
 and macro <em>variants</em>.<p>For example, if you want to write a generic macro for installing packages that works on both Ubuntu and Arch Linux, you
-can define the following variants (Ubuntu uses the <em>apt</em> package manager and Arch Linux uses <em>pacman</em>).<pre><code class=language-toml style=background-color:#fff>[macros.install__ubuntu]
+can define the following variants (Ubuntu uses the <em>apt</em> package manager and Arch Linux uses <em>pacman</em>).<pre style=background-color:#fff>[macros.install__ubuntu]
     prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;apt-get&#34;</span>, <span style=color:#d14>&#34;install&#34;</span>]
 
 [macros.install__arch]
     prefix = [<span style=color:#d14>&#34;sudo&#34;</span>, <span style=color:#d14>&#34;pacman&#34;</span>, <span style=color:#d14>&#34;-S&#34;</span>]
-</code></pre><p>The double underscore characters signify that the following identifier is a <em>variant decorator</em>. In most cases, you only
+</pre><p>The double underscore characters signify that the following identifier is a <em>variant decorator</em>. In most cases, you only
 have to think about variants when you are writing task and macro definitions, not when using them. For example, to see
-how to use the <code>install</code> macro that we just created, examine the configuration below:<pre><code class=language-toml style=background-color:#fff>[tasks.tmux]
+how to use the <code>install</code> macro that we just created, examine the configuration below:<pre style=background-color:#fff>[tasks.tmux]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;tmux&#34;</span>]]
-</code></pre><p>Notice that the package manager is conveniently abstracted by the <code>install</code> macro. Be aware that for this example to
+</pre><p>Notice that the package manager is conveniently abstracted by the <code>install</code> macro. Be aware that for this example to
 work properly, you must specify a variant on the command line as shown below. Failing to specify a variant will cause
 Homemaker try to look for an undecorated <code>install</code> macro (which doesn’t exist), leading to failure.<pre><code>$ homemaker --variant=ubuntu example.toml /mnt/data/config
-</code></pre><p>Tasks can be be decorated much like commands:<pre><code class=language-toml style=background-color:#fff>[tasks.vim__server]
+</code></pre><p>Tasks can be be decorated much like commands:<pre style=background-color:#fff>[tasks.vim__server]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;vim-nox&#34;</span>]]
 
 [tasks.vim]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;gvim&#34;</span>]]
-</code></pre><p>In the above example, we avoid installing <code>gvim</code> on the server variant, where the X windowing system is not installed or
+</pre><p>In the above example, we avoid installing <code>gvim</code> on the server variant, where the X windowing system is not installed or
 needed. Homemaker only executes the best task or macro candidate; if the provided variant does not match any tasks or
 macros, the base undecorated version will be used instead if it is available.<p>The command below will execute the <code>vim__server</code> task:<pre><code>$ homemaker --variant=server example.toml /mnt/data/config
 </code></pre><p>Both of the commands below will execute the <code>vim</code> task:<pre><code>$ homemaker --variant=foobar example.toml /mnt/data/config
 $ homemaker example.toml /mnt/data/config
 </code></pre><p>If for some reason you wish to explicitly reference the base task from the decorated task, you can add a dependency that
-contains a <em>variant override</em> as shown in the somewhat contrived examples below:<pre><code class=language-toml style=background-color:#fff>[tasks.foo]
+contains a <em>variant override</em> as shown in the somewhat contrived examples below:<pre style=background-color:#fff>[tasks.foo]
 [tasks.foo__specific]
     deps = [<span style=color:#d14>&#34;foo__&#34;</span>]         <span style=color:#998;font-style:italic># executes foo and foo_specific</span>
 
 [tasks.bar__specific]
 [tasks.bar]
     deps = [<span style=color:#d14>&#34;bar__specific&#34;</span>] <span style=color:#998;font-style:italic># executes bar_specific and bar</span>
-</code></pre><p>Although variants are somewhat of an advanced topic as far as Homemaker features are concerned, they can be used to
+</pre><p>Although variants are somewhat of an advanced topic as far as Homemaker features are concerned, they can be used to
 provide some basic conditional functionality to your configuration file without significantly increasing complexity for
 the user.<h3 id=conditional-execution>Conditional Execution</h3><p>Homemaker provides a facility for determining whether or not a given task should execute at runtime; this is
 accomplished with the <code>accepts</code> and <code>rejects</code> task variables. Both follow the same syntax as the <code>cmds</code> variable and
 support macro and environment variable expansion.<ul><li><p><strong>accepts</strong><p>Execute commands non-interactively; any non-zero return code will cause the task to be skipped.<li><p><strong>rejects</strong><p>Execute commands non-interactively; any return code of zero code will cause the task to be skipped.</ul><p>The intent of this feature is to allow tasks to “early out” when the work they carry out has already been completed. In
 the example below, we use the <code>which</code> command to see if <a href=https://fishshell.com/>fish shell</a> is already installed before
 trying to install it. This is possible because <code>which</code> returns a non-zero value when it encounters strings which do not
-correspond to applications installed on the current system.<pre><code class=language-toml style=background-color:#fff>[tasks.fish]
+correspond to applications installed on the current system.<pre style=background-color:#fff>[tasks.fish]
     rejects = [[<span style=color:#d14>&#34;which&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>]]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;fish&#34;</span>], [<span style=color:#d14>&#34;chsh&#34;</span>, <span style=color:#d14>&#34;-s&#34;</span>, <span style=color:#d14>&#34;/usr/bin/fish&#34;</span>]]
     links = [[<span style=color:#d14>&#34;.config/fish/config.fish&#34;</span>]]
-</code></pre><p>The <code>accepts</code> variable is the logical opposite of <code>rejects</code> and can be used to conditionally execute tasks only when all
+</pre><p>The <code>accepts</code> variable is the logical opposite of <code>rejects</code> and can be used to conditionally execute tasks only when all
 of the specified commands exit out with a return code of zero.<h2 id=usage>Usage</h2><p>Executing Homemaker with the <code>-help</code> command line argument will trigger online help to be displayed. The list below
 provides a more detailed description of what the parameters do.<ul><li><p><strong>clobber</strong><p>By default, Homemaker will only remove identically-named symlinks at the destination directory. Using this parameter
 will cause Homemaker to be more aggressive and delete clashing files and entire directories as well. This can be
@@ -273,7 +273,7 @@ tool will delete the links created by the tasks provided. This flag automaticall
 because it makes no sense to execute commands when performing an uninstall operation.<li><p><strong>variant</strong><p>When using homemaker across different operating systems or distributions it can be useful to be able to perform
 conditional command and task execution, allowing for variation in things like package names and package management
 tools. This parameter is used for specifying the name of the variant that should be used.<li><p><strong>verbose</strong><p>When something isn’t going the way you expect, you can use this parameter to make Homemaker to log everything it is
-doing to console.</ul><h2 id=sample>Sample</h2><p>Below is a sample configuration file which should help to illustrate how Homemaker can be used in practice.<pre><code class=language-toml style=background-color:#fff><span style=color:#998;font-style:italic>#</span>
+doing to console.</ul><h2 id=sample>Sample</h2><p>Below is a sample configuration file which should help to illustrate how Homemaker can be used in practice.<pre style=background-color:#fff><span style=color:#998;font-style:italic>#</span>
 <span style=color:#998;font-style:italic># macros</span>
 <span style=color:#998;font-style:italic>#</span>
 
@@ -367,5 +367,5 @@ doing to console.</ul><h2 id=sample>Sample</h2><p>Below is a sample configuratio
     deps = [<span style=color:#d14>&#34;fusion&#34;</span>, <span style=color:#d14>&#34;common_term&#34;</span>, <span style=color:#d14>&#34;ibus&#34;</span>, <span style=color:#d14>&#34;vlc&#34;</span>, <span style=color:#d14>&#34;dropbox&#34;</span>, <span style=color:#d14>&#34;dev&#34;</span>]
     cmds = [[<span style=color:#d14>&#34;@install&#34;</span>, <span style=color:#d14>&#34;gimp&#34;</span>, <span style=color:#d14>&#34;keepassxc&#34;</span>, <span style=color:#d14>&#34;speedcrunch&#34;</span>]]
     links = [[<span style=color:#d14>&#34;.profile&#34;</span>]]
-</code></pre><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
+</pre><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
 <span class="breadcrumb-item active">Homemaker</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script><script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101024911);</script><script async src=//static.getclicky.com/js></script>

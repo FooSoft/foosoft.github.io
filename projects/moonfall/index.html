@@ -31,16 +31,16 @@ with Murder.”<p><a href=/projects/moonfall/img/gameplay.png class="img-thumbna
 <a href=/projects/moonfall/img/map-editor.png class="img-thumbnail img-thumbnail-inline" data-title="Map editor" data-toggle=lightbox data-gallery=gallery><img src=/projects/moonfall/img/map-editor-thumb.png alt="Map editor"></a><h2 id=technology>Technology</h2><p>From a technical point of view, the game engine was an exercise in creating a completely data driven game. In
 retrospect, it was probably over-engineered, but in general it was flexible and I liked what I could do with it. At the
 core of the engine was the <code>Actor</code> class, the functionality of which could be expanded through add-on properties. The
-property definitions were specified in XML; for example, below is the definition for the playable character:<pre><code class=language-xml style=background-color:#fff><span style=color:#000080>&lt;Actor</span> <span style=color:#008080>alias =</span> <span style=color:#d14>&#34;Player.01&#34;</span> <span style=color:#008080>dynamic =</span> <span style=color:#d14>&#34;1&#34;</span> <span style=color:#008080>layer =</span> <span style=color:#d14>&#34;4&#34;</span> <span style=color:#008080>thumbnail =</span> <span style=color:#d14>&#34;Player.01.Idle.S.01&#34;</span><span style=color:#000080>&gt;</span>
-    <span style=color:#000080>&lt;Properties</span><span style=color:#000080>&gt;</span>
+property definitions were specified in XML; for example, below is the definition for the playable character:<pre style=background-color:#fff><span style=color:#000080>&lt;Actor</span> <span style=color:#008080>alias =</span> <span style=color:#d14>&#34;Player.01&#34;</span> <span style=color:#008080>dynamic =</span> <span style=color:#d14>&#34;1&#34;</span> <span style=color:#008080>layer =</span> <span style=color:#d14>&#34;4&#34;</span> <span style=color:#008080>thumbnail =</span> <span style=color:#d14>&#34;Player.01.Idle.S.01&#34;</span><span style=color:#000080>&gt;</span>
+    <span style=color:#000080>&lt;Properties&gt;</span>
         <span style=color:#000080>&lt;Animation</span> <span style=color:#000080>/&gt;</span>
         <span style=color:#000080>&lt;Script</span> <span style=color:#008080>resource =</span> <span style=color:#d14>&#34;Player.01.Default&#34;</span> <span style=color:#000080>/&gt;</span>
         <span style=color:#000080>&lt;Physics</span> <span style=color:#000080>/&gt;</span>
     <span style=color:#000080>&lt;/Properties&gt;</span>
 <span style=color:#000080>&lt;/Actor&gt;</span>
-</code></pre><p>In addition to the self-explainable <code>Animation</code> and <code>Physics</code> properties, you can see a <code>Script</code> node which associates a
+</pre><p>In addition to the self-explainable <code>Animation</code> and <code>Physics</code> properties, you can see a <code>Script</code> node which associates a
 Lua script with the actor. Scripts would get notifications about events such as <code>OnActorUpdate</code>, during which custom
-processing could take place:<pre><code class=language-lua style=background-color:#fff><span style=color:#000;font-weight:bold>function</span> <span style=color:#900;font-weight:bold>OnActorUpdate</span>(elapsed)
+processing could take place:<pre style=background-color:#fff><span style=color:#000;font-weight:bold>function</span> <span style=color:#900;font-weight:bold>OnActorUpdate</span>(elapsed)
     <span style=color:#000;font-weight:bold>if</span> InputIsKeyTriggered(META_KEY_USE) <span style=color:#000;font-weight:bold>then</span>
         DoActorUse()
         <span style=color:#000;font-weight:bold>return</span>
@@ -60,9 +60,9 @@ processing could take place:<pre><code class=language-lua style=background-color
 
     DoActorIdle(playerDirection)
 <span style=color:#000;font-weight:bold>end</span>
-</code></pre><p>Scripts can directly interact with properties on the parent <code>Actor</code> and can communicate with surrounding world via a
+</pre><p>Scripts can directly interact with properties on the parent <code>Actor</code> and can communicate with surrounding world via a
 messaging system. This made it possible to build any game object imaginable by editing a couple of XML files and some
-simple scripting.<pre><code class=language-lua style=background-color:#fff><span style=color:#000;font-weight:bold>function</span> <span style=color:#900;font-weight:bold>DoActorWalk</span>(direction)
+simple scripting.<pre style=background-color:#fff><span style=color:#000;font-weight:bold>function</span> <span style=color:#900;font-weight:bold>DoActorWalk</span>(direction)
     <span style=color:#000;font-weight:bold>if</span> playerAction <span style=color:#000;font-weight:bold>==</span> ACTION_WALK <span style=color:#000;font-weight:bold>and</span> playerDirection <span style=color:#000;font-weight:bold>==</span> direction <span style=color:#000;font-weight:bold>then</span>
         <span style=color:#000;font-weight:bold>return</span>
     <span style=color:#000;font-weight:bold>end</span>
@@ -82,10 +82,10 @@ simple scripting.<pre><code class=language-lua style=background-color:#fff><span
     )
 
     <span style=color:#000;font-weight:bold>for</span> i, v <span style=color:#000;font-weight:bold>in</span> ipairs(actorsIds) <span style=color:#000;font-weight:bold>do</span>
-        ActorScriptSendMessage(v, <span style=color:#d14>&#34;</span><span style=color:#d14>interact</span><span style=color:#d14>&#34;</span>, { user <span style=color:#000;font-weight:bold>=</span> playerId })
+        ActorScriptSendMessage(v, <span style=color:#d14>&#34;interact&#34;</span>, { user <span style=color:#000;font-weight:bold>=</span> playerId })
     <span style=color:#000;font-weight:bold>end</span>
 <span style=color:#000;font-weight:bold>end</span>
 
-</code></pre><p>I eventually stopped work on Moonfall due to a lack of time, combined with the fact that I am not an artist and could
+</pre><p>I eventually stopped work on Moonfall due to a lack of time, combined with the fact that I am not an artist and could
 not author the assets required to develop this into a complete game.<div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
 <span class="breadcrumb-item active">Moonfall</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script><script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101024911);</script><script async src=//static.getclicky.com/js></script>

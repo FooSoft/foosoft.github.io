@@ -17,19 +17,19 @@ FooSoft Productions</a>
 Goldsmith does not force any design paradigms or file organization rules on the user, making it possible to generate
 anything from blogs to image galleries using the same tool.<h2 id=tutorial>Tutorial</h2><p>Goldsmith does not use any configuration files, and all behavior customization happens in code. Goldsmith uses the
 <a href=https://en.wikipedia.org/wiki/Builder_pattern>builder pattern</a> to establish a chain, which modifies files as they pass
-through it. Although the <a href=https://godoc.org/github.com/FooSoft/goldsmith>Goldsmith</a> is short and (hopefully) easy to
+through it. Although the <a href=https://pkg.go.dev/github.com/FooSoft/goldsmith>Goldsmith</a> is short and (hopefully) easy to
 understand, it is often best to learn by example:<ol><li><p>Start by copying files from a source directory to a destination directory (the simplest possible use case):<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir). <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)    <span style=color:#998;font-style:italic>// write files to dstDir
 </span></pre><li><p>Now let’s convert any Markdown files to HTML fragments (while still copying the rest), using the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a> plugin:<pre style=background-color:#fff>goldsmith.
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a> plugin:<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).         <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// convert *.md files to *.html files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)            <span style=color:#998;font-style:italic>// write files to dstDir
 </span></pre><li><p>If we have any
 <a href=https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/index.md>front matter</a> in our
 Markdown files, we need to extract it using the,
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a> plugin:<pre style=background-color:#fff>goldsmith.
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a> plugin:<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
@@ -37,7 +37,7 @@ Markdown files, we need to extract it using the,
 </span></pre><li><p>Next, we should run our barebones HTML through a
 <a href=https://raw.githubusercontent.com/FooSoft/goldsmith-samples/master/basic/content/layouts/basic.gohtml>template</a> to
 add elements like a header, footer, or a menu; for this we can use the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>Layout</a> plugin:<pre style=background-color:#fff>goldsmith.
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/frontmatter>Layout</a> plugin:<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
@@ -45,7 +45,7 @@ add elements like a header, footer, or a menu; for this we can use the
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
 </span></pre><li><p>Now, let’s <a href=https://en.wikipedia.org/wiki/Minification_(programming)>minify</a> our files to reduce data transfer and
 load times for our site’s visitors using the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a> plugin:<pre style=background-color:#fff>goldsmith.
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a> plugin:<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).            <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()). <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(markdown.<span style=color:#900;font-weight:bold>New</span>()).    <span style=color:#998;font-style:italic>// convert *.md files to *.html files
@@ -53,7 +53,7 @@ load times for our site’s visitors using the
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(minify.<span style=color:#900;font-weight:bold>New</span>()).      <span style=color:#998;font-style:italic>// minify *.html, *.css, *.js, etc. files
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)               <span style=color:#998;font-style:italic>// write files to dstDir
 </span></pre><li><p>Debugging problems in minified code can be tricky, so let’s use the
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a> filter to make minification
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a> filter to make minification
 occur only when we are ready for distribution.<pre style=background-color:#fff>goldsmith.
     <span style=color:#900;font-weight:bold>Begin</span>(srcDir).                   <span style=color:#998;font-style:italic>// read files from srcDir
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>Chain</span>(frontmatter.<span style=color:#900;font-weight:bold>New</span>()).        <span style=color:#998;font-style:italic>// extract frontmatter and store it as metadata
@@ -64,7 +64,7 @@ occur only when we are ready for distribution.<pre style=background-color:#fff>g
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>FilterPop</span>().                     <span style=color:#998;font-style:italic>// pop off the last filter pushed onto the stack
 </span><span style=color:#998;font-style:italic></span>    <span style=color:#900;font-weight:bold>End</span>(dstDir)                      <span style=color:#998;font-style:italic>// write files to dstDir
 </span></pre><li><p>Now that we have all of our plugins chained up, let’s look at a complete example which uses
-<a href=https://godoc.org/github.com/FooSoft/goldsmith-components/devserver>DevServer</a> to bootstrap a complete development
+<a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/devserver>DevServer</a> to bootstrap a complete development
 sever which automatically rebuilds the site whenever source files are updated.<pre style=background-color:#fff><span style=color:#000;font-weight:bold>package</span> main
 
 <span style=color:#000;font-weight:bold>import</span> (
@@ -110,25 +110,25 @@ sever which automatically rebuilds the site whenever source files are updated.<p
 </pre></ol><h2 id=samples>Samples</h2><p>Below are some examples of Goldsmith usage which can used to base your site on:<ul><li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/basic>Basic Sample</a>: a great starting point, this is the
 sample site from the tutorial.<li><a href=https://github.com/FooSoft/goldsmith-samples/tree/master/bootstrap>Bootstrap Sample</a>: a slightly more advanced
 sample using <a href=https://getbootstrap.com/>Bootstrap</a>.<li><a href=https://foosoft.net/projects/goldsmith>FooSoft.net</a>: I’ve been “dogfooding” Goldsmith by using it to build
-my homepage for years.</ul><h2 id=components>Components</h2><p>A growing set of plugins, filters, and other tools are provided to make it easier to get started with Goldsmith.<h3 id=plugins>Plugins</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/absolute>Absolute</a>: Convert relative HTML file
-references to absolute paths.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/breadcrumbs>Breadcrumbs</a>: Generate metadata
-required to build breadcrumb navigation.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/collection>Collection</a>: Group related pages
-into named collections.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/document>Document</a>: Enable simple DOM
-modification via an API similar to jQuery.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a>: Extract the
-JSON, YAML, or TOML metadata stored in your files.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/index>Index</a>: Create metadata for directory file
-listings and generate directory index pages.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/layout>Layout</a>: Transform your HTML files with
-Go templates.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/livejs>LiveJs</a>: Inject JavaScript code to
-automatically reload pages when modified.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a>: Render Markdown documents
-as HTML fragments.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a>: Remove superfluous data from a
-variety of web formats.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/pager>Pager</a>: Split arrays of metadata into
-standalone pages.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/summary>Summary</a>: Extract summary and title
-metadata from HTML files.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/syntax>Syntax</a>: Enable syntax highlighting for
-pre-formatted code blocks.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/tags>Tags</a>: Generate tag clouds and indices
-from file metadata.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/plugins/thumbnail>Thumbnail</a>: Build thumbnails for a
-variety of common image formats.</ul><h3 id=filters>Filters</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a>: Filter files based on a
-single condition.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/operator>Operator</a>: Join filters using
-logical <code>AND</code>, <code>OR</code>, and <code>NOT</code> operators.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/filters/wildcard>Wildcard</a>: Filter files using path
-wildcards (<code>*</code>, <code>?</code>, etc.)</ul><h3 id=other>Other</h3><ul><li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/devserver>DevServer</a>: Simple framework for building,
-updating, and viewing your site.<li><a href=https://godoc.org/github.com/FooSoft/goldsmith-components/harness>Harness</a>: Unit test harness for verifying
+my homepage for years.</ul><h2 id=components>Components</h2><p>A growing set of plugins, filters, and other tools are provided to make it easier to get started with Goldsmith.<h3 id=plugins>Plugins</h3><ul><li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/absolute>Absolute</a>: Convert relative HTML file
+references to absolute paths.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/breadcrumbs>Breadcrumbs</a>: Generate metadata
+required to build breadcrumb navigation.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/collection>Collection</a>: Group related pages
+into named collections.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/document>Document</a>: Enable simple DOM
+modification via an API similar to jQuery.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/frontmatter>FrontMatter</a>: Extract the
+JSON, YAML, or TOML metadata stored in your files.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/index>Index</a>: Create metadata for directory file
+listings and generate directory index pages.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/layout>Layout</a>: Transform your HTML files with
+Go templates.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/livejs>LiveJs</a>: Inject JavaScript code to
+automatically reload pages when modified.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/markdown>Markdown</a>: Render Markdown documents
+as HTML fragments.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/minify>Minify</a>: Remove superfluous data from a
+variety of web formats.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/pager>Pager</a>: Split arrays of metadata into
+standalone pages.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/summary>Summary</a>: Extract summary and title
+metadata from HTML files.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/syntax>Syntax</a>: Enable syntax highlighting for
+pre-formatted code blocks.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/tags>Tags</a>: Generate tag clouds and indices
+from file metadata.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/plugins/thumbnail>Thumbnail</a>: Build thumbnails for a
+variety of common image formats.</ul><h3 id=filters>Filters</h3><ul><li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/filters/condition>Condition</a>: Filter files based on a
+single condition.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/filters/operator>Operator</a>: Join filters using
+logical <code>AND</code>, <code>OR</code>, and <code>NOT</code> operators.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/filters/wildcard>Wildcard</a>: Filter files using path
+wildcards (<code>*</code>, <code>?</code>, etc.)</ul><h3 id=other>Other</h3><ul><li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/devserver>DevServer</a>: Simple framework for building,
+updating, and viewing your site.<li><a href=https://pkg.go.dev/github.com/FooSoft/goldsmith-components/harness>Harness</a>: Unit test harness for verifying
 Goldsmith plugins and filters.</ul><div><nav class=breadcrumb><a href=/projects/index.html class=breadcrumb-item>Projects</a>
 <span class="breadcrumb-item active">Goldsmith</span></nav></div></div><script src=/lib/jquery.min.js></script><script src=/lib/tether/js/tether.min.js></script><script src=/lib/bootstrap/js/bootstrap.min.js></script><script src=/lib/lightbox/ekko-lightbox.min.js></script><script src=/main.js></script><script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101024911);</script><script async src=//static.getclicky.com/js></script>

@@ -152,7 +152,7 @@ supports templates. The configuration syntax for templates is the same as for li
     templates = [
         [<span style=color:#d14>&#34;.gitconfig&#34;</span>]
     ]
-</pre><p>In the template file, the <a href=https://godoc.org/text/template>go templating syntax</a> is used for the customization of the
+</pre><p>In the template file, the <a href=https://pkg.go.dev/text/template>go templating syntax</a> is used for the customization of the
 configuration file. With the <code>.Env</code> prefix, all environment variables are available. Template example:<pre><code>[user]
 name = &#34;John Doe&#34;
 {{if eq .Env.USER &#34;john&#34;}}

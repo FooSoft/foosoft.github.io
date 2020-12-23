@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootstrap/css/bootstrap.min.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - AnkiConnect</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/><img src=/img/foosoft.png alt=FooSoft class=d-inline-block id=brand>
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/lib/bootswatch/bootstrap.css><link rel=stylesheet href=/lib/tether/css/tether.min.css><link rel=stylesheet href=/lib/tether/css/tether-theme-basic.min.css><link rel=stylesheet href=/lib/lightbox/ekko-lightbox.css><link rel=stylesheet href=/main.css><title>FooSoft Productions - AnkiConnect</title><nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class=navbar-brand href=/><img src=/img/foosoft.png alt=FooSoft class=d-inline-block id=brand>
 FooSoft Productions</a>
 <button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup>
 <span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class="navbar-nav ml-auto"><a class="nav-item nav-link" href=/>Overview</a>
@@ -33,68 +33,68 @@ in order to bind it to all network interfaces on your host.<h3 id=sample-invocat
 value used for authentication (which is optional and can be omitted by default). AnkiConnect will respond with an object
 containing two fields: <code>result</code> and <code>error</code>. The <code>result</code> field contains the return value of the executed API, and the
 <code>error</code> field is a description of any exception thrown during API execution (the value <code>null</code> is used if execution
-completed successfully).<p><em>Sample successful response</em>:<pre style=background-color:#fff>{<span style=color:#000080>&#34;result&#34;</span>: [<span style=color:#d14>&#34;Default&#34;</span>, <span style=color:#d14>&#34;Filtered Deck 1&#34;</span>], <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#000;font-weight:bold>null</span>}
-</pre><p><em>Samples of failed responses</em>:<pre style=background-color:#fff>{<span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>, <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#d14>&#34;unsupported action&#34;</span>}
-</pre><pre style=background-color:#fff>{<span style=color:#000080>&#34;result&#34;</span>: <span style=color:#000;font-weight:bold>null</span>, <span style=color:#000080>&#34;error&#34;</span>: <span style=color:#d14>&#34;guiBrowse() got an unexpected keyword argument &#39;foobar&#39;&#34;</span>}
+completed successfully).<p><em>Sample successful response</em>:<pre style=color:#93a1a1;background-color:#002b36>{<span style=color:#268bd2>&#34;result&#34;</span>: [<span style=color:#2aa198>&#34;Default&#34;</span>, <span style=color:#2aa198>&#34;Filtered Deck 1&#34;</span>], <span style=color:#268bd2>&#34;error&#34;</span>: <span style=color:#cb4b16>null</span>}
+</pre><p><em>Samples of failed responses</em>:<pre style=color:#93a1a1;background-color:#002b36>{<span style=color:#268bd2>&#34;result&#34;</span>: <span style=color:#cb4b16>null</span>, <span style=color:#268bd2>&#34;error&#34;</span>: <span style=color:#2aa198>&#34;unsupported action&#34;</span>}
+</pre><pre style=color:#93a1a1;background-color:#002b36>{<span style=color:#268bd2>&#34;result&#34;</span>: <span style=color:#cb4b16>null</span>, <span style=color:#268bd2>&#34;error&#34;</span>: <span style=color:#2aa198>&#34;guiBrowse() got an unexpected keyword argument &#39;foobar&#39;&#34;</span>}
 </pre><p>For compatibility with clients designed to work with older versions of AnkiConnect, failing to provide a <code>version</code> field
 in the request will make the version default to 4. Furthermore, when the provided version is level 4 or below, the API
 response will only contain the value of the <code>result</code>; no <code>error</code> field is available for error handling.<p>You can use whatever language or tool you like to issue request to AnkiConnect, but a couple of simple examples are
-included below as reference.<h4 id=curl>Curl</h4><pre style=background-color:#fff>curl localhost:8765 -X POST -d <span style=color:#d14>&#34;{\&#34;action\&#34;: \&#34;deckNames\&#34;, \&#34;version\&#34;: 6}&#34;</span>
-</pre><h4 id=python>Python</h4><pre style=background-color:#fff><span style=color:#000;font-weight:bold>import</span> <span style=color:#555>json</span>
-<span style=color:#000;font-weight:bold>import</span> <span style=color:#555>urllib.request</span>
+included below as reference.<h4 id=curl>Curl</h4><pre style=color:#93a1a1;background-color:#002b36>curl localhost:8765 -X POST -d <span style=color:#2aa198>&#34;{\&#34;action\&#34;: \&#34;deckNames\&#34;, \&#34;version\&#34;: 6}&#34;</span>
+</pre><h4 id=python>Python</h4><pre style=color:#93a1a1;background-color:#002b36><span style=color:#719e07>import</span> json
+<span style=color:#719e07>import</span> urllib.request
 
-<span style=color:#000;font-weight:bold>def</span> <span style=color:#900;font-weight:bold>request</span>(action, <span style=color:#000;font-weight:bold>**</span>params):
-    <span style=color:#000;font-weight:bold>return</span> {<span style=color:#d14>&#39;action&#39;</span>: action, <span style=color:#d14>&#39;params&#39;</span>: params, <span style=color:#d14>&#39;version&#39;</span>: <span style=color:#099>6</span>}
+<span style=color:#719e07>def</span> <span style=color:#268bd2>request</span>(action, <span style=color:#719e07>**</span>params):
+    <span style=color:#719e07>return</span> {<span style=color:#2aa198>&#39;action&#39;</span>: action, <span style=color:#2aa198>&#39;params&#39;</span>: params, <span style=color:#2aa198>&#39;version&#39;</span>: <span style=color:#2aa198>6</span>}
 
-<span style=color:#000;font-weight:bold>def</span> <span style=color:#900;font-weight:bold>invoke</span>(action, <span style=color:#000;font-weight:bold>**</span>params):
-    requestJson <span style=color:#000;font-weight:bold>=</span> json<span style=color:#000;font-weight:bold>.</span>dumps(request(action, <span style=color:#000;font-weight:bold>**</span>params))<span style=color:#000;font-weight:bold>.</span>encode(<span style=color:#d14>&#39;utf-8&#39;</span>)
-    response <span style=color:#000;font-weight:bold>=</span> json<span style=color:#000;font-weight:bold>.</span>load(urllib<span style=color:#000;font-weight:bold>.</span>request<span style=color:#000;font-weight:bold>.</span>urlopen(urllib<span style=color:#000;font-weight:bold>.</span>request<span style=color:#000;font-weight:bold>.</span>Request(<span style=color:#d14>&#39;http://localhost:8765&#39;</span>, requestJson)))
-    <span style=color:#000;font-weight:bold>if</span> <span style=color:#0086b3>len</span>(response) <span style=color:#000;font-weight:bold>!=</span> <span style=color:#099>2</span>:
-        <span style=color:#000;font-weight:bold>raise</span> <span style=color:#900;font-weight:bold>Exception</span>(<span style=color:#d14>&#39;response has an unexpected number of fields&#39;</span>)
-    <span style=color:#000;font-weight:bold>if</span> <span style=color:#d14>&#39;error&#39;</span> <span style=color:#000;font-weight:bold>not</span> <span style=color:#000;font-weight:bold>in</span> response:
-        <span style=color:#000;font-weight:bold>raise</span> <span style=color:#900;font-weight:bold>Exception</span>(<span style=color:#d14>&#39;response is missing required error field&#39;</span>)
-    <span style=color:#000;font-weight:bold>if</span> <span style=color:#d14>&#39;result&#39;</span> <span style=color:#000;font-weight:bold>not</span> <span style=color:#000;font-weight:bold>in</span> response:
-        <span style=color:#000;font-weight:bold>raise</span> <span style=color:#900;font-weight:bold>Exception</span>(<span style=color:#d14>&#39;response is missing required result field&#39;</span>)
-    <span style=color:#000;font-weight:bold>if</span> response[<span style=color:#d14>&#39;error&#39;</span>] <span style=color:#000;font-weight:bold>is</span> <span style=color:#000;font-weight:bold>not</span> <span style=color:#999>None</span>:
-        <span style=color:#000;font-weight:bold>raise</span> <span style=color:#900;font-weight:bold>Exception</span>(response[<span style=color:#d14>&#39;error&#39;</span>])
-    <span style=color:#000;font-weight:bold>return</span> response[<span style=color:#d14>&#39;result&#39;</span>]
+<span style=color:#719e07>def</span> <span style=color:#268bd2>invoke</span>(action, <span style=color:#719e07>**</span>params):
+    requestJson <span style=color:#719e07>=</span> json<span style=color:#719e07>.</span>dumps(request(action, <span style=color:#719e07>**</span>params))<span style=color:#719e07>.</span>encode(<span style=color:#2aa198>&#39;utf-8&#39;</span>)
+    response <span style=color:#719e07>=</span> json<span style=color:#719e07>.</span>load(urllib<span style=color:#719e07>.</span>request<span style=color:#719e07>.</span>urlopen(urllib<span style=color:#719e07>.</span>request<span style=color:#719e07>.</span>Request(<span style=color:#2aa198>&#39;http://localhost:8765&#39;</span>, requestJson)))
+    <span style=color:#719e07>if</span> <span style=color:#b58900>len</span>(response) <span style=color:#719e07>!=</span> <span style=color:#2aa198>2</span>:
+        <span style=color:#719e07>raise</span> <span style=color:#cb4b16>Exception</span>(<span style=color:#2aa198>&#39;response has an unexpected number of fields&#39;</span>)
+    <span style=color:#719e07>if</span> <span style=color:#2aa198>&#39;error&#39;</span> <span style=color:#719e07>not</span> <span style=color:#719e07>in</span> response:
+        <span style=color:#719e07>raise</span> <span style=color:#cb4b16>Exception</span>(<span style=color:#2aa198>&#39;response is missing required error field&#39;</span>)
+    <span style=color:#719e07>if</span> <span style=color:#2aa198>&#39;result&#39;</span> <span style=color:#719e07>not</span> <span style=color:#719e07>in</span> response:
+        <span style=color:#719e07>raise</span> <span style=color:#cb4b16>Exception</span>(<span style=color:#2aa198>&#39;response is missing required result field&#39;</span>)
+    <span style=color:#719e07>if</span> response[<span style=color:#2aa198>&#39;error&#39;</span>] <span style=color:#719e07>is</span> <span style=color:#719e07>not</span> <span style=color:#268bd2>None</span>:
+        <span style=color:#719e07>raise</span> <span style=color:#cb4b16>Exception</span>(response[<span style=color:#2aa198>&#39;error&#39;</span>])
+    <span style=color:#719e07>return</span> response[<span style=color:#2aa198>&#39;result&#39;</span>]
 
-invoke(<span style=color:#d14>&#39;createDeck&#39;</span>, deck<span style=color:#000;font-weight:bold>=</span><span style=color:#d14>&#39;test1&#39;</span>)
-result <span style=color:#000;font-weight:bold>=</span> invoke(<span style=color:#d14>&#39;deckNames&#39;</span>)
-<span style=color:#000;font-weight:bold>print</span>(<span style=color:#d14>&#39;got list of decks: {}&#39;</span><span style=color:#000;font-weight:bold>.</span>format(result))
-</pre><h4 id=javascript>JavaScript</h4><pre style=background-color:#fff><span style=color:#000;font-weight:bold>function</span> invoke(action, version, params<span style=color:#000;font-weight:bold>=</span>{}) {
-    <span style=color:#000;font-weight:bold>return</span> <span style=color:#000;font-weight:bold>new</span> <span style=color:#0086b3>Promise</span>((resolve, reject) =&gt; {
-        <span style=color:#000;font-weight:bold>const</span> xhr <span style=color:#000;font-weight:bold>=</span> <span style=color:#000;font-weight:bold>new</span> XMLHttpRequest();
-        xhr.addEventListener(<span style=color:#d14>&#39;error&#39;</span>, () =&gt; reject(<span style=color:#d14>&#39;failed to issue request&#39;</span>));
-        xhr.addEventListener(<span style=color:#d14>&#39;load&#39;</span>, () =&gt; {
-            <span style=color:#000;font-weight:bold>try</span> {
-                <span style=color:#000;font-weight:bold>const</span> response <span style=color:#000;font-weight:bold>=</span> JSON.parse(xhr.responseText);
-                <span style=color:#000;font-weight:bold>if</span> (<span style=color:#0086b3>Object</span>.getOwnPropertyNames(response).length <span style=color:#000;font-weight:bold>!=</span> <span style=color:#099>2</span>) {
-                    <span style=color:#000;font-weight:bold>throw</span> <span style=color:#d14>&#39;response has an unexpected number of fields&#39;</span>;
+invoke(<span style=color:#2aa198>&#39;createDeck&#39;</span>, deck<span style=color:#719e07>=</span><span style=color:#2aa198>&#39;test1&#39;</span>)
+result <span style=color:#719e07>=</span> invoke(<span style=color:#2aa198>&#39;deckNames&#39;</span>)
+<span style=color:#719e07>print</span>(<span style=color:#2aa198>&#39;got list of decks: {}&#39;</span><span style=color:#719e07>.</span>format(result))
+</pre><h4 id=javascript>JavaScript</h4><pre style=color:#93a1a1;background-color:#002b36><span style=color:#268bd2>function</span> invoke(action, version, params<span style=color:#719e07>=</span>{}) {
+    <span style=color:#719e07>return</span> <span style=color:#719e07>new</span> <span style=color:#b58900>Promise</span>((resolve, reject) =&gt; {
+        <span style=color:#268bd2>const</span> xhr <span style=color:#719e07>=</span> <span style=color:#719e07>new</span> XMLHttpRequest();
+        xhr.addEventListener(<span style=color:#2aa198>&#39;error&#39;</span>, () =&gt; reject(<span style=color:#2aa198>&#39;failed to issue request&#39;</span>));
+        xhr.addEventListener(<span style=color:#2aa198>&#39;load&#39;</span>, () =&gt; {
+            <span style=color:#719e07>try</span> {
+                <span style=color:#268bd2>const</span> response <span style=color:#719e07>=</span> JSON.parse(xhr.responseText);
+                <span style=color:#719e07>if</span> (<span style=color:#b58900>Object</span>.getOwnPropertyNames(response).length <span style=color:#719e07>!=</span> <span style=color:#2aa198>2</span>) {
+                    <span style=color:#719e07>throw</span> <span style=color:#2aa198>&#39;response has an unexpected number of fields&#39;</span>;
                 }
-                <span style=color:#000;font-weight:bold>if</span> (<span style=color:#000;font-weight:bold>!</span>response.hasOwnProperty(<span style=color:#d14>&#39;error&#39;</span>)) {
-                    <span style=color:#000;font-weight:bold>throw</span> <span style=color:#d14>&#39;response is missing required error field&#39;</span>;
+                <span style=color:#719e07>if</span> (<span style=color:#719e07>!</span>response.hasOwnProperty(<span style=color:#2aa198>&#39;error&#39;</span>)) {
+                    <span style=color:#719e07>throw</span> <span style=color:#2aa198>&#39;response is missing required error field&#39;</span>;
                 }
-                <span style=color:#000;font-weight:bold>if</span> (<span style=color:#000;font-weight:bold>!</span>response.hasOwnProperty(<span style=color:#d14>&#39;result&#39;</span>)) {
-                    <span style=color:#000;font-weight:bold>throw</span> <span style=color:#d14>&#39;response is missing required result field&#39;</span>;
+                <span style=color:#719e07>if</span> (<span style=color:#719e07>!</span>response.hasOwnProperty(<span style=color:#2aa198>&#39;result&#39;</span>)) {
+                    <span style=color:#719e07>throw</span> <span style=color:#2aa198>&#39;response is missing required result field&#39;</span>;
                 }
-                <span style=color:#000;font-weight:bold>if</span> (response.error) {
-                    <span style=color:#000;font-weight:bold>throw</span> response.error;
+                <span style=color:#719e07>if</span> (response.error) {
+                    <span style=color:#719e07>throw</span> response.error;
                 }
                 resolve(response.result);
-            } <span style=color:#000;font-weight:bold>catch</span> (e) {
+            } <span style=color:#719e07>catch</span> (e) {
                 reject(e);
             }
         });
 
-        xhr.open(<span style=color:#d14>&#39;POST&#39;</span>, <span style=color:#d14>&#39;http://127.0.0.1:8765&#39;</span>);
+        xhr.open(<span style=color:#2aa198>&#39;POST&#39;</span>, <span style=color:#2aa198>&#39;http://127.0.0.1:8765&#39;</span>);
         xhr.send(JSON.stringify({action, version, params}));
     });
 }
 
-await invoke(<span style=color:#d14>&#39;createDeck&#39;</span>, {deck<span style=color:#000;font-weight:bold>:</span> <span style=color:#d14>&#39;test1&#39;</span>});
-<span style=color:#000;font-weight:bold>const</span> result <span style=color:#000;font-weight:bold>=</span> await invoke(<span style=color:#d14>&#39;deckNames&#39;</span>, <span style=color:#099>6</span>);
-console.log(<span style=color:#d14>`got list of decks: </span><span style=color:#d14>${</span>result<span style=color:#d14>}</span><span style=color:#d14>`</span>);
+await invoke(<span style=color:#2aa198>&#39;createDeck&#39;</span>, {deck<span style=color:#719e07>:</span> <span style=color:#2aa198>&#39;test1&#39;</span>});
+<span style=color:#268bd2>const</span> result <span style=color:#719e07>=</span> await invoke(<span style=color:#2aa198>&#39;deckNames&#39;</span>, <span style=color:#2aa198>6</span>);
+console.log(<span style=color:#586e75>`got list of decks: </span><span style=color:#2aa198>${</span>result<span style=color:#2aa198>}</span><span style=color:#586e75>`</span>);
 </pre><h3 id=supported-actions>Supported Actions</h3><p>Documentation for currently supported actions is split up by category and is referenced below. Note that deprecated APIs
 will continue to function despite not being listed on this page as long as your request is labeled with a version number
 corresponding to when the API was available for use.<ul><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/cards.md>Cards</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/decks.md>Decks</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/graphical.md>Graphical</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/media.md>Media</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/miscellaneous.md>Miscellaneous</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/models.md>Models</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/notes.md>Notes</a><li><a href=https://github.com/FooSoft/anki-connect/blob/master/actions/statistics.md>Statistics</a></ul><div><nav class=breadcrumb><a href=/projects class=breadcrumb-item>Projects</a>
